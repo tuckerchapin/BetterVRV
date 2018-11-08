@@ -1,4 +1,5 @@
 for the blurring of spoiler thumbnails:
+
     .h-thumbnail {
         overflow: hidden;
     }
@@ -6,5 +7,6 @@ for the blurring of spoiler thumbnails:
         filter: blur(10px);
     }
 
-for 'watched' episodes discard this
+for 'watched' episodes discard the blur:
+
     `<span class="watched-info">WATCHED</span>`
