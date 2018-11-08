@@ -4,7 +4,7 @@ A suite of improvements to the VRV player
 ## TODOS
 * skip-op
 * skip-ed
-* seek-controls: better seek controls, JKL, user-defined increments
+* seek-controls: better seek controls, JKL + arrow, user-defined increments
 
 ## Future Features
 * speed-controls: add playback speed controls
@@ -14,3 +14,4 @@ A suite of improvements to the VRV player
 * force-HD
 * skip-recap: if there is a recap that contains no new content, skip it
 * user-markup: allow users to submit timestamps/flags for skip parameters (and obviously report them as well)
+* tie-settings: ties settings to account or system-wide
