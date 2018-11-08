@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="705.21px" height="705.21px" viewBox="47.395 47.396 705.21 705.21" enable-background="new 47.395 47.396 705.21 705.21"
+	 xml:space="preserve">
+<g id="Background">
+	<g id="Border__x26__Field">
+		<polygon fill="#F9D801" points="125.556,558.451 125.717,241.864 400.189,83.396 674.444,241.55 674.28,558.137 399.809,716.604 
+					"/>
+		<path fill="#1B1A26" d="M400.198,119.396l243.056,140.162l-0.146,280.571L399.8,680.604l-243.054-140.16l0.143-280.572
+			L400.198,119.396 M400.18,47.397L94.545,223.856l-0.18,352.603l305.453,176.145l305.634-176.459l0.183-352.602L400.18,47.397
+			L400.18,47.397z"/>
+	</g>
+</g>
+<g id="Chevron__x26__Plus">
+	<g id="Plus">
+		<rect x="280" y="266" fill="#1B1A26" width="240" height="81"/>
+		<rect x="359" y="186" fill="#1B1A26" width="81" height="240"/>
+	</g>
+	<path id="Chevron" fill="#1B1A26" d="M400.219,600.886c-59.571-32.025-117.069-62.767-175.453-94.147c0-36.968,0-72.745,0-113.861
+		c59.797,31.378,116.272,60.79,175.193,91.712c56.682-29.658,114.196-59.754,175.275-91.712c0,40.467,0,76.117,0,113.861
+		C517.94,537.56,460.45,568.485,400.219,600.886z"/>
+</g>
+</svg>
