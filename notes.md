@@ -16,9 +16,12 @@ to blur the episode descriptions
     .description {
         filter: blur(1em);
     }
-    .description:active {
+    .description:hover {
         filter: blur(0px);
     }
     p.episode-description {
         filter: blur(1em);
+    }
+    p.episode-description:hover {
+        filter: blur(0px);
     }
