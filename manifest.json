@@ -1,7 +1,8 @@
 {
-    "name": "Getting Started Example",
+    "manifest_version": 2,
+    "name": "BetterVRV",
     "version": "1.0",
-    "description": "Build an Extension!",
+    "description": "Suite of improvements to the VRV player and experience.",
     "permissions": ["activeTab", "declarativeContent", "storage"],
     "background": {
         "scripts": ["background.js"],
@@ -17,5 +18,9 @@
     "icons": {
         "705": "icons/icon.png"
     },
-    "manifest_version": 2
+    "web_accessible_resources": [
+        "icons/*.png",
+        "styles/*",
+        "fonts/*"
+    ]
 }

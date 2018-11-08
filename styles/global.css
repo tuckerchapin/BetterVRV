@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Days';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/days.ttf');
+}
+
+body {
+    font-family: "Days", sans-serif;
+    font-size: .75em;
+    user-select: none;
+}

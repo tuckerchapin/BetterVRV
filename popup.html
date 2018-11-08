@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <style>
-            button {
-                height: 30px;
-                width: 30px;
-                outline: none;
-            }
-        </style>
-    </head>
+<head>
+    <link rel="stylesheet" href="styles/global.css">
+    <style>
+        #popup-container {
+            width: 200px;
+            margin: 10px;
+        }
 
-    <body>
-        Hide thumbnails:
-        Hide descriptions:
-        
-        <script src="popup.js"></script>
-    </body>
+        .toggle-label {
+            float: left;
+        }
+
+        .toggle {
+            float: right;
+        }
+
+        .toggle-container {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="popup-container">
+        <div class="control-row toggle-container">
+            <label class="toggle-label" for="thumbnail-spoiler">Hide thumbnails</label>
+            <input id="thumbnail-spoiler" class="toggle" type="checkbox" />
+        </div>
+        <div class="control-row toggle-container">
+            <label class="toggle-label" for="description-spoiler">Hide descriptions</label>
+            <input id="description-spoiler" class="toggle" type="checkbox" />
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
 
 </html>
