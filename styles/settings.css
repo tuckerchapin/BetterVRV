@@ -32,7 +32,7 @@ body {
 .control-panel-container {
     height: auto;
     overflow: auto;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .control-panel-title {
@@ -46,11 +46,22 @@ body {
 
 .control-panel {
     background-color: #1b1a26;
+    overflow: auto;
     padding: 2rem;
 }
 
 .control-row {
+    width: 100%;
+    overflow: auto;
+}
 
+.control-row:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+.control-label {
+    width: auto;
+    overflow: hidden;
 }
 
 .control-title {
@@ -70,20 +81,6 @@ body {
     margin-top: .25rem;
 }
 
-/* Toggle styling */
-.toggle-container {
-    /* clear: both; */
-    height: auto;
-    overflow: auto;
-}
-    .toggle-container:not(:last-child) {
-        margin-bottom: 1rem;
-    }
-
-.toggle-label {
-    /* float: left; */
-}
-
-.toggle {
-    /* float: right; */
+.control-container {
+    float: right;
 }

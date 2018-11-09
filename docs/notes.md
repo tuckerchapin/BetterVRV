@@ -120,3 +120,6 @@ do what bttv does for it's popup/button
     font-weight: 400;
     src: url('../fonts/Days/days.ttf');
 }
+
+<input id="toggleA" class="toggle" type="checkbox" />
+<label for="toggleA" class="toggle" /><div /></label>
