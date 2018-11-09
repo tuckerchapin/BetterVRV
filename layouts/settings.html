@@ -13,8 +13,44 @@
     <div id="header">
         <img id="logo" src="../images/logotype.png" />
     </div>
+
     <div id="container">
         <div class="section-title">Settings</div>
+
+        <div class="control-panel-container">
+            <div class="control-panel-title">Skipping</div>
+            <div class="control-panel">
+                <div class="control-row">
+                    <div class="control-container">
+                        <input id="autointro-toggle" class="toggle" type="checkbox" />
+                        <label for="autointro-toggle" class="toggle"><div></div></label>
+                    </div>
+                    <label class="control-label" for="autointro-toggle">
+                        <div class="control-title">
+                            Auto-skip Intro
+                        </div>
+                        <div class="control-description">
+                            Automatically skip the intro sequence.
+                        </div>
+                    </label>
+                </div>
+                <div class="control-row control-subrow">
+                    <div class="control-container">
+                        <input id="autotitle-toggle" class="toggle" type="checkbox" disabled/>
+                        <label for="autotitle-toggle" class="toggle"><div></div></label>
+                    </div>
+                    <label class="control-label" for="autotitle-toggle">
+                        <div class="control-title">
+                            Auto-skip Title
+                        </div>
+                        <div class="control-description">
+                            The title card (if any) will be skipped over in addition to the intro sequence/OP.
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
         <div class="control-panel-container">
             <div class="control-panel-title">Spoilers</div>
             <div class="control-panel">
@@ -29,6 +65,20 @@
                         </div>
                         <div class="control-description">
                             All thumbnails will be blurred.
+                        </div>
+                    </label>
+                </div>
+                <div class="control-row control-subrow">
+                    <div class="control-container">
+                        <input id="show-seen-toggle" class="toggle" type="checkbox" />
+                        <label for="show-seen-toggle" class="toggle"><div></div></label>
+                    </div>
+                    <label class="control-label" for="show-seen-toggle">
+                        <div class="control-title">
+                            Already Watched Episode Thumbnails
+                        </div>
+                        <div class="control-description">
+                            The thumbnails for episodes and shows you've completely watched will not be hidden.
                         </div>
                     </label>
                 </div>
@@ -61,6 +111,55 @@
                     </label>
                 </div>
             </div>
+        </div>
+
+        <div class="control-panel-container">
+            <div class="control-panel-title">Home Page</div>
+            <div class="control-panel">
+                <div class="control-row">
+                    <div class="control-container">
+                        <input id="cw-first-toggle" class="toggle" type="checkbox" />
+                        <label for="cw-first-toggle" class="toggle"><div></div></label>
+                    </div>
+                    <label class="control-label" for="cw-first-toggle">
+                        <div class="control-title">
+                            Continue Watching to the Front
+                        </div>
+                        <div class="control-description">
+                            The homepage is reordered so that continue watching is the first section on the homepage and all other content (including the banner) will be placed below it.
+                        </div>
+                    </label>
+                </div>
+                <div class="control-row">
+                    <div class="control-container">
+                        <input id="up2date-toggle" class="toggle" type="checkbox" />
+                        <label for="up2date-toggle" class="toggle"><div></div></label>
+                    </div>
+                    <label class="control-label" for="up2date-toggle">
+                        <div class="control-title">
+                            Hide Up-to-Date Shows
+                        </div>
+                        <div class="control-description">
+                            Any shows that you have finished or are up-to-date on will be hidden from the continue watching section until there is a new episode that you have not watched.
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="footer-entry">
+            Issues? Suggestions? Complaints? <a href="mailto:tuckerchapin@gmail.com">Let me know.</a>
+        </div>
+        <div class="footer-entry">
+            <a href="https://github.com/tuckerchapin/BetterVRV/issues">Github.</a>
+        </div>
+        <div class="footer-entry">
+            Consider <a href="https://paypal.com">donating.</a>
+        </div>
+        <div id="disclaimer">
+            VRV, CrunchyRoll, and all other trademarks, service marks, trade names, product names and logos appearing on the site are the property of their respective owners.
         </div>
     </div>
 

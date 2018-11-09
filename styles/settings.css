@@ -21,13 +21,44 @@ body {
 }
 
 #container {
-    top: calc(4rem + 3px);
-    max-width: 50rem;
+    padding-top: calc(4rem + 3px);
+    padding-bottom: 2rem;
+    width: 50rem;
     overflow: auto;
     position: relative;
     margin: auto;
 }
 
+#footer {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    padding: 2rem 0;
+    color: #b0aebb;
+}
+
+.footer-entry {
+    width: 50rem;
+    margin: .5rem auto;
+    text-align: center;
+    font-size: .8rem;
+    font-weight: 300;
+}
+
+.footer-entry a:hover {
+    color: #00b4ff;
+    text-decoration: underline;
+}
+
+#disclaimer {
+    width: 30rem;
+    margin: 2rem auto .5rem auto;
+    text-align: center;
+    font-size: .7rem;
+}
+
+
+/* Control panel styling */
 .section-title {
     font-size: 2rem;
     font-weight: 300;
@@ -38,7 +69,6 @@ body {
     margin: 1.5rem 0;
 }
 
-/* Control panel styling */
 .control-panel-container {
     height: auto;
     overflow: auto;
@@ -67,6 +97,11 @@ body {
 
 .control-row:not(:last-child) {
     margin-bottom: 1.5rem;
+}
+
+.control-subrow {
+    width: auto;
+    margin-left: 4em;
 }
 
 .control-label {

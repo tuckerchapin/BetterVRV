@@ -124,6 +124,10 @@
         src: url('../fonts/Montserrat/Montserrat-BlackItalic.ttf');
     }
 
+html {
+    background-color: #1b1a26;
+}
+
 body {
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 400;
@@ -131,4 +135,9 @@ body {
     user-select: none;
     height: auto;
     overflow: auto;
+}
+
+a {
+    text-decoration: inherit;
+    color: inherit;
 }
