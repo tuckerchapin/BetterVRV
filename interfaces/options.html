@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/toggle.css" />
-    <link rel="stylesheet" href="styles/settings.css" />
+    <link rel="stylesheet" href="styles/options.css" />
 
     <title>BetterVRV Settings</title>
 </head>
@@ -22,10 +22,10 @@
             <div class="control-panel">
                 <div class="control-row">
                     <div class="control-container">
-                        <input id="autointro-toggle" class="toggle" type="checkbox" />
-                        <label for="autointro-toggle" class="toggle"><div></div></label>
+                        <input id="autointro" class="toggle" type="checkbox" />
+                        <label for="autointro" class="toggle"><div></div></label>
                     </div>
-                    <label class="control-label" for="autointro-toggle">
+                    <label class="control-label" for="autointro">
                         <div class="control-title">
                             Auto-skip Intro
                         </div>
@@ -36,10 +36,10 @@
                 </div>
                 <div class="control-row control-subrow">
                     <div class="control-container">
-                        <input id="autotitle-toggle" class="toggle" type="checkbox" disabled/>
-                        <label for="autotitle-toggle" class="toggle"><div></div></label>
+                        <input id="autotitle" class="toggle" type="checkbox" disabled/>
+                        <label for="autotitle" class="toggle"><div></div></label>
                     </div>
-                    <label class="control-label" for="autotitle-toggle">
+                    <label class="control-label" for="autotitle">
                         <div class="control-title">
                             Auto-skip Title
                         </div>
@@ -56,12 +56,12 @@
             <div class="control-panel">
                 <div class="control-row">
                     <div class="control-container">
-                        <input id="thumbnail-spoiler-toggle" class="toggle" type="checkbox" />
-                        <label for="thumbnail-spoiler-toggle" class="toggle"><div></div></label>
+                        <input id="hide-thumbnails" class="toggle" type="checkbox" />
+                        <label for="hide-thumbnails" class="toggle"><div></div></label>
                     </div>
-                    <label class="control-label" for="thumbnail-spoiler-toggle">
+                    <label class="control-label" for="hide-thumbnails">
                         <div class="control-title">
-                            Thumbnails
+                            Hide Thumbnails
                         </div>
                         <div class="control-description">
                             All thumbnails will be blurred.
@@ -70,26 +70,26 @@
                 </div>
                 <div class="control-row control-subrow">
                     <div class="control-container">
-                        <input id="show-seen-toggle" class="toggle" type="checkbox" />
-                        <label for="show-seen-toggle" class="toggle"><div></div></label>
+                        <input id="show-watched-thumbnails" class="toggle" type="checkbox" conditionalon="hide-thumbnails"/>
+                        <label for="show-watched-thumbnails" class="toggle"><div></div></label>
                     </div>
-                    <label class="control-label" for="show-seen-toggle">
+                    <label class="control-label" for="show-watched-thumbnails">
                         <div class="control-title">
-                            Already Watched Episode Thumbnails
+                            Show &ldquo;Watched&rdquo; Thumbnails
                         </div>
                         <div class="control-description">
-                            The thumbnails for episodes and shows you've completely watched will not be hidden.
+                            The thumbnails for episodes you've completely watched will not be hidden.
                         </div>
                     </label>
                 </div>
                 <div class="control-row">
                     <div class="control-container">
-                        <input id="description-spoiler-toggle" class="toggle" type="checkbox" />
-                        <label for="description-spoiler-toggle" class="toggle"><div></div></label>
+                        <input id="hide-descriptions" class="toggle" type="checkbox" />
+                        <label for="hide-descriptions" class="toggle"><div></div></label>
                     </div>
-                    <label class="control-label" for="description-spoiler-toggle">
+                    <label class="control-label" for="hide-descriptions">
                         <div class="control-title">
-                            Descriptions
+                            Hide Descriptions
                         </div>
                         <div class="control-description">
                             The current episode's description will be blurred.
@@ -98,12 +98,12 @@
                 </div>
                 <div class="control-row">
                     <div class="control-container">
-                        <input id="preview-spoiler-toggle" class="toggle" type="checkbox" disabled/>
-                        <label for="preview-spoiler-toggle" class="toggle"><div></div></label>
+                        <input id="auto-skip-previews" class="toggle" type="checkbox"/>
+                        <label for="auto-skip-previews" class="toggle"><div></div></label>
                     </div>
-                    <label class="control-label" for="preview-spoiler-toggle">
+                    <label class="control-label" for="auto-skip-previews">
                         <div class="control-title">
-                            Previews
+                            Auto-Skip Previews
                         </div>
                         <div class="control-description">
                             If there is a preview or &ldquo;next time on...&rdquo; at the end of the episode, it will be skipped.
@@ -118,10 +118,10 @@
             <div class="control-panel">
                 <div class="control-row">
                     <div class="control-container">
-                        <input id="cw-first-toggle" class="toggle" type="checkbox" />
-                        <label for="cw-first-toggle" class="toggle"><div></div></label>
+                        <input id="cw-first" class="toggle" type="checkbox" />
+                        <label for="cw-first" class="toggle"><div></div></label>
                     </div>
-                    <label class="control-label" for="cw-first-toggle">
+                    <label class="control-label" for="cw-first">
                         <div class="control-title">
                             Continue Watching to the Front
                         </div>
@@ -132,10 +132,10 @@
                 </div>
                 <div class="control-row">
                     <div class="control-container">
-                        <input id="up2date-toggle" class="toggle" type="checkbox" />
-                        <label for="up2date-toggle" class="toggle"><div></div></label>
+                        <input id="up2date" class="toggle" type="checkbox" />
+                        <label for="up2date" class="toggle"><div></div></label>
                     </div>
-                    <label class="control-label" for="up2date-toggle">
+                    <label class="control-label" for="up2date">
                         <div class="control-title">
                             Hide Up-to-Date Shows
                         </div>
@@ -152,10 +152,10 @@
             <div class="control-panel">
                 <div class="control-row">
                     <div class="control-container">
-                        <input id="-toggle" class="toggle" type="checkbox" />
-                        <label for="-toggle" class="toggle"><div></div></label>
+                        <input id="" class="toggle" type="checkbox" />
+                        <label for="" class="toggle"><div></div></label>
                     </div>
-                    <label class="control-label" for="-toggle">
+                    <label class="control-label" for="">
                         <div class="control-title">
                             Keyboard Shortcuts
                         </div>
@@ -183,7 +183,7 @@
         </div>
     </div>
 
-    <script src="js/settings.js"></script>
+    <script src="js/options.js"></script>
 </body>
 
 </html>

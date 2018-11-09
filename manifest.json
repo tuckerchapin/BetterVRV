@@ -5,7 +5,10 @@
     "description": "Suite of improvements to the VRV player and experience.",
     "permissions": ["activeTab", "declarativeContent", "storage"],
     "background": {
-        "scripts": ["js/background.js"],
+        "scripts": [
+            "js/settings.js",
+            "js/bg_installed.js"
+        ],
         "persistent": false
     },
     "page_action": {
@@ -14,7 +17,7 @@
             "705": "images/icon.png"
         }
     },
-    "options_page": "interfaces/settings.html",
+    "options_page": "interfaces/options.html",
     "icons": {
         "705": "images/icon.png"
     },
