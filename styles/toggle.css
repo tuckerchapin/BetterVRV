@@ -29,3 +29,12 @@ input.toggle:checked+label.toggle {
     input.toggle:checked+label.toggle div {
         transform: translate3d(100%, 0, 0);
     }
+
+input.toggle:disabled+label.toggle {
+    background: #4d4d4d;
+    box-shadow: none;
+}
+
+    input.toggle:disabled+label.toggle div {
+        background: #999999;
+    }

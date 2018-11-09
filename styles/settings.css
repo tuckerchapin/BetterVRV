@@ -11,7 +11,7 @@ body {
     height: auto;
     width: 100%;
     z-index: 999999;
-    border-bottom: #fd0 2px solid;
+    border-bottom: #fd0 3px solid;
 }
 
 #logo {
@@ -21,11 +21,21 @@ body {
 }
 
 #container {
-    top: 5rem;
+    top: calc(4rem + 3px);
     max-width: 50rem;
     overflow: auto;
     position: relative;
     margin: auto;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.42;
+    text-rendering: optimizeLegibility;
+    color: #f9f9fa;
+    text-transform: uppercase;
+    margin: 1.5rem 0;
 }
 
 /* Control panel styling */
