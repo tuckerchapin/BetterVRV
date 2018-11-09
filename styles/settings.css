@@ -83,4 +83,6 @@ body {
 
 .control-container {
     float: right;
+    top: 50%;
+    transform: translateY(+50%);
 }
