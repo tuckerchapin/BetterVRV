@@ -4,7 +4,7 @@ const defaultOptions = {
     "hideThumbnails": true,
     "showWatchedThumbnails": true,
     "hideDescriptions": true,
-    "autoSkipPreviews": true
+    "autoSkipPreviews": true,
 }
 
 chrome.storage.sync.get(
@@ -13,10 +13,23 @@ chrome.storage.sync.get(
         for (const [key, value] of Object.entries(data)) {
             let elem = document.getElementById(camel2kebab(key));
 
+            // Set the UI to match the settings
             switch (typeof value) {
                 case "boolean":
                     elem.checked = value;
+
+                    break;
+                default:
+                    console.error('Error getting user option for "' + key + '"');
             }
+
+            // Fire a changed event to update dependent styling
+            // SMALL CANCER TODO
+            // var event = new Event(
+            //     "changed",
+            //     {"detail": 'Pseudo-changed event loading in "' + key + '" setting.'}
+            // );
+            elem.dispatchEvent(new Event("change"));
         }
     }
 );
@@ -37,7 +50,7 @@ for (let i = 0; i < inputs.length; i++) {
                 newSetting,
                 () => {
                     if (chrome.runtime.lastError)
-                        console.log(chrome.runtime.lastError);
+                        console.error(chrome.runtime.lastError);
                 }
             );
 
