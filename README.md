@@ -2,17 +2,15 @@
 ---
 A suite of improvements to the VRV player
 
+
 ## Features
-None 4Head.
+- [ ] no-spoilers: Hide potential spoilers in the thumbnails and descriptions.
+- [ ] skip-op: Skip the opening sequence.
+- [ ] skip-ed: Skip the end sequence and bring up the "next episode" prompt sooner.
+- [ ] seek-controls: Better seeking control from the keyboard; JKL, arrow, and adjustable increments.
+- [ ] speed-controls: Adjust the playback speed.
 
-## TODOS
-* skip-op
-* skip-ed
-* seek-controls: better seek controls, JKL + arrow, user-defined increments
-* speed-controls: add playback speed controls
-* no-spoilers: hide the description for episodes and blur the thumbnail, blur the loading thumbnail
-
-## Future Features
+## Roadmap
 * skip-previw: similar to no-spoilers, skip or do not show the prievew at the end of episode
 * subtitle-settings
 * force-HD
