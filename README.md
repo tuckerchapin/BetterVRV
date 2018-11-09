@@ -1,4 +1,4 @@
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![BetterVRV](https://raw.githubusercontent.com/tuckerchapin/BetterVRV/initial-experiment/images/logotype_dark.png)
 ---
 A suite of improvements to the VRV player
 
