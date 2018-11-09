@@ -79,10 +79,9 @@ body {
     line-height: 1.41;
     color: #b0aebb;
     margin-top: .25rem;
+    max-width: 80%;
 }
 
 .control-container {
     float: right;
-    top: 50%;
-    transform: translateY(+50%);
 }
