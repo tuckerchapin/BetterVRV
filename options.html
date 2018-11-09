@@ -2,25 +2,20 @@
 <html>
 
 <head>
-    <style>
-        button {
-            height: 30px;
-            width: 30px;
-            outline: none;
-            margin: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/options.css" />
 </head>
 
 <body>
-    <div id="buttonDiv">
+    <div class="control-row toggle-container">
+        <label class="toggle-label" for="thumbnail-spoiler">Hide thumbnails</label>
+        <input id="thumbnail-spoiler" class="toggle" type="checkbox" />
     </div>
-
-    <div>
-        <p>Choose a different background color!</p>
+    <div class="control-row toggle-container">
+        <label class="toggle-label" for="description-spoiler">Hide descriptions</label>
+        <input id="description-spoiler" class="toggle" type="checkbox" />
     </div>
+    <script src="options.js"></script>
 </body>
-
-<script src="options.js"></script>
 
 </html>

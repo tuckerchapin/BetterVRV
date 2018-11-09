@@ -1,0 +1,11 @@
+.toggle-container {
+    clear: both;
+}
+
+.toggle-label {
+    float: left;
+}
+
+.toggle {
+    float: right;
+}

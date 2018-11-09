@@ -1,0 +1,16 @@
+#popup-container {
+    width: 200px;
+    margin: 10px;
+}
+
+.toggle-container {
+    clear: both;
+}
+
+.toggle-label {
+    float: left;
+}
+
+.toggle {
+    float: right;
+}
