@@ -6,8 +6,7 @@
     "permissions": ["activeTab", "declarativeContent", "storage"],
     "background": {
         "scripts": [
-            "js/settings.js",
-            "js/bg_installed.js"
+            "js/bgInstalled.js"
         ],
         "persistent": false
     },

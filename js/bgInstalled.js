@@ -1,10 +1,22 @@
+const defaultSettings = {
+    "spoilers": {
+        "hideThumbnails": true,
+        "showWatchedThumbnails": true,
+        "hideDescriptions": true,
+        "autoSkipPreviews": true
+    }
+}
+
+
 chrome.runtime.onInstalled.addListener(function() {
-    chrome.storage.sync.set({
-        hideThumbnails: true,
-        hideDescriptions: true,
-    }, function() {
-        console.log("The color is green.");
-    });
+    // chrome.storage.sync.get({
+    //     "hideThumbnails": true,
+    //     "showWatchedThumbnails": true,
+    //     "hideDescriptions": true,
+    //     "autoSkipPreviews": true
+    // }, function() {
+    //     console.log("The color is green.");
+    // });
 
     chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
         chrome.declarativeContent.onPageChanged.addRules([
