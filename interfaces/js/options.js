@@ -1,11 +1,25 @@
-const defaultSettings = {
-    "spoilers": {
-        "hideThumbnails": true,
-        "showWatchedThumbnails": true,
-        "hideDescriptions": true,
-        "autoSkipPreviews": true
-    }
+// Load the existing settings
+// Will set new settings if there are none
+const defaultOptions = {
+    "hideThumbnails": true,
+    "showWatchedThumbnails": true,
+    "hideDescriptions": true,
+    "autoSkipPreviews": true
 }
+
+chrome.storage.sync.get(
+    defaultOptions,
+    (data) => {
+        for (const [key, value] of Object.entries(data)) {
+            let elem = document.getElementById(camel2kebab(key));
+
+            switch (typeof value) {
+                case "boolean":
+                    elem.checked = value;
+            }
+        }
+    }
+);
 
 // Control listeners
 
@@ -16,8 +30,19 @@ for (let i = 0; i < inputs.length; i++) {
         (e) => {
             console.log(e.target.id + " turned " + (e.target.checked ? "on" : "off"));
 
+            // Save the setting that changed
+            let newSetting = {};
+            newSetting[kebab2camel(e.target.id)] = e.target.checked;
+            chrome.storage.sync.set(
+                newSetting,
+                () => {
+                    if (chrome.runtime.lastError)
+                        console.log(chrome.runtime.lastError);
+                }
+            );
 
-            // Conditional controls
+
+            // Affect conditional controls
             let conditionals = document.querySelectorAll(
                 ".control-subrow[data-conditional='" + inputs[i].id + "'] input[type='checkbox']"
             );
@@ -43,14 +68,6 @@ for (let i = 0; i < inputs.length; i++) {
         }
     );
 }
-
-
-//
-chrome.storage.sync.get(
-    defaultSettings,
-    (data) => {
-    }
-);
 
 
 // Helpers
