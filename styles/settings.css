@@ -2,7 +2,10 @@ body {
     margin: 0;
     padding: 0;
     background-color: #2f2d42;
-    /* 474658 */
+    background-image: url('../images/vrv_bg_pattern.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 #header {
