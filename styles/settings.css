@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #2f2d42;
+    /* 474658 */
+}
+
+#header {
+    background-color: #1b1a26;
+    position: fixed;
+    height: auto;
+    width: 100%;
+    z-index: 999999;
+    border-bottom: #fd0 2px solid;
+}
+
+#logo {
+    height: 2rem;
+    display: block;
+    margin: 1rem auto;
+}
+
+#container {
+    top: 5rem;
+    max-width: 50rem;
+    overflow: auto;
+    position: relative;
+    margin: auto;
+}
+
+/* Control panel styling */
+.control-panel-container {
+    height: auto;
+    overflow: auto;
+    margin-bottom: 3rem;
+}
+
+.control-panel-title {
+    height: auto;
+    color: #b0aebb;
+    font-weight: 500;
+    font-size: 1.25rem;
+    margin-bottom: .625rem;
+    line-height: 1.4;
+}
+
+.control-panel {
+    background-color: #1b1a26;
+    padding: 2rem;
+}
+
+.control-row {
+
+}
+
+.control-title {
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: 1.43;
+    text-rendering: optimizeLegibility;
+    color: #f9f9fa;
+    text-transform: uppercase;
+}
+
+.control-description {
+    font-size: .8rem;
+    font-weight: 400;
+    line-height: 1.41;
+    color: #b0aebb;
+    margin-top: .25rem;
+}
+
+/* Toggle styling */
+.toggle-container {
+    /* clear: both; */
+    height: auto;
+    overflow: auto;
+}
+    .toggle-container:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+.toggle-label {
+    /* float: left; */
+}
+
+.toggle {
+    /* float: right; */
+}

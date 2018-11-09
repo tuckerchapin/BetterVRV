@@ -1,0 +1,29 @@
+.iostoggle {
+    position: absolute;
+    opacity: 0;
+}
+.switch {
+    display: inline-block;
+    font-size: 20px;
+    height: 1em;
+    width: 2em;
+    border-radius: 1em;
+    background: transparent;
+    box-shadow: inset 0 0 0px 3px #00b4ff;
+}
+    .switch div {
+        height: 1em;
+        width: 1em;
+        border-radius: 1em;
+        background: #fff;
+        box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.5);
+        transition: all 150ms;
+    }
+
+.iostoggle:checked+.switch {
+    background: #00b4ff;
+}
+
+    .iostoggle:checked+.switch div {
+        transform: translate3d(100%, 0, 0);
+    }

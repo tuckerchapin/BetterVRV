@@ -11,15 +11,15 @@
     "page_action": {
         "default_popup": "layouts/popup.html",
         "default_icon": {
-            "705": "icons/icon.png"
+            "705": "images/icon.png"
         }
     },
     "options_page": "layouts/settings.html",
     "icons": {
-        "705": "icons/icon.png"
+        "705": "images/icon.png"
     },
     "web_accessible_resources": [
-        "icons/*.png",
+        "images/*",
         "styles/*",
         "fonts/*"
     ]
