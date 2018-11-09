@@ -9,10 +9,10 @@ None 4Head.
 * skip-op
 * skip-ed
 * seek-controls: better seek controls, JKL + arrow, user-defined increments
-
-## Future Features
 * speed-controls: add playback speed controls
 * no-spoilers: hide the description for episodes and blur the thumbnail, blur the loading thumbnail
+
+## Future Features
 * skip-previw: similar to no-spoilers, skip or do not show the prievew at the end of episode
 * subtitle-settings
 * force-HD
