@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #2f2d42;
+    background-image: url('../images/vrv_bg_pattern.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#header {
+    background-color: #1b1a26;
+    position: fixed;
+    height: auto;
+    width: 100%;
+    z-index: 999999;
+    border-bottom: #fd0 3px solid;
+}
+
+#logo {
+    height: 2rem;
+    display: block;
+    margin: 1rem auto;
+}
+
+#container {
+    padding-top: calc(4rem + 3px);
+    padding-bottom: 2rem;
+    width: 50rem;
+    overflow: auto;
+    position: relative;
+    margin: auto;
+}
+
+#footer {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    padding: 2rem 0;
+    color: #b0aebb;
+}
+
+.footer-entry {
+    width: 50rem;
+    margin: .5rem auto;
+    text-align: center;
+    font-size: .8rem;
+    font-weight: 300;
+}
+
+.footer-entry a:hover {
+    color: #00b4ff;
+    text-decoration: underline;
+}
+
+#disclaimer {
+    width: 30rem;
+    margin: 2rem auto .5rem auto;
+    text-align: center;
+    font-size: .7rem;
+}
+
+
+/* Control panel styling */
+.section-title {
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.42;
+    text-rendering: optimizeLegibility;
+    color: #f9f9fa;
+    text-transform: uppercase;
+    margin: 1.5rem 0;
+}
+
+.control-panel-container {
+    height: auto;
+    overflow: auto;
+    margin-bottom: 2rem;
+}
+
+.control-panel-title {
+    height: auto;
+    color: #b0aebb;
+    font-weight: 500;
+    font-size: 1.25rem;
+    margin-bottom: .625rem;
+    line-height: 1.4;
+}
+
+.control-panel {
+    background-color: #1b1a26;
+    overflow: auto;
+    padding: 2rem;
+}
+
+.control-row {
+    width: 100%;
+    overflow: auto;
+}
+
+.control-row:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+.control-subrow {
+    width: auto;
+    margin-left: 4em;
+}
+
+.control-label {
+    width: auto;
+    overflow: hidden;
+}
+
+.control-title {
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: 1.43;
+    text-rendering: optimizeLegibility;
+    color: #f9f9fa;
+    text-transform: uppercase;
+}
+
+.control-description {
+    font-size: .8rem;
+    font-weight: 400;
+    line-height: 1.41;
+    color: #b0aebb;
+    margin-top: .25rem;
+    max-width: 80%;
+}
+
+.control-container {
+    float: right;
+}
