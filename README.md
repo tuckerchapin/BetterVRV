@@ -1,4 +1,5 @@
-# BetterVRV
+![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+---
 A suite of improvements to the VRV player
 
 ## Features
