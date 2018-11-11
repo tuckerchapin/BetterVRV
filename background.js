@@ -16,40 +16,23 @@ chrome.storage.onChanged.addListener(
     }
 );
 
-// On navigating to VRV or within VRV, apply the options.
+// On navigating to VRV, apply settings.
 chrome.tabs.onUpdated.addListener(
     (tabId, changes, tab) => {
-        // Check that the tab is a VRV tab
-        // if (/^https:\/\/vrv\.co(\/.*)?$/.test(tab.url)) {
-        //     // Get and apply settings
-        //     chrome.storage.sync.get(
-        //         options,
-        //         (data) => {
-        //             for (const [key, value] of Object.entries(data)) {
-        //                 if (key in optionFunctions) {
-        //                     optionFunctions[key](value, tab.id);
-        //                 }
-        //             }
-        //         }
-        //     );
-        // }
-
-        // chrome.tabs.query(
-        //     {"url": "https://vrv.co/*"},
-        //     (tabs) => {
-        //
-        //         chrome.storage.sync.get(
-        //             options,
-        //             (data) => {
-        //                 for (const [key, value] of Object.entries(data)) {
-        //                     if (key in optionFunctions) {
-        //                         optionFunctions[key](value, tab.id);
-        //                     }
-        //                 }
-        //             }
-        //         );
-        //     }
-        // );
+        let url = new URL(tab.url);
+        console.log(url.hostname, url.hostname === "vrv.co");
+        if (url.hostname === "vrv.co") {
+            chrome.storage.sync.get(
+                options,
+                (data) => {
+                    for (const [key, value] of Object.entries(data)) {
+                        if (key in optionFunctions) {
+                            optionFunctions[key](value, tab.id);
+                        }
+                    }
+                }
+            );
+        }
     }
 )
 
