@@ -1,14 +1,6 @@
-// Load the existing settings
-// Will set new settings if there are none
-const defaultOptions = {
-    "hideThumbnails": true,
-    "showWatchedThumbnails": true,
-    "hideDescriptions": true,
-    "autoSkipPreviews": true,
-}
-
+// Load the user's options
 chrome.storage.sync.get(
-    defaultOptions,
+    options,
     (data) => {
         for (const [key, value] of Object.entries(data)) {
             let elem = document.getElementById(camel2kebab(key));
@@ -24,18 +16,12 @@ chrome.storage.sync.get(
             }
 
             // Fire a changed event to update dependent styling
-            // SMALL CANCER TODO
-            // var event = new Event(
-            //     "changed",
-            //     {"detail": 'Pseudo-changed event loading in "' + key + '" setting.'}
-            // );
             elem.dispatchEvent(new Event("change"));
         }
     }
 );
 
 // Control listeners
-
 let inputs = document.querySelectorAll("input[type='checkbox']");
 for (let i = 0; i < inputs.length; i++) {
     inputs[i].addEventListener(
@@ -85,10 +71,12 @@ for (let i = 0; i < inputs.length; i++) {
 
 // Helpers
 
+// Converts camelCase strings to kebab-case strings
 function camel2kebab(str) {
     return str.replace( /([A-Z])/g, "-$1").toLowerCase();
 }
 
+// Converts kebab-case strings to camelCase strings
 function kebab2camel(str) {
     let words = str.split("-");
     let camel = words[0];
@@ -97,8 +85,3 @@ function kebab2camel(str) {
     }
     return camel;
 }
-
-// console.log(camel2kebab("helloMyNameIsFred"));
-// console.log(kebab2camel("hello-my-name-is-fred"));
-// console.log("hello-my-name-is-fred" === camel2kebab(kebab2camel("hello-my-name-is-fred")));
-// console.log("helloMyNameIsFred" === kebab2camel(camel2kebab("helloMyNameIsFred")));

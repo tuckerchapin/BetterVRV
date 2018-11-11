@@ -123,3 +123,20 @@ do what bttv does for it's popup/button
 
 <input id="toggleA" class="toggle" type="checkbox" />
 <label for="toggleA" class="toggle" /><div /></label>
+
+
+
+"page_action": {
+    "default_popup": "interfaces/popup.html",
+    "default_icon": {
+        "705": "images/icon.png"
+    }
+},
+
+
+"background": {
+    "scripts": [
+        "js/bgInstalled.js"
+    ],
+    "persistent": false
+},

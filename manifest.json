@@ -4,18 +4,16 @@
     "version": "1.0",
     "description": "Suite of improvements to the VRV player and experience.",
     "permissions": ["activeTab", "declarativeContent", "storage"],
-    "background": {
-        "scripts": [
-            "js/bgInstalled.js"
-        ],
-        "persistent": false
-    },
-    "page_action": {
-        "default_popup": "interfaces/popup.html",
-        "default_icon": {
-            "705": "images/icon.png"
+    "content_scripts": [
+        {
+            "matches": ["https://vrv.co/*"],
+            "js": [
+                "options.js",
+                "injections/no-spoilers.js"
+            ],
+            "css": ["injections/no-spoilers.css"]
         }
-    },
+    ],
     "options_page": "interfaces/options.html",
     "icons": {
         "705": "images/icon.png"
@@ -23,6 +21,7 @@
     "web_accessible_resources": [
         "images/*",
         "styles/*",
-        "fonts/*"
+        "fonts/*",
+        "options.js"
     ]
 }

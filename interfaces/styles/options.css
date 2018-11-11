@@ -112,10 +112,6 @@ body {
     overflow: hidden;
 }
 
-    /* .control-container > input:disabled ~ .control-label {
-        opacity: 0;
-    } */
-
 .control-title {
     font-size: .875rem;
     font-weight: 500;

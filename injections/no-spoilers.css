@@ -1,0 +1,15 @@
+/* .h-thumbnail {
+    overflow: hidden !important;
+}
+
+img.c-content-image.image {
+    filter: blur(1em) saturate(50%) !important;
+} */
+
+/* .description {
+    filter: blur(1em);
+} */
+
+/* .description, .description > * { transition: color 0.5s, opacity 0.5s }
+.description:not(:hover) { color: transparent }
+.description:not(:hover) > * { opacity: 0 } */
