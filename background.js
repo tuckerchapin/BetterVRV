@@ -1,40 +1,75 @@
-// When the options change propagate to all open VRV tabs
 chrome.storage.onChanged.addListener(
     (changes, namespace) => {
-        chrome.tabs.query(
-            {"url": "https://vrv.co/*"},
-            (tabs) => {
-                for (let i = 0; i < tabs.length; i++) {
-                    for (key in changes) {
-                        if (key in optionFunctions) {
-                            optionFunctions[key](changes[key].newValue, tabs[i].id);
-                        }
-                    }
-                }
-            }
-        );
+        for (key in changes) {
+            options[key] = changes[key].newValue;
+
+            chrome.tabs.query(
+               {"url": "https://vrv.co/*"},
+               (tabs) => {
+                   for (let i = 0; i < tabs.length; i++) {
+                       for (key in changes) {
+                           if (key in optionFunctions) {
+                               optionFunctions[key](changes[key].newValue, tabs[i].id);
+                           }
+                       }
+                   }
+               }
+           );
+        }
     }
 );
 
-// On navigating to VRV, apply settings.
 chrome.tabs.onUpdated.addListener(
     (tabId, changes, tab) => {
         let url = new URL(tab.url);
         console.log(url.hostname, url.hostname === "vrv.co");
         if (url.hostname === "vrv.co") {
-            chrome.storage.sync.get(
-                options,
-                (data) => {
-                    for (const [key, value] of Object.entries(data)) {
-                        if (key in optionFunctions) {
-                            optionFunctions[key](value, tab.id);
-                        }
-                    }
+            for (const [key, value] of Object.entries(options)) {
+                if (key in optionFunctions) {
+                    optionFunctions[key](value, tab.id);
                 }
-            );
+            }
         }
     }
 )
+
+// // When the options change propagate to all open VRV tabs
+// chrome.storage.onChanged.addListener(
+//     (changes, namespace) => {
+//         chrome.tabs.query(
+//             {"url": "https://vrv.co/*"},
+//             (tabs) => {
+//                 for (let i = 0; i < tabs.length; i++) {
+//                     for (key in changes) {
+//                         if (key in optionFunctions) {
+//                             optionFunctions[key](changes[key].newValue, tabs[i].id);
+//                         }
+//                     }
+//                 }
+//             }
+//         );
+//     }
+// );
+//
+// // On navigating to VRV, apply settings.
+// chrome.tabs.onUpdated.addListener(
+//     (tabId, changes, tab) => {
+//         let url = new URL(tab.url);
+//         console.log(url.hostname, url.hostname === "vrv.co");
+//         if (url.hostname === "vrv.co") {
+//             chrome.storage.sync.get(
+//                 options,
+//                 (data) => {
+//                     for (const [key, value] of Object.entries(data)) {
+//                         if (key in optionFunctions) {
+//                             optionFunctions[key](value, tab.id);
+//                         }
+//                     }
+//                 }
+//             );
+//         }
+//     }
+// )
 
 const optionFunctions = {
     "hideThumbnails": function(value, tabId) {
