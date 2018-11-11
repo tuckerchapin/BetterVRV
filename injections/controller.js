@@ -18,8 +18,9 @@ chrome.storage.onChanged.addListener(
 );
 
 const optionFunctions = {
-    "hideThumbnails": (setting) => {
-            console.log("User wants thumbnails " + (setting ? "hidden." : "shown."));
+    "hideThumbnails": function(setting) {
+            // console.log("User wants thumbnails " + (setting ? "hidden." : "shown."));
+            chrome.tabs.insertCSS({file: "css/hideThumbnails.css"});
         },
     "showWatchedThumbnails": (setting) => {
             console.log("User wants already seen thumbnails " + (setting ? "hidden." : "shown."));

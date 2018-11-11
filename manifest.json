@@ -9,9 +9,8 @@
             "matches": ["https://vrv.co/*"],
             "js": [
                 "options.js",
-                "injections/no-spoilers.js"
-            ],
-            "css": ["injections/no-spoilers.css"]
+                "injections/controller.js"
+            ]
         }
     ],
     "options_page": "interfaces/options.html",
@@ -20,8 +19,6 @@
     },
     "web_accessible_resources": [
         "images/*",
-        "styles/*",
-        "fonts/*",
-        "options.js"
+        "fonts/*"
     ]
 }

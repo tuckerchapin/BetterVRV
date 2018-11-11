@@ -1,0 +1,7 @@
+.h-thumbnail {
+    overflow: hidden !important;
+}
+
+img.c-content-image.image {
+    filter: blur(1em) saturate(50%) !important;
+}
