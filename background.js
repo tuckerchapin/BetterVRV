@@ -6,7 +6,7 @@ chrome.storage.onChanged.addListener(
             (tabs) => {
                 for (let i = 0; i < tabs.length; i++) {
                     for (key in changes) {
-                        if (key in options) {
+                        if (key in optionFunctions) {
                             optionFunctions[key](changes[key].newValue, tabs[i].id);
                         }
                     }
@@ -20,19 +20,36 @@ chrome.storage.onChanged.addListener(
 chrome.tabs.onUpdated.addListener(
     (tabId, changes, tab) => {
         // Check that the tab is a VRV tab
-        if (/^https:\/\/vrv\.co(\/.*)?$/.test(tab.url)) {
-            // Get and apply settings
-            chrome.storage.sync.get(
-                options,
-                (data) => {
-                    for (const [key, value] of Object.entries(data)) {
-                        if (key in options) {
-                            optionFunctions[key](value, tab.id);
-                        }
-                    }
-                }
-            );
-        }
+        // if (/^https:\/\/vrv\.co(\/.*)?$/.test(tab.url)) {
+        //     // Get and apply settings
+        //     chrome.storage.sync.get(
+        //         options,
+        //         (data) => {
+        //             for (const [key, value] of Object.entries(data)) {
+        //                 if (key in optionFunctions) {
+        //                     optionFunctions[key](value, tab.id);
+        //                 }
+        //             }
+        //         }
+        //     );
+        // }
+
+        // chrome.tabs.query(
+        //     {"url": "https://vrv.co/*"},
+        //     (tabs) => {
+        //
+        //         chrome.storage.sync.get(
+        //             options,
+        //             (data) => {
+        //                 for (const [key, value] of Object.entries(data)) {
+        //                     if (key in optionFunctions) {
+        //                         optionFunctions[key](value, tab.id);
+        //                     }
+        //                 }
+        //             }
+        //         );
+        //     }
+        // );
     }
 )
 

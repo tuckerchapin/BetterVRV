@@ -2,6 +2,6 @@
     overflow: hidden !important;
 }
 
-img.hidden-thumbnail {
+.erc-episode-card img.hidden-thumbnail {
     filter: blur(1em) saturate(50%) !important;
 }

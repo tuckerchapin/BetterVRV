@@ -18,7 +18,7 @@
         {
             "matches": ["https://vrv.co/*"],
             "css": [
-                "injections/css/hideThumbnails.css",
+                "injections/css/hideThumbnails.css"
             ]
         }
     ],
