@@ -2,6 +2,6 @@
     overflow: hidden !important;
 }
 
-img.c-content-image.image {
+img.hidden-thumbnail {
     filter: blur(1em) saturate(50%) !important;
 }

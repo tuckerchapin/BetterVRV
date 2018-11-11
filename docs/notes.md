@@ -1,3 +1,13 @@
+consider moving all of the css into a single file that is always applied, and only executeScript to add/remove classnames as needed
+
+
+
+
+
+
+
+
+
 backgrounds:
 color: #302e42;
 color: #474658;
@@ -140,3 +150,11 @@ do what bttv does for it's popup/button
     ],
     "persistent": false
 },
+
+"content_scripts": [{
+    "matches": ["https://vrv.co/*"],
+    "js": [
+        "options.js",
+        "injections/controller.js"
+    ]
+}],

@@ -1,22 +1,28 @@
 {
     "manifest_version": 2,
     "name": "BetterVRV",
-    "version": "1.0",
+    "version": "0.0.1",
     "description": "Suite of improvements to the VRV player and experience.",
-    "permissions": ["activeTab", "declarativeContent", "storage"],
+    "permissions": ["tabs", "storage", "https://vrv.co/*"],
+    "icons": {
+        "705": "images/icon.png"
+    },
+    "background": {
+        "scripts": [
+            "options.js",
+            "background.js"
+        ],
+        "persistent": false
+    },
     "content_scripts": [
         {
             "matches": ["https://vrv.co/*"],
-            "js": [
-                "options.js",
-                "injections/controller.js"
+            "css": [
+                "injections/css/hideThumbnails.css",
             ]
         }
     ],
     "options_page": "interfaces/options.html",
-    "icons": {
-        "705": "images/icon.png"
-    },
     "web_accessible_resources": [
         "images/*",
         "fonts/*"
