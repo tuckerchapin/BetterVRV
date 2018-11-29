@@ -4,7 +4,7 @@ A suite of improvements to the VRV player
 
 
 ## Features
-- [ ] no-spoilers: Hide potential spoilers in the thumbnails and descriptions.
+- [x] no-spoilers: Hide potential spoilers in the thumbnails and descriptions.
 - [ ] skip-op: Skip the opening sequence.
 - [ ] skip-ed: Skip the end sequence and bring up the "next episode" prompt sooner.
 - [ ] seek-controls: Better seeking control from the keyboard; JKL, arrow, and adjustable increments.
