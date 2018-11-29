@@ -7,31 +7,19 @@
     "icons": {
         "705": "images/icon.png"
     },
-    "background": {
-        "scripts": [
-            "options.js",
-            "background.js"
-        ],
-        "persistent": false
-    },
     "content_scripts": [
         {
-            "matches": ["https://vrv.co/*"],
-            "css": [
-                "injections/css/hideThumbnails.css"
-            ]
-        },
-        {
-            "matches": ["https://vrv.co/*"],
-            "js": [
-                "injections/js/hideThumbnails.js"
+            "matches": [
+                "https://vrv.co/*"
             ],
-            "run-at": "document_end"
+            "css": [
+                "injections/hideThumbnails.css"
+            ],
         }
     ],
-    "options_page": "interfaces/options.html",
     "web_accessible_resources": [
         "images/*",
-        "fonts/*"
+        "fonts/*",
+        "injections/*"
     ]
 }
