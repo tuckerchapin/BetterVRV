@@ -4,7 +4,3 @@ const options = {
     "hideDescriptions": true,
     "autoSkipPreviews": true
 };
-
-// const optionFunctions = {
-//
-// }
