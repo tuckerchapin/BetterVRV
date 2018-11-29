@@ -19,10 +19,14 @@
             "matches": ["https://vrv.co/*"],
             "css": [
                 "injections/css/hideThumbnails.css"
-            ],
+            ]
+        },
+        {
+            "matches": ["https://vrv.co/*"],
             "js": [
                 "injections/js/hideThumbnails.js"
-            ]
+            ],
+            "run-at": "document_end"
         }
     ],
     "options_page": "interfaces/options.html",

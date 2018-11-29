@@ -1,5 +1,5 @@
 chrome.storage.sync.get(
-    {"hideThumbnails"},
+    ["hideThumbnails"],
     (data) => {
         if (data.hideThumbnails) {
             thumbnails = document.getElementsByClassName("c-content-image image");
