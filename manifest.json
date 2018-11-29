@@ -13,8 +13,9 @@
                 "https://vrv.co/*"
             ],
             "css": [
-                "injections/hideThumbnails.css"
-            ],
+                "injections/hideThumbnails.css",
+                "injections/hideDescriptions.css"
+            ]
         }
     ],
     "web_accessible_resources": [

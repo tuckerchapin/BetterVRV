@@ -1,7 +1,10 @@
+/* Thumbnail container */
 .h-thumbnail {
     overflow: hidden !important;
 }
 
+/* Actual thumbnail, and only episode thumbnails */
+/* Avoids movie and "whole season" thumbnails that typically do not contain spoilers. */
 .erc-episode-card img {
     filter: blur(1em) saturate(50%) !important;
 }
