@@ -1,37 +1,15 @@
 /* When watching an episode, this is the current episode's description. */
 .text-wrapper .description {
-    user-select: none;
-    color: #1b1a26 !important;
-    background-color: #1b1a26 !important;
-
-    /* display: none !important; */
+    display: none !important;
 }
-
-    .text-wrapper .description:hover {
-        user-select: none;
-        color: white !important;
-        background-color: none !important;
-    }
 
 /* The description of the "first" or next episode in the series below the player or on a series page. */
 section.info p.episode-description {
-    user-select: none;
-    color: #1b1a26 !important;
-    background-color: #1b1a26 !important; */
-
-    /* display: none !important; */
+    display: none !important;
 }
-
-    section.info p.episode-description:hover {
-        user-select: none;
-        color: #b0aebb !important;
-        background-color: none !important;
-    }
 
 /* The description for a whole series, show, or movie. */
 /* Doesn't need to be hidden. */
 /* .erc-hero-description {
     display: none !important;
 } */
-
-#1b1a26
