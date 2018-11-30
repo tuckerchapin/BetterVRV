@@ -1,3 +1,32 @@
+inject css AND a js file with two functions, one to enable and one to disable
+then background.js will pass a message when the tab updates OR the tab will pass a message asking the background for settings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+consider moving all of the css into a single file that is always applied, and only executeScript to add/remove classnames as needed
+
+
+
+
+
+
+
+
+
 backgrounds:
 color: #302e42;
 color: #474658;
@@ -123,3 +152,28 @@ do what bttv does for it's popup/button
 
 <input id="toggleA" class="toggle" type="checkbox" />
 <label for="toggleA" class="toggle" /><div /></label>
+
+
+
+"page_action": {
+    "default_popup": "interfaces/popup.html",
+    "default_icon": {
+        "705": "images/icon.png"
+    }
+},
+
+
+"background": {
+    "scripts": [
+        "js/bgInstalled.js"
+    ],
+    "persistent": false
+},
+
+"content_scripts": [{
+    "matches": ["https://vrv.co/*"],
+    "js": [
+        "options.js",
+        "injections/controller.js"
+    ]
+}],

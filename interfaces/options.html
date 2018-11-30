@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/toggle.css" />
+    <link rel="stylesheet" href="styles/options.css" />
+
+    <title>BetterVRV Settings</title>
+
+    <script src="../defaultOptions.js"></script>
+</head>
+
+<body>
+    <div id="header">
+        <img id="logo" src="../images/logotype.png" />
+    </div>
+
+    <div id="container">
+
+        <div class="section-title">Settings</div>
+
+        <div id="spoilers" class="control-panel-container">
+
+            <div class="control-panel-title">Spoilers</div>
+
+            <div class="control-panel">
+
+                <div class="control-row">
+
+                    <div class="control-container">
+                        <input
+                            id="hide-thumbnails"
+                            class="toggle"
+                            type="checkbox"
+                        />
+                        <label for="hide-thumbnails" class="toggle"><div></div></label>
+                    </div>
+
+                    <label class="control-label" for="hide-thumbnails">
+                        <div class="control-title">
+                            Hide Thumbnails
+                        </div>
+                        <div class="control-description">
+                            All thumbnails will be blurred. The placeholder image used by the player while loading the episode will also be blurred.
+                        </div>
+                    </label>
+
+                </div>
+
+                <div class="control-row control-subrow" data-conditional="hide-thumbnails">
+
+                    <div class="control-container">
+                        <input
+                            id="show-watched-thumbnails"
+                            class="toggle"
+                            type="checkbox"
+                        />
+                        <label for="show-watched-thumbnails" class="toggle"><div></div></label>
+                    </div>
+
+                    <label class="control-label" for="show-watched-thumbnails">
+                        <div class="control-title">
+                            Show &ldquo;Watched&rdquo; Thumbnails
+                        </div>
+                        <div class="control-description">
+                            The thumbnails for episodes you've completely watched will not be hidden.
+                        </div>
+                    </label>
+
+                </div>
+
+                <div class="control-row">
+
+                    <div class="control-container">
+                        <input
+                            id="hide-descriptions"
+                            class="toggle"
+                            type="checkbox"
+                        />
+                        <label for="hide-descriptions" class="toggle"><div></div></label>
+                    </div>
+
+                    <label class="control-label" for="hide-descriptions">
+                        <div class="control-title">
+                            Hide Descriptions
+                        </div>
+                        <div class="control-description">
+                            The current episode's description will be blurred.
+                        </div>
+                    </label>
+
+                </div>
+
+                <div class="control-row">
+
+                    <div class="control-container">
+                        <input
+                            id="auto-skip-previews"
+                            class="toggle"
+                            type="checkbox"
+                        />
+                        <label for="auto-skip-previews" class="toggle"><div></div></label>
+                    </div>
+
+                    <label class="control-label" for="auto-skip-previews">
+                        <div class="control-title">
+                            Auto-Skip Previews
+                        </div>
+                        <div class="control-description">
+                            If there is a preview or &ldquo;next time on...&rdquo; at the end of the episode, it will be skipped.
+                        </div>
+                    </label>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer">
+        <div class="footer-entry">
+            Issues? Suggestions? Complaints? <a href="mailto:tuckerchapin@gmail.com">Let me know.</a>
+        </div>
+        <div class="footer-entry">
+            <a href="https://github.com/tuckerchapin/BetterVRV/issues">Github.</a>
+        </div>
+        <div class="footer-entry">
+            Consider <a href="https://venmo.com/tuckerchapin">donating.</a>
+        </div>
+        <div id="disclaimer">
+            VRV, CrunchyRoll, and all other trademarks, service marks, trade names, product names and logos appearing on this site are the property of their respective owners.
+        </div>
+    </div>
+
+    <script src="js/options.js"></script>
+</body>
+
+</html>
