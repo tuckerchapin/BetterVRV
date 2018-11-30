@@ -14,7 +14,6 @@
             ],
             "css": [
                 "injections/hideThumbnails.css",
-                //"injections/showWatchedThumbnails.css",
                 "injections/hideDescriptions.css"
             ]
         }
