@@ -16,6 +16,16 @@
                 "injections/hideThumbnails.css",
                 "injections/hideDescriptions.css"
             ]
+        },
+        {
+            "all_frames": true,
+            "matches": [
+                "https://vrv.co/watch/*"
+            ],
+            "run_at": "document_end",
+            "js": [
+                "injections/test.js"
+            ]
         }
     ],
     "web_accessible_resources": [
