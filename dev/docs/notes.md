@@ -1,26 +1,6 @@
-inject css AND a js file with two functions, one to enable and one to disable
-then background.js will pass a message when the tab updates OR the tab will pass a message asking the background for settings
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-consider moving all of the css into a single file that is always applied, and only executeScript to add/remove classnames as needed
-
-
-
+allow for:
+    - multiple keys bound to the same action
+    - modifiers/keycombos for an action
 
 
 
