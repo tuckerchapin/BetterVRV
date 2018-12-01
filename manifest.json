@@ -23,7 +23,7 @@
                 "https://static.vrv.co/vilos/player.html"
             ],
             "js": [
-                "injections/test.js"
+                "injections/player.js"
             ]
         }
     ],
