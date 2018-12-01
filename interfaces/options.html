@@ -27,7 +27,6 @@
             <div class="control-panel">
 
                 <div class="control-row">
-
                     <div class="control-container">
                         <input
                             id="hide-thumbnails"
@@ -45,7 +44,6 @@
                             All thumbnails will be blurred. The placeholder image used by the player while loading the episode will also be blurred.
                         </div>
                     </label>
-
                 </div>
 
                 <div class="control-row control-subrow" data-conditional="hide-thumbnails">
@@ -86,35 +84,66 @@
                             Hide Descriptions
                         </div>
                         <div class="control-description">
-                            The current episode's description will be blurred.
-                        </div>
-                    </label>
-
-                </div>
-
-                <div class="control-row">
-
-                    <div class="control-container">
-                        <input
-                            id="auto-skip-previews"
-                            class="toggle"
-                            type="checkbox"
-                        />
-                        <label for="auto-skip-previews" class="toggle"><div></div></label>
-                    </div>
-
-                    <label class="control-label" for="auto-skip-previews">
-                        <div class="control-title">
-                            Auto-Skip Previews
-                        </div>
-                        <div class="control-description">
-                            If there is a preview or &ldquo;next time on...&rdquo; at the end of the episode, it will be skipped.
+                            Episode descriptions will be blurred.
                         </div>
                     </label>
 
                 </div>
 
             </div>
+
+        </div>
+
+        <div id="shortcuts" class="control-panel-container">
+
+            <div class="control-panel-title">Shortcuts</div>
+
+            <div class="control-panel">
+
+                <div class="control-row">
+                    <!-- <div class="control-container">
+                        <input
+                            id="hide-thumbnails"
+                            class="toggle"
+                            type="checkbox"
+                        />
+                        <label for="hide-thumbnails" class="toggle"><div></div></label>
+                    </div> -->
+
+                    <label class="control-label" for="hide-thumbnails">
+                        <div class="control-title">
+                            Seeking
+                        </div>
+                        <!-- <div class="control-description">
+                            All thumbnails will be blurred. The placeholder image used by the player while loading the episode will also be blurred.
+                        </div> -->
+                    </label>
+                </div>
+
+                <div class="control-row control-subrow" data-conditional="hide-thumbnails">
+
+                    <div class="control-container">
+                        <input
+                            id="major-skip-increment"
+                            class=""
+                            type="number"
+                        />
+                        <label for="major-skip-increment" class=""><div></div></label>
+                    </div>
+
+                    <label class="control-label" for="major-skip-increment">
+                        <div class="control-title">
+                            Skip Increment - Major
+                        </div>
+                        <!-- <div class="control-description">
+
+                        </div> -->
+                    </label>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>
