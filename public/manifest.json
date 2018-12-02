@@ -8,15 +8,14 @@
         "128": "images/icon128.png"
     },
     "options_page": "index.html",
-    "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'",  
+    "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'",
     "content_scripts": [
         {
             "matches": [
                 "https://vrv.co/*"
             ],
-            "css": [
-                "injections/hideThumbnails.css",
-                "injections/hideDescriptions.css"
+            "js": [
+                "injections/styling.js"
             ]
         },
         {
@@ -32,6 +31,6 @@
     "web_accessible_resources": [
         "images/*",
         "fonts/*",
-        "injections/*"
+        "injections/css/*"
     ]
 }

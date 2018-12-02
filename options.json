@@ -1,19 +1,15 @@
 {
-    "content": {
-        "hideDescriptions": true,
-        "hideThumbnails": true,
-        "showWatchedThumbnails": false,
-    },
-    "tuning": {
-        "majorSeekIncrement": 10,
-        "minorSeekIncrement": 5,
-    },
-    "keyAssignments": {
-        "majorSeekForward": ["Shift+KeyL"],
-        "majorSeekBackward": ["Shift+KeyJ"],
-        "minorSeekForward": ["ArrowRight", "KeyL"],
-        "minorSeekBackward": ["ArrowLeft", "KeyJ"],
-        "playPause": ["KeyK", "Space"],
-        "pause": ["KeyP"],
-    }
+    "hideDescriptions": true,
+    "hideThumbnails": true,
+    "showWatchedThumbnails": false,
+
+    "majorSeekIncrement": 10,
+    "minorSeekIncrement": 5,
+
+    "majorSeekForward": ["Shift+KeyL"],
+    "majorSeekBackward": ["Shift+KeyJ"],
+    "minorSeekForward": ["ArrowRight", "KeyL"],
+    "minorSeekBackward": ["ArrowLeft", "KeyJ"],
+    "playPause": ["KeyK", "Space"],
+    "pause": ["KeyP"]
 }
