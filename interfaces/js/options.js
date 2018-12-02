@@ -1,6 +1,6 @@
 // Load the user's options
 chrome.storage.sync.get(
-    options,
+    defaultOptions,
     (data) => {
         for (const [key, value] of Object.entries(data)) {
             let elem = document.getElementById(camel2kebab(key));
@@ -9,8 +9,8 @@ chrome.storage.sync.get(
             switch (typeof value) {
                 case "boolean":
                     elem.checked = value;
-
                     break;
+
                 default:
                     console.error('Error getting user option for "' + key + '"');
             }

@@ -1,4 +1,4 @@
-const options = {
+const defaultOptions = {
     "hideThumbnails": true,
     "showWatchedThumbnails": true,
     "hideDescriptions": true,

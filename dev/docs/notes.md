@@ -1,7 +1,7 @@
 allow for:
     - multiple keys bound to the same action
     - modifiers/keycombos for an action
-
+    - reset to defaults
 
 
 
