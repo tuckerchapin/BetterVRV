@@ -8,7 +8,8 @@
 
     <title>BetterVRV Settings</title>
 
-    <script src="../defaultOptions.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/options.js"></script>
 </head>
 
 <body>
@@ -101,14 +102,25 @@
             <div class="control-panel">
 
                 <div class="control-row">
-                    <label class="control-label">
+
+                    <div class="control-container">
+                        <input
+                            id="major-seek-increment"
+                            class="toggle"
+                            type="checkbox"
+                        />
+                        <label for="major-seek-increment" class="toggle"><div></div></label>
+                    </div>
+
+                    <label class="control-label" for="major-seek-increment">
                         <div class="control-title">
-                            Seeking increments
+                            Major Seek Increment
                         </div>
                         <div class="control-description">
-                            Will skip forward/backward by this increment. Applies to similarly named major/minor seeking shortcuts.
+                            How far forward or backward to skip with the corresponding major seek shortcuts.
                         </div>
                     </label>
+
                 </div>
 
             </div>
@@ -142,7 +154,6 @@
         </div>
     </div>
 
-    <script src="js/options.js"></script>
 </body>
 
 </html>

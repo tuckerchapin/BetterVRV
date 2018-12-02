@@ -1,4 +1,4 @@
-let defaultOptions = {
+{
     "content": {
         "hideDescriptions": true,
         "hideThumbnails": true,
@@ -16,12 +16,4 @@ let defaultOptions = {
         "playPause": ["KeyK", "Space"],
         "pause": ["KeyP"],
     }
-};
-
-chrome.storage.sync.get(defaultOptions,
-    (options) => {
-        // do something for content
-        // do something for tuning
-        // do something for keyAssignments
-    }
-);
+}
