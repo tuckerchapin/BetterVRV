@@ -6,27 +6,44 @@ import ControlRow from "./ControlRow";
 import './styles/Options.css';
 
 class Options extends Component {
-    render() {
-        let defaultOptions = {
-            "content": {
-                "hideDescriptions": true,
+    constructor(props) {
+        super(props);
+
+        this.state = {
                 "hideThumbnails": true,
                 "showWatchedThumbnails": false,
-            },
-            "tuning": {
+                "hideDescriptions": true,
+
                 "majorSeekIncrement": 10,
                 "minorSeekIncrement": 5,
-            },
-            "keyAssignments": {
+
                 "majorSeekForward": ["Shift+KeyL"],
                 "majorSeekBackward": ["Shift+KeyJ"],
                 "minorSeekForward": ["ArrowRight", "KeyL"],
                 "minorSeekBackward": ["ArrowLeft", "KeyJ"],
                 "playPause": ["KeyK", "Space"],
                 "pause": ["KeyP"],
-            }
         };
-        
+
+        this.load();
+    }
+
+    load() {
+        chrome.storage.sync.get(this.state, (response) => this.setState(response));
+    }
+
+    save() {
+        chrome.storage.sync.set(this.state,
+            () => {
+                if (chrome.runtime.lastError) {
+                    console.error(chrome.runtime.lastError);
+                }
+            }
+        );
+    }
+
+    render() {
+
         return (
             <div>
                 <div id="header">
@@ -47,12 +64,26 @@ class Options extends Component {
                                 controlType="toggle"
                                 title="Hide Thumbnails"
                                 description="All thumbnails will be blurred. The placeholder image used by the player while loading the episode will also be blurred."
+                                value={this.state.hideThumbnails}
+                                onChange={(newValue) => this.setState({hideThumbnails: newValue}, () => this.save())}
+                            />
+
+                            <ControlRow
+                                controlType="toggle"
+                                title="Show Watched Thumbnails"
+                                description="Thumbnails on episodes you've already watched will not be blurred."
+                                value={this.state.showWatchedThumbnails}
+                                disabled={!this.state.hideThumbnails}
+                                subrow={true}
+                                onChange={(newValue) => this.setState({showWatchedThumbnails: newValue}, () => this.save())}
                             />
 
                             <ControlRow
                                 controlType="toggle"
                                 title="Hide Descriptions"
                                 description="All episode descriptions will be hidden."
+                                value={this.state.hideDescriptions}
+                                onChange={(newValue) => this.setState({hideDescriptions: newValue}, () => this.save())}
                             />
 
                         </div>

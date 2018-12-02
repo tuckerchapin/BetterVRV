@@ -11,8 +11,11 @@ class Toggle extends Component {
                     id={this.props.id}
                     className="toggle"
                     type="checkbox"
+                    checked={this.props.value}
+                    disabled={this.props.disabled}
+                    onChange={this.props.onChange}
                 />
-                <label for={this.props.id} className="toggle"><div></div></label>
+                <label htmlFor={this.props.id} className="toggle"><div></div></label>
             </div>
         );
     }

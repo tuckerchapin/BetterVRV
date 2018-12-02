@@ -12,7 +12,12 @@ class ControlRow extends Component {
 
         return (
             <div className={this.props.subrow ? "control-row control-subrow": "control-row"}>
-                <Toggle id={kebabTitle}/>
+                <Toggle
+                    id={kebabTitle}
+                    value={this.props.value}
+                    disabled={this.props.disabled}
+                    onChange={(e) => this.props.onChange(e.target.checked)}
+                />
                 <ControlLabel
                     for={kebabTitle}
                     title={this.props.title}
