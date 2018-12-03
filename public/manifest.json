@@ -3,7 +3,7 @@
     "name": "BetterVRV",
     "version": "0.0.1",
     "description": "A suite of improvements to the VRV player and experience.",
-    "permissions": ["activeTab", "storage", "https://vrv.co/*", "https://static.vrv.co/*"],
+    "permissions": ["activeTab", "storage"],
     "icons": {
         "128": "images/icon128.png"
     },
