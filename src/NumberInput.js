@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import './styles/Control.css';
 import './styles/NumberInput.css';
 
 class NumberInput extends Component {

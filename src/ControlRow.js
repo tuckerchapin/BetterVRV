@@ -48,12 +48,12 @@ class ControlRow extends Component {
     render() {
         return (
             <div className={this.props.subrow ? "control-row control-subrow": "control-row"}>
-                {this.renderControl()}
                 <ControlLabel
                     for={this.kebabTitle}
                     title={this.props.title}
                     description={this.props.description}
                 />
+                {this.renderControl()}
             </div>
         );
     }

@@ -12,7 +12,7 @@ color: #302e42;
 color: #474658;
 color: #1b1a26;
 
-title: #f9f9fa
+title: #f9f9f9
 description: #b0aebb
 
 yellow: #fd0

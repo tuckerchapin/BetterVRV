@@ -1,9 +1,9 @@
 input.number-input {
     width: 1.5em;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
     padding: 2px 6px;
     border: solid 2px #999999;
-    border-radius: .5em;
+    border-radius: 10px;
     outline: none;
 
     text-align: center;
@@ -22,7 +22,7 @@ input.number-input {
         user-select: none;
         color: #999999;
         background-color: #4d4d4d;
-        border-color: rgba(0, 0, 0, 0);
+        border-color: transparent;
     }
 
     input.number-input::-webkit-outer-spin-button,

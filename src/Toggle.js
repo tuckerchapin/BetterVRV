@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import './styles/Control.css';
 import './styles/Toggle.css';
 
 class Toggle extends Component {

@@ -3,51 +3,63 @@ import React, { Component } from 'react';
 
 import ControlPanel from "./ControlPanel";
 import ControlRow from "./ControlRow";
+import KeyBindRow from "./KeyBindRow";
 
 import './styles/Options.css';
 
-const INDEV = false;
+const INDEV = true;
 
 class Options extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-                "hideThumbnails": true,
-                "showWatchedThumbnails": false,
-                "hideDescriptions": true,
+            "hideDescriptions": true,
+            "hideThumbnails": true,
+            "showWatchedThumbnails": false,
 
-                "majorSeekIncrement": 10,
-                "minorSeekIncrement": 5,
+            "majorSeekIncrement": 10,
+            "minorSeekIncrement": 5,
 
-                "majorSeekForward": ["Shift+KeyL"],
-                "majorSeekBackward": ["Shift+KeyJ"],
-                "minorSeekForward": ["ArrowRight", "KeyL"],
-                "minorSeekBackward": ["ArrowLeft", "KeyJ"],
-                "playPause": ["KeyK", "Space"],
-                "pause": ["KeyP"],
+            "majorSeekForward": ["16+76", ""],
+            "majorSeekBackward": ["16+74", ""],
+            "minorSeekForward": ["39", "76"],
+            "minorSeekBackward": ["37", "74"],
+            "playPause": ["75", "32"],
+            "pause": ["80", ""],
+            "toggleFullscreen": ["70", ""],
         };
 
-        if (!INDEV) this.load();
+        this.load();
     }
 
     load() {
-        chrome.storage.sync.get(
-            this.state,
-            (response) => this.setState(response)
-        );
+        if (!INDEV) {
+            chrome.storage.sync.get(
+                this.state,
+                (response) => this.setState(response)
+            );
+        }
     }
 
-    save() {
-        chrome.storage.sync.set(
-            this.state,
-            () => {if (chrome.runtime.lastError) console.error(chrome.runtime.lastError);}
-        );
+    save(newState) {
+        this.setState(
+            {minorSeekIncrement: newState},
+            () => {
+                if (!INDEV) {
+                    chrome.storage.sync.set(
+                        this.state,
+                        () => {if (chrome.runtime.lastError) console.error(chrome.runtime.lastError);}
+                    );
+                }
+            }
+        )
     }
 
     render() {
         return (
             <div>
+
                 <div id="header">
                     <img id="logo" src="../images/logotype.png" />
                 </div>
@@ -119,8 +131,45 @@ class Options extends Component {
                     </ControlPanel>
 
                     <ControlPanel title="Key Bindings">
-                        {/* <KeyRow> */}
+                        <KeyBindRow
+                            title="Toggle Fullscreen"
+                            value={this.state.toggleFullscreen}
+                            onChange={console.log}
+                        />
+                        <KeyBindRow
+                            title="Toggle Play/Pause"
+                            value={this.state.playPause}
+                            onChange={console.log}
+                        />
+                        <KeyBindRow
+                            title="Seek Forward - Major"
+                            value={this.state.majorSeekForward}
+                            onChange={console.log}
+                        />
+                        <KeyBindRow
+                            title="Seek Forward - Minor"
+                            value={this.state.minorSeekForward}
+                            subrow={true}
+                            onChange={console.log}
+                        />
+                        <KeyBindRow
+                            title="Seek Backward - Major"
+                            value={this.state.majorSeekBackward}
+                            onChange={console.log}
+                        />
+                        <KeyBindRow
+                            title="Seek Backward - Minor"
+                            value={this.state.minorSeekBackward}
+                            subrow={true}
+                            onChange={console.log}
+                        />
                     </ControlPanel>
+
+                    <div id="reset-container">
+                        <div id="reset-button">
+                            reset all settings to defaults
+                        </div>
+                    </div>
 
                 </div>
 

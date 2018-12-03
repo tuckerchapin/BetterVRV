@@ -1,5 +1,5 @@
 .control-label {
-    width: auto;
+    flex-grow: 1;
     overflow: hidden;
 }
 
@@ -8,7 +8,7 @@
     font-weight: 500;
     line-height: 1.43;
     text-rendering: optimizeLegibility;
-    color: #f9f9fa;
+    color: #f9f9f9;
     text-transform: uppercase;
     opacity: inherit;
 }
