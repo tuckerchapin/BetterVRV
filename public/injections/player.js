@@ -7,6 +7,7 @@ let shortcuts = {
     minorSeekBackward: "ArrowLeft",
     playPause: "KeyK",
     pause: "KeyP",
+    toggleFullscreen: "KeyF",
 }
 
 let settings = {
@@ -54,5 +55,9 @@ document.onkeydown = (e) => {
             e.stopPropagation();
             e.preventDefault();
             break;
+        case shortcuts.toggleFullscreen:
+            document.webkitIsFullScreen ? document.webkitExitFullscreen() : document.documentElement.webkitEnterFullscreen();
+            e.stopPropagation();
+            e.preventDefault();
     }
 };

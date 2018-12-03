@@ -60,8 +60,6 @@ body {
     font-size: .7rem;
 }
 
-
-/* Control panel styling */
 .section-title {
     font-size: 2rem;
     font-weight: 300;
@@ -70,25 +68,4 @@ body {
     color: #f9f9fa;
     text-transform: uppercase;
     margin: 1.5rem 0;
-}
-
-.control-panel-container {
-    height: auto;
-    overflow: auto;
-    margin-bottom: 2rem;
-}
-
-.control-panel-title {
-    height: auto;
-    color: #b0aebb;
-    font-weight: 500;
-    font-size: 1.25rem;
-    margin-bottom: .625rem;
-    line-height: 1.4;
-}
-
-.control-panel {
-    background-color: #1b1a26;
-    overflow: auto;
-    padding: 2rem;
 }

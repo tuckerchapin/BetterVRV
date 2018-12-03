@@ -1,9 +1,12 @@
 /*global chrome*/
 import React, { Component } from 'react';
 
+import ControlPanel from "./ControlPanel";
 import ControlRow from "./ControlRow";
 
 import './styles/Options.css';
+
+const INDEV = !false;
 
 class Options extends Component {
     constructor(props) {
@@ -25,7 +28,7 @@ class Options extends Component {
                 "pause": ["KeyP"],
         };
 
-        this.load();
+        if (!INDEV) this.load();
     }
 
     load() {
@@ -43,7 +46,6 @@ class Options extends Component {
     }
 
     render() {
-
         return (
             <div>
                 <div id="header">
@@ -54,41 +56,67 @@ class Options extends Component {
 
                     <div className="section-title">Settings</div>
 
-                    <div id="spoilers" className="control-panel-container">
-
-                        <div className="control-panel-title">Spoilers</div>
-
-                        <div className="control-panel">
-
-                            <ControlRow
-                                controlType="toggle"
-                                title="Hide Thumbnails"
+                    <ControlPanel title="Spoilers">
+                            <ControlRow title="Hide Thumbnails"
                                 description="All thumbnails will be blurred. The placeholder image used by the player while loading the episode will also be blurred."
-                                value={this.state.hideThumbnails}
-                                onChange={(newValue) => this.setState({hideThumbnails: newValue}, () => this.save())}
-                            />
-
-                            <ControlRow
                                 controlType="toggle"
-                                title="Show Watched Thumbnails"
+                                value={this.state.hideThumbnails}
+                                onChange={
+                                    (newValue) => this.setState(
+                                        {hideThumbnails: newValue},
+                                        () => {if (!INDEV) this.save();})
+                                }
+                            />
+                            <ControlRow title="Show Watched Thumbnails"
                                 description="Thumbnails on episodes you've already watched will not be blurred."
+                                controlType="toggle"
                                 value={this.state.showWatchedThumbnails}
                                 disabled={!this.state.hideThumbnails}
                                 subrow={true}
-                                onChange={(newValue) => this.setState({showWatchedThumbnails: newValue}, () => this.save())}
+                                onChange={
+                                    (newValue) => this.setState(
+                                        {showWatchedThumbnails: newValue},
+                                        () => {if (!INDEV) this.save();}
+                                    )
+                                }
                             />
-
-                            <ControlRow
-                                controlType="toggle"
-                                title="Hide Descriptions"
+                            <ControlRow title="Hide Descriptions"
                                 description="All episode descriptions will be hidden."
+                                controlType="toggle"
                                 value={this.state.hideDescriptions}
-                                onChange={(newValue) => this.setState({hideDescriptions: newValue}, () => this.save())}
+                                onChange={
+                                    (newValue) => this.setState(
+                                        {hideDescriptions: newValue},
+                                        () => {if (!INDEV) this.save();}
+                                    )
+                                }
                             />
+                    </ControlPanel>
 
-                        </div>
-
-                    </div>
+                    <ControlPanel title="Tuning">
+                        <ControlRow title="Major Seek Increment"
+                            description="How far forward/backward the major seek shortcuts will skip."
+                            controlType="number"
+                            value={this.state.majorSeekIncrement}
+                            onChange={
+                                (newValue) => this.setState(
+                                    {majorSeekIncrement: newValue},
+                                    () => {if (!INDEV) this.save();}
+                                )
+                            }
+                        />
+                        <ControlRow title="Minor Seek Increment"
+                            description="How far forward/backward the minor seek shortcuts will skip."
+                            controlType="number"
+                            value={this.state.minorSeekIncrement}
+                            onChange={
+                                (newValue) => this.setState(
+                                    {minorSeekIncrement: newValue},
+                                    () => {if (!INDEV) this.save();}
+                                )
+                            }
+                        />
+                    </ControlPanel>
 
                 </div>
 
