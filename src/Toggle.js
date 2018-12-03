@@ -13,7 +13,7 @@ class Toggle extends Component {
                     type="checkbox"
                     checked={this.props.value}
                     disabled={this.props.disabled}
-                    onChange={(e) => this.props.onChange(e.target.value)}
+                    onChange={(e) => this.props.onChange(e.target.checked)}
                 />
                 <label htmlFor={this.props.id} className="toggle"><div></div></label>
             </div>

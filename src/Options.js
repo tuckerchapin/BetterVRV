@@ -6,7 +6,7 @@ import ControlRow from "./ControlRow";
 
 import './styles/Options.css';
 
-const INDEV = true;
+const INDEV = false;
 
 class Options extends Component {
     constructor(props) {
@@ -32,11 +32,15 @@ class Options extends Component {
     }
 
     load() {
-        chrome.storage.sync.get(this.state, (response) => this.setState(response));
+        chrome.storage.sync.get(
+            this.state,
+            (response) => this.setState(response)
+        );
     }
 
     save() {
-        chrome.storage.sync.set(this.state,
+        chrome.storage.sync.set(
+            this.state,
             () => {if (chrome.runtime.lastError) console.error(chrome.runtime.lastError);}
         );
     }
