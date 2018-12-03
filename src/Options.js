@@ -64,6 +64,7 @@ class Options extends Component {
             this.setState(
                 DEFAULT_OPTIONS,
                 () => {
+                    this.forceUpdate();
                     if (!INDEV) {
                         chrome.storage.sync.set(
                             DEFAULT_OPTIONS,

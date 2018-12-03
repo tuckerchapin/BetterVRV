@@ -82,7 +82,11 @@ class KeyBinder extends Component {
     }
 
     componentWillReceiveProps(newProps) {
-        this.setState({value: newProps.value});
+        this.setState({
+            value: newProps.value,
+            lastValue: newProps.value,
+            lastKeyPressed: "",
+        });
     }
 
     save() {
@@ -122,11 +126,9 @@ class KeyBinder extends Component {
         }
 
         if (!!KEY_DISPLAY[e.keyCode]) {
-            // console.log(KEY_DISPLAY[e.keyCode]);
             let newState = {lastKeyPressed: e.keyCode};
 
             if (MOD_KEY[e.keyCode]) {
-                // console.log(KEY_DISPLAY[e.keyCode], MOD_KEY[e.keyCode]);
                 // A mod is pressed
                 // Add this to the value and wait for another key
                 newState.value = e.keyCode;
@@ -148,7 +150,7 @@ class KeyBinder extends Component {
 
     renderKeys(value) {
         let keyText = String(value);
-        console.log(keyText);
+
         if (keyText === "") {
             return null;
         }
@@ -164,12 +166,14 @@ class KeyBinder extends Component {
     renderKeyDisplay() {
         let keyDisplayText = this.renderKeys(this.state.value);
         let classes = "keybind-display keybind-shaper";
-        if (this.state.focused === true) {
-            keyDisplayText = "ASSIGN";
+
+        if (keyDisplayText === null) {
             classes += " keybind-none";
-        } else if (keyDisplayText === null) {
             keyDisplayText = "NONE";
-            classes += " keybind-none";
+
+            if (this.state.focused === true) {
+                keyDisplayText = "ASSIGN";
+            }
         }
 
         return (
