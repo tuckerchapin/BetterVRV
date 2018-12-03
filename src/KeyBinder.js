@@ -171,6 +171,7 @@ class KeyBinder extends Component {
             }
         } else {
             // invalid key pressed
+            // TODO: handle this
         }
     }
 

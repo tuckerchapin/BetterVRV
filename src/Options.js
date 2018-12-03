@@ -54,15 +54,6 @@ class Options extends Component {
 
     resetSettings() {
         if (window.confirm('Are you sure you want to return all settings to their defaults?')) {
-            // this.setState(
-            //     DEFAULT_OPTIONS,
-            //     () => {
-            //         chrome.storage.sync.set(
-            //             DEFAULT_OPTIONS,
-            //             () => {if (chrome.runtime.lastError) console.error(chrome.runtime.lastError);}
-            //         );
-            //     }
-            // )
             chrome.storage.sync.clear(() => this.load());
         }
     }
