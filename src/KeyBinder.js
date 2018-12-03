@@ -89,8 +89,8 @@ class KeyBinder extends Component {
     }
 
     save() {
-        let alreadyBoundKeys = this.getAlreadyBoundKeys();
-        if (alreadyBoundKeys[this.state.value] !== this.props.selfBoundKey) {
+        if (this.state.value !== "" &&
+            this.getAlreadyBoundKeys()[this.state.value] !== this.props.selfBoundKey) {
             alert(`${this.keyDisplayString(this.state.value).toUpperCase()} is already bound to another action.`);
 
             this.setState({
