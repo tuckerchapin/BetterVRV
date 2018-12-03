@@ -168,11 +168,12 @@ class KeyBinder extends Component {
         let classes = "keybind-display keybind-shaper";
 
         if (keyDisplayText === null) {
-            classes += " keybind-none";
-            keyDisplayText = "NONE";
-
             if (this.state.focused === true) {
+                classes += " keybind-assign";
                 keyDisplayText = "ASSIGN";
+            } else {
+                classes += " keybind-none";
+                keyDisplayText = "NONE";
             }
         }
 
