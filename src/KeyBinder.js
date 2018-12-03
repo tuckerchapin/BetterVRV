@@ -93,7 +93,7 @@ class KeyBinder extends Component {
         if (this.state.value !== "" &&
             this.state.value in alreadyBoundKeys &&
             alreadyBoundKeys[this.state.value] !== this.props.selfBoundKey) {
-                
+
             alert(`${this.keyDisplayString(this.state.value).toUpperCase()} is already bound to another action.`);
 
             this.setState({
@@ -150,6 +150,7 @@ class KeyBinder extends Component {
         }
 
         if (!!KEY_DISPLAY[e.keyCode]) {
+            // valid key pressed
             let newState = {lastKeyPressed: e.keyCode};
 
             if (MOD_KEY[e.keyCode]) {
@@ -168,6 +169,8 @@ class KeyBinder extends Component {
                 newState.value = e.keyCode;
                 this.setState(newState, () => this.save());
             }
+        } else {
+            // invalid key pressed
         }
     }
 
