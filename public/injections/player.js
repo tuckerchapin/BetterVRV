@@ -1,5 +1,3 @@
-let vrvPlayer = document.querySelector("video#player_html5_api");
-
 const DEFAULT_OPTIONS = {
     "hideDescriptions": true,
     "hideThumbnails": true,
@@ -7,15 +5,20 @@ const DEFAULT_OPTIONS = {
 
     "majorSeekIncrement": 10,
     "minorSeekIncrement": 5,
+    "volumeIncrement": 10,
 
     "toggleFullscreen": ["70", ""],
+    "playPause": ["32", "75"],
+    "pause": ["80", ""],
 
     "majorSeekForward": ["76", ""],
     "majorSeekBackward": ["74", ""],
     "minorSeekForward": ["39", "16+76"],
     "minorSeekBackward": ["37", "16+74"],
-    "playPause": ["32", "75"],
-    "pause": ["80", ""],
+
+    "toggleMute": ["77", ""],
+    "volumeUp": ["187", "38"],
+    "volumeDown": ["189", "40"],
 };
 
 const MOD_KEY = {
@@ -47,7 +50,64 @@ const actions = {
         document.webkitIsFullScreen ?
             document.webkitExitFullscreen() : document.documentElement.webkitRequestFullscreen();
     },
+    "toggleMute": (options) => {
+        if (vrvPlayer.muted) {
+            // Already muted, reset
+            vrvPlayer.volume = previousVolume;
+        } else {
+            // Mute, save volume
+            previousVolume = vrvPlayer.volume;
+            vrvPlayer.volume = 0;
+        }
+    },
+    "volumeUp": (options) => {
+        let newVolume = vrvPlayer.volume + (options.volumeIncrement / 100)
+        if (newVolume > 1) {
+            // clip the volume
+            vrvPlayer.volume = 1;
+        } else {
+            vrvPlayer.volume = newVolume;
+        }
+    },
+    "volumeDown": (options) => {
+        let newVolume = vrvPlayer.volume - (options.volumeIncrement / 100)
+        if (newVolume < 0) {
+            // clip the volume
+            vrvPlayer.volume = 0;
+        } else {
+            vrvPlayer.volume = newVolume;
+        }
+    },
 }
+
+let vrvPlayer = document.querySelector("video#player_html5_api");
+let previousVolume = vrvPlayer.volume;
+
+chrome.storage.sync.get(
+    DEFAULT_OPTIONS,
+    (options) => {
+        let reverseKeyMap = getReverseKeyMap(options);
+
+        document.onkeydown = (e) => {
+            if (e.ctrlKey && e.keyCode !== MOD_KEY.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey) {
+                // just the control key and another key
+                callAction(actions, reverseKeyMap, options, e.keyCode, MOD_KEY.ctrlKey);
+            } else if (e.shiftKey && e.keyCode !== MOD_KEY.shiftKey && !e.ctrlKey && !e.altKey && !e.metaKey) {
+                // just the shift key and another key
+                callAction(actions, reverseKeyMap, options, e.keyCode, MOD_KEY.shiftKey);
+            } else if (e.altKey && e.keyCode !== MOD_KEY.altKey && !e.shiftKey && !e.ctrlKey && !e.metaKey) {
+                // just the alt key and another key
+                callAction(actions, reverseKeyMap, options, e.keyCode, MOD_KEY.altKey);
+            } else if (!e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey) {
+                // no modifiers, just a normal key
+                callAction(actions, reverseKeyMap, options, e.keyCode);
+            }
+
+            e.stopPropagation();
+            e.preventDefault();
+        }
+    }
+);
 
 function callAction(actions, keyMap, options, keyCode, modifier) {
     if (modifier) {
@@ -100,29 +160,3 @@ function getReverseKeyMap(options) {
     }
     return reverseKeyMap;
 }
-
-chrome.storage.sync.get(
-    DEFAULT_OPTIONS,
-    (options) => {
-        let reverseKeyMap = getReverseKeyMap(options);
-
-        document.onkeydown = (e) => {
-            if (e.ctrlKey && e.keyCode !== MOD_KEY.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey) {
-                // just the control key and another key
-                callAction(actions, reverseKeyMap, options, e.keyCode, MOD_KEY.ctrlKey);
-            } else if (e.shiftKey && e.keyCode !== MOD_KEY.shiftKey && !e.ctrlKey && !e.altKey && !e.metaKey) {
-                // just the shift key and another key
-                callAction(actions, reverseKeyMap, options, e.keyCode, MOD_KEY.shiftKey);
-            } else if (e.altKey && e.keyCode !== MOD_KEY.altKey && !e.shiftKey && !e.ctrlKey && !e.metaKey) {
-                // just the alt key and another key
-                callAction(actions, reverseKeyMap, options, e.keyCode, MOD_KEY.altKey);
-            } else if (!e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey) {
-                // no modifiers, just a normal key
-                callAction(actions, reverseKeyMap, options, e.keyCode);
-            }
-
-            e.stopPropagation();
-            e.preventDefault();
-        }
-    }
-);

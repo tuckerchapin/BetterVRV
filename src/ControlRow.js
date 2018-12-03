@@ -40,6 +40,7 @@ class ControlRow extends Component {
             <NumberInput
                 id={this.kebabTitle}
                 value={this.props.value}
+                displayUnit={this.props.displayUnit}
                 disabled={this.props.disabled}
                 onChange={(value) => this.props.onChange(value)}
             />

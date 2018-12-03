@@ -26,8 +26,8 @@ class NumberInput extends Component {
             value = parseInt(value);
             if (value < 1) {
                 value = 1;
-            } else if (value > 90) {
-                value = 90;
+            } else if (value > 99) {
+                value = 99;
             }
             this.setState({
                 value: value,
@@ -65,8 +65,8 @@ class NumberInput extends Component {
                     onBlur={() => this.onLoseFocus()}
                     onKeyPress={(e) => this.onKeyPress(e)}
                 />
-                <div className="seconds-label">
-                    sec
+                <div className="unit-label">
+                    {this.props.displayUnit}
                 </div>
             </div>
         );

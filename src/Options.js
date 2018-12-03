@@ -15,16 +15,21 @@ const DEFAULT_OPTIONS = {
 
     "majorSeekIncrement": 10,
     "minorSeekIncrement": 5,
+    "volumeIncrement": 10,
 
     "toggleFullscreen": ["70", ""],
+    "playPause": ["32", "75"],
+    "pause": ["80", ""],
 
     "majorSeekForward": ["76", ""],
     "majorSeekBackward": ["74", ""],
     "minorSeekForward": ["39", "16+76"],
     "minorSeekBackward": ["37", "16+74"],
-    "playPause": ["32", "75"],
-    "pause": ["80", ""],
-}
+
+    "toggleMute": ["77", ""],
+    "volumeUp": ["187", "38"],
+    "volumeDown": ["189", "40"],
+};
 
 class Options extends Component {
     constructor(props) {
@@ -99,14 +104,23 @@ class Options extends Component {
                         <ControlRow title="Major Seek Increment"
                             description="How far forward/backward the major seek shortcuts will skip."
                             controlType="number"
+                            displayUnit="s"
                             value={this.state.majorSeekIncrement}
                             onChange={(newValue) => this.save({majorSeekIncrement: newValue})}
                         />
                         <ControlRow title="Minor Seek Increment"
                             description="How far forward/backward the minor seek shortcuts will skip."
                             controlType="number"
+                            displayUnit="s"
                             value={this.state.minorSeekIncrement}
                             onChange={(newValue) => this.save({minorSeekIncrement: newValue})}
+                        />
+                        <ControlRow title="Volume Adjustment Increment"
+                            description="How much the volume up/down shortcuts will change the volume"
+                            controlType="number"
+                            displayUnit="%"
+                            value={this.state.volumeIncrement}
+                            onChange={(newValue) => this.save({volumeIncrement: newValue})}
                         />
                     </ControlPanel>
 
@@ -166,6 +180,29 @@ class Options extends Component {
                                     subrow={true}
                                     onChange={(newValue) => this.save({minorSeekBackward: newValue})}
                                 />
+
+                        <PanelSectionDivider title="Volume"/>
+                            <KeyBindRow
+                                title="Volume Up"
+                                value={this.state.volumeUp}
+                                alreadyBoundKeys={this.state}
+                                selfBoundKey={"volumeUp"}
+                                onChange={(newValue) => this.save({volumeUp: newValue})}
+                            />
+                            <KeyBindRow
+                                title="Volume Down"
+                                value={this.state.volumeDown}
+                                alreadyBoundKeys={this.state}
+                                selfBoundKey={"volumeDown"}
+                                onChange={(newValue) => this.save({volumeDown: newValue})}
+                            />
+                            <KeyBindRow
+                                title="Toggle Mute"
+                                value={this.state.toggleMute}
+                                alreadyBoundKeys={this.state}
+                                selfBoundKey={"toggleMute"}
+                                onChange={(newValue) => this.save({toggleMute: newValue})}
+                            />
                     </ControlPanel>
 
                     <div id="reset-container">
