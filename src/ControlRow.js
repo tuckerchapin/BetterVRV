@@ -1,4 +1,3 @@
-/*global chrome*/
 import React, { Component } from 'react';
 
 import ControlLabel from "./ControlLabel";
@@ -20,6 +19,8 @@ class ControlRow extends Component {
                 return this.renderToggle();
             case "number":
                 return this.renderNumber();
+            default:
+                return null;
         }
     }
 

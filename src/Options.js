@@ -71,7 +71,7 @@ class Options extends Component {
             <div>
 
                 <div id="header">
-                    <img id="logo" src="../images/logotype.png" />
+                    <img id="logo" src="../images/logotype.png" alt="logo"/>
                 </div>
 
                 <div id="container">
@@ -174,6 +174,12 @@ class Options extends Component {
                     <div id="reset-container">
                         <div id="reset-button" onClick={() => this.resetSettings()}>
                             reset all settings to defaults
+                        </div>
+                    </div>
+
+                    <div id="reset-container">
+                        <div id="reset-button" onClick={() => chrome.storage.sync.get(null, (data) => console.log(JSON.stringify(data)))}>
+                            get settings
                         </div>
                     </div>
 
