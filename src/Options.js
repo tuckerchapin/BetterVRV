@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 
 import ControlPanel from "./ControlPanel";
+import PanelSectionDivider from "./PanelSectionDivider";
 import ControlRow from "./ControlRow";
 import KeyBindRow from "./KeyBindRow";
 
@@ -110,69 +111,66 @@ class Options extends Component {
                     </ControlPanel>
 
                     <ControlPanel title="Key Bindings">
-                        <KeyBindRow
-                            title="Toggle Fullscreen"
-                            value={this.state.toggleFullscreen}
-                            alreadyBoundKeys={this.state}
-                            selfBoundKey={"toggleFullscreen"}
-                            onChange={(newValue) => this.save({toggleFullscreen: newValue})}
-                        />
-                        <KeyBindRow
-                            title="Toggle Play/Pause"
-                            value={this.state.playPause}
-                            alreadyBoundKeys={this.state}
-                            selfBoundKey={"playPause"}
-                            onChange={(newValue) => this.save({playPause: newValue})}
-                        />
+                        <PanelSectionDivider title="General"/>
                             <KeyBindRow
-                                title="Pause"
-                                value={this.state.pause}
+                                title="Toggle Fullscreen"
+                                value={this.state.toggleFullscreen}
                                 alreadyBoundKeys={this.state}
-                                selfBoundKey={"pause"}
-                                subrow={true}
-                                onChange={(newValue) => this.save({pause: newValue})}
+                                selfBoundKey={"toggleFullscreen"}
+                                onChange={(newValue) => this.save({toggleFullscreen: newValue})}
                             />
-                        <KeyBindRow
-                            title="Seek Forward - Major"
-                            value={this.state.majorSeekForward}
-                            alreadyBoundKeys={this.state}
-                            selfBoundKey={"majorSeekForward"}
-                            onChange={(newValue) => this.save({majorSeekForward: newValue})}
-                        />
                             <KeyBindRow
-                                title="Seek Forward - Minor"
-                                value={this.state.minorSeekForward}
+                                title="Toggle Play/Pause"
+                                value={this.state.playPause}
                                 alreadyBoundKeys={this.state}
-                                selfBoundKey={"minorSeekForward"}
-                                subrow={true}
-                                onChange={(newValue) => this.save({minorSeekForward: newValue})}
+                                selfBoundKey={"playPause"}
+                                onChange={(newValue) => this.save({playPause: newValue})}
                             />
-                        <KeyBindRow
-                            title="Seek Backward - Major"
-                            value={this.state.majorSeekBackward}
-                            alreadyBoundKeys={this.state}
-                            selfBoundKey={"majorSeekBackward"}
-                            onChange={(newValue) => this.save({majorSeekBackward: newValue})}
-                        />
+                                <KeyBindRow
+                                    title="Pause"
+                                    value={this.state.pause}
+                                    alreadyBoundKeys={this.state}
+                                    selfBoundKey={"pause"}
+                                    subrow={true}
+                                    onChange={(newValue) => this.save({pause: newValue})}
+                                />
+
+                        <PanelSectionDivider title="Seeking"/>
                             <KeyBindRow
-                                title="Seek Backward - Minor"
-                                value={this.state.minorSeekBackward}
+                                title="Seek Forward - Major"
+                                value={this.state.majorSeekForward}
                                 alreadyBoundKeys={this.state}
-                                selfBoundKey={"minorSeekBackward"}
-                                subrow={true}
-                                onChange={(newValue) => this.save({minorSeekBackward: newValue})}
+                                selfBoundKey={"majorSeekForward"}
+                                onChange={(newValue) => this.save({majorSeekForward: newValue})}
                             />
+                                <KeyBindRow
+                                    title="Seek Forward - Minor"
+                                    value={this.state.minorSeekForward}
+                                    alreadyBoundKeys={this.state}
+                                    selfBoundKey={"minorSeekForward"}
+                                    subrow={true}
+                                    onChange={(newValue) => this.save({minorSeekForward: newValue})}
+                                />
+                            <KeyBindRow
+                                title="Seek Backward - Major"
+                                value={this.state.majorSeekBackward}
+                                alreadyBoundKeys={this.state}
+                                selfBoundKey={"majorSeekBackward"}
+                                onChange={(newValue) => this.save({majorSeekBackward: newValue})}
+                            />
+                                <KeyBindRow
+                                    title="Seek Backward - Minor"
+                                    value={this.state.minorSeekBackward}
+                                    alreadyBoundKeys={this.state}
+                                    selfBoundKey={"minorSeekBackward"}
+                                    subrow={true}
+                                    onChange={(newValue) => this.save({minorSeekBackward: newValue})}
+                                />
                     </ControlPanel>
 
                     <div id="reset-container">
                         <div id="reset-button" onClick={() => this.resetSettings()}>
                             reset all settings to defaults
-                        </div>
-                    </div>
-
-                    <div id="reset-container">
-                        <div id="reset-button" onClick={() => chrome.storage.sync.get(null, (data) => console.log(JSON.stringify(data)))}>
-                            get settings
                         </div>
                     </div>
 
