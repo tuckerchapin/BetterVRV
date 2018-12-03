@@ -21,7 +21,7 @@ const DEFAULT_OPTIONS = {
     "majorSeekBackward": ["16+74", ""],
     "minorSeekForward": ["39", "76"],
     "minorSeekBackward": ["37", "74"],
-    "playPause": ["75", "32"],
+    "playPause": ["32", "75"],
     "pause": ["80", ""],
     "toggleFullscreen": ["70", ""],
 }
@@ -94,14 +94,14 @@ class Options extends Component {
                                 value={this.state.hideThumbnails}
                                 onChange={(newValue) => this.save({hideThumbnails: newValue})}
                             />
-                            <ControlRow title="Show Watched Thumbnails"
-                                description="Thumbnails on episodes you've already watched will not be blurred."
-                                controlType="toggle"
-                                value={this.state.showWatchedThumbnails}
-                                disabled={!this.state.hideThumbnails}
-                                subrow={true}
-                                onChange={(newValue) => this.save({showWatchedThumbnails: newValue})}
-                            />
+                                <ControlRow title="Show Watched Thumbnails"
+                                    description="Thumbnails on episodes you've already watched will not be blurred."
+                                    controlType="toggle"
+                                    value={this.state.showWatchedThumbnails}
+                                    disabled={!this.state.hideThumbnails}
+                                    subrow={true}
+                                    onChange={(newValue) => this.save({showWatchedThumbnails: newValue})}
+                                />
                             <ControlRow title="Hide Descriptions"
                                 description="All episode descriptions will be hidden."
                                 controlType="toggle"
@@ -136,28 +136,33 @@ class Options extends Component {
                             value={this.state.playPause}
                             onChange={(newValue) => this.save({playPause: newValue})}
                         />
+                            <KeyBindRow
+                                title="Pause"
+                                value={this.state.pause}
+                                onChange={(newValue) => this.save({pause: newValue})}
+                            />
                         <KeyBindRow
                             title="Seek Forward - Major"
                             value={this.state.majorSeekForward}
                             onChange={(newValue) => this.save({majorSeekForward: newValue})}
                         />
-                        <KeyBindRow
-                            title="Seek Forward - Minor"
-                            value={this.state.minorSeekForward}
-                            subrow={true}
-                            onChange={(newValue) => this.save({minorSeekForward: newValue})}
-                        />
+                            <KeyBindRow
+                                title="Seek Forward - Minor"
+                                value={this.state.minorSeekForward}
+                                subrow={true}
+                                onChange={(newValue) => this.save({minorSeekForward: newValue})}
+                            />
                         <KeyBindRow
                             title="Seek Backward - Major"
                             value={this.state.majorSeekBackward}
                             onChange={(newValue) => this.save({majorSeekBackward: newValue})}
                         />
-                        <KeyBindRow
-                            title="Seek Backward - Minor"
-                            value={this.state.minorSeekBackward}
-                            subrow={true}
-                            onChange={(newValue) => this.save({minorSeekBackward: newValue})}
-                        />
+                            <KeyBindRow
+                                title="Seek Backward - Minor"
+                                value={this.state.minorSeekBackward}
+                                subrow={true}
+                                onChange={(newValue) => this.save({minorSeekBackward: newValue})}
+                            />
                     </ControlPanel>
 
                     <div id="reset-container">
