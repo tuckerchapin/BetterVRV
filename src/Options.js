@@ -7,7 +7,7 @@ import KeyBindRow from "./KeyBindRow";
 
 import './styles/Options.css';
 
-const INDEV = true;
+const INDEV = false;
 
 const DEFAULT_OPTIONS = {
     "hideDescriptions": true,
@@ -64,7 +64,6 @@ class Options extends Component {
             this.setState(
                 DEFAULT_OPTIONS,
                 () => {
-                    this.forceUpdate();
                     if (!INDEV) {
                         chrome.storage.sync.set(
                             DEFAULT_OPTIONS,
