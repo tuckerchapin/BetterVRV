@@ -148,6 +148,15 @@ class KeyBinder extends Component {
         }
     }
 
+    onKeyUp(e) {
+        if (e.keyCode === this.state.lastKeyPressed && MOD_KEY[e.keyCode]) {
+            this.setState({
+                value: "",
+                lastKeyPressed: "",
+            });
+        }
+    }
+
     renderKeys(value) {
         let keyText = String(value);
 
@@ -200,6 +209,7 @@ class KeyBinder extends Component {
                     })}
                     onBlur={() => this.onBlur()}
                     onKeyDown={(e) => this.onKeyDown(e)}
+                    onKeyUp={(e) => this.onKeyUp(e)}
                 />
                 {this.renderKeyDisplay()}
             </div>
