@@ -1,65 +1,4 @@
-// let shortcuts = {
-//     majorSeekForward: "KeyL",
-//     majorSeekBackward: "KeyJ",
-//     minorSeekForward: "ArrowRight",
-//     minorSeekBackward: "ArrowLeft",
-//     playPause: "KeyK",
-//     pause: "KeyP",
-//     toggleFullscreen: "KeyF",
-// }
-//
-// let settings = {
-//     majorSeekIncrement: 10,
-//     minorSeekIncrement: 5,
-// }
-//
-// let debugLog = false;
-//
-// document.onkeydown = (e) => {
-//     switch (e.code) {
-//         case shortcuts.majorSeekForward:
-//             if (debugLog) console.log(`Skipped forward ${settings.majorSeekIncrement}s.`);
-//             vrvPlayer.currentTime = vrvPlayer.currentTime + settings.majorSeekIncrement;
-//             e.stopPropagation();
-//             e.preventDefault();
-//             break;
-//         case shortcuts.majorSeekBackward:
-//             if (debugLog) console.log(`Skipped backward ${settings.majorSeekIncrement}s.`);
-//             vrvPlayer.currentTime = vrvPlayer.currentTime - settings.majorSeekIncrement;
-//             e.stopPropagation();
-//             e.preventDefault();
-//             break;
-//         case shortcuts.minorSeekForward:
-//             if (debugLog) console.log(`Skipped forward ${settings.minorSeekIncrement}s.`);
-//             vrvPlayer.currentTime = vrvPlayer.currentTime + settings.minorSeekIncrement;
-//             e.stopPropagation();
-//             e.preventDefault();
-//             break;
-//         case shortcuts.minorSeekBackward:
-//             if (debugLog) console.log(`Skipped backward ${settings.minorSeekIncrement}s.`);
-//             vrvPlayer.currentTime = vrvPlayer.currentTime - settings.minorSeekIncrement;
-//             e.stopPropagation();
-//             e.preventDefault();
-//             break;
-//         case shortcuts.playPause:
-//             if (debugLog) console.log(`Play/pause toggle used to ${vrvPlayer.paused ? "play" : "pause"}.`)
-//             vrvPlayer.paused ? vrvPlayer.play() : vrvPlayer.pause();
-//             e.stopPropagation();
-//             e.preventDefault();
-//             break;
-//         case shortcuts.pause:
-//             if (debugLog) console.log("Paused.");
-//             vrvPlayer.pause();
-//             e.stopPropagation();
-//             e.preventDefault();
-//             break;
-//         case shortcuts.toggleFullscreen:
-//             document.webkitIsFullScreen ?
-//                 document.webkitExitFullscreen() : document.documentElement.webkitRequestFullscreen();
-//             e.stopPropagation();
-//             e.preventDefault();
-//     }
-// };
+let vrvPlayer = document.querySelector("video#player_html5_api");
 
 const DEFAULT_OPTIONS = {
     "hideDescriptions": true,
@@ -78,6 +17,31 @@ const DEFAULT_OPTIONS = {
     "toggleFullscreen": ["70", ""],
 };
 
+const action = {
+    "majorSeekForward": (options) => {
+        vrvPlayer.currentTime = vrvPlayer.currentTime - options.majorSeekIncrement;
+    },
+    "majorSeekBackward": (options) => {
+        vrvPlayer.currentTime = vrvPlayer.currentTime - options.majorSeekIncrement;
+    },
+    "minorSeekForward": (options) => {
+        vrvPlayer.currentTime = vrvPlayer.currentTime + options.minorSeekIncrement;
+    },
+    "minorSeekBackward": (options) => {
+        vrvPlayer.currentTime = vrvPlayer.currentTime - options.minorSeekIncrement;
+    },
+    "playPause": (options) => {
+        vrvPlayer.paused ? vrvPlayer.play() : vrvPlayer.pause();
+    },
+    "pause": (options) => {
+        vrvPlayer.pause();
+    },
+    "toggleFullscreen": (options) => {
+        document.webkitIsFullScreen ?
+            document.webkitExitFullscreen() : document.documentElement.webkitRequestFullscreen();
+    },
+}
+
 function getReverseKeyMap(options) {
     let reverseKeyMap = {};
     for (const [key, value] of Object.entries(options)) {
@@ -92,9 +56,15 @@ function getReverseKeyMap(options) {
 chrome.storage.sync.get(
     DEFAULT_OPTIONS,
     (options) => {
-        let vrvPlayer = document.querySelector("video#player_html5_api");
         let reverseKeyMap = getReverseKeyMap(options);
 
-        console.log(reverseKeyMap);
+        document.onkeydown = (e) => {
+            if (!!reverseKeyMap[e.keyCode]) {
+                console.log(e.keyCode, reverseKeyMap[e.keyCode], action[reverseKeyMap[e.keyCode]]);
+                action[reverseKeyMap[e.keyCode]](options);
+                e.stopPropagation();
+                e.preventDefault();
+            }
+        }
     }
 );
