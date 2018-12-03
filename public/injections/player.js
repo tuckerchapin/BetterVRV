@@ -56,7 +56,8 @@ document.onkeydown = (e) => {
             e.preventDefault();
             break;
         case shortcuts.toggleFullscreen:
-            document.webkitIsFullScreen ? document.webkitExitFullscreen() : document.documentElement.webkitEnterFullscreen();
+            document.webkitIsFullScreen ?
+                document.webkitExitFullscreen() : document.documentElement.webkitRequestFullscreen();
             e.stopPropagation();
             e.preventDefault();
     }
