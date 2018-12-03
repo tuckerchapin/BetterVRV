@@ -5,14 +5,20 @@ const DEFAULT_OPTIONS = {
 
     "majorSeekIncrement": 10,
     "minorSeekIncrement": 5,
+    "volumeIncrement": 10,
 
-    "majorSeekForward": ["16+76", ""],
-    "majorSeekBackward": ["16+74", ""],
-    "minorSeekForward": ["39", "76"],
-    "minorSeekBackward": ["37", "74"],
+    "toggleFullscreen": ["70", ""],
     "playPause": ["32", "75"],
     "pause": ["80", ""],
-    "toggleFullscreen": ["70", ""],
+
+    "majorSeekForward": ["76", ""],
+    "majorSeekBackward": ["74", ""],
+    "minorSeekForward": ["39", "16+76"],
+    "minorSeekBackward": ["37", "16+74"],
+
+    "toggleMute": ["77", ""],
+    "volumeUp": ["187", "38"],
+    "volumeDown": ["189", "40"],
 };
 
 function insertCSS(path) {

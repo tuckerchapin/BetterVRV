@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 
 import ControlPanel from "./ControlPanel";
+import PanelSectionDivider from "./PanelSectionDivider";
 import ControlRow from "./ControlRow";
 import KeyBindRow from "./KeyBindRow";
 
@@ -14,15 +15,21 @@ const DEFAULT_OPTIONS = {
 
     "majorSeekIncrement": 10,
     "minorSeekIncrement": 5,
+    "volumeIncrement": 10,
 
-    "majorSeekForward": ["16+76", ""],
-    "majorSeekBackward": ["16+74", ""],
-    "minorSeekForward": ["39", "76"],
-    "minorSeekBackward": ["37", "74"],
+    "toggleFullscreen": ["70", ""],
     "playPause": ["32", "75"],
     "pause": ["80", ""],
-    "toggleFullscreen": ["70", ""],
-}
+
+    "majorSeekForward": ["76", ""],
+    "majorSeekBackward": ["74", ""],
+    "minorSeekForward": ["39", "16+76"],
+    "minorSeekBackward": ["37", "16+74"],
+
+    "toggleMute": ["77", ""],
+    "volumeUp": ["187", "38"],
+    "volumeDown": ["189", "40"],
+};
 
 class Options extends Component {
     constructor(props) {
@@ -97,81 +104,110 @@ class Options extends Component {
                         <ControlRow title="Major Seek Increment"
                             description="How far forward/backward the major seek shortcuts will skip."
                             controlType="number"
+                            displayUnit="s"
                             value={this.state.majorSeekIncrement}
                             onChange={(newValue) => this.save({majorSeekIncrement: newValue})}
                         />
                         <ControlRow title="Minor Seek Increment"
                             description="How far forward/backward the minor seek shortcuts will skip."
                             controlType="number"
+                            displayUnit="s"
                             value={this.state.minorSeekIncrement}
                             onChange={(newValue) => this.save({minorSeekIncrement: newValue})}
+                        />
+                        <ControlRow title="Volume Adjustment Increment"
+                            description="How much the volume up/down shortcuts will change the volume"
+                            controlType="number"
+                            displayUnit="%"
+                            value={this.state.volumeIncrement}
+                            onChange={(newValue) => this.save({volumeIncrement: newValue})}
                         />
                     </ControlPanel>
 
                     <ControlPanel title="Key Bindings">
-                        <KeyBindRow
-                            title="Toggle Fullscreen"
-                            value={this.state.toggleFullscreen}
-                            alreadyBoundKeys={this.state}
-                            selfBoundKey={"toggleFullscreen"}
-                            onChange={(newValue) => this.save({toggleFullscreen: newValue})}
-                        />
-                        <KeyBindRow
-                            title="Toggle Play/Pause"
-                            value={this.state.playPause}
-                            alreadyBoundKeys={this.state}
-                            selfBoundKey={"playPause"}
-                            onChange={(newValue) => this.save({playPause: newValue})}
-                        />
+                        <PanelSectionDivider title="General"/>
                             <KeyBindRow
-                                title="Pause"
-                                value={this.state.pause}
+                                title="Toggle Fullscreen"
+                                value={this.state.toggleFullscreen}
                                 alreadyBoundKeys={this.state}
-                                selfBoundKey={"pause"}
-                                subrow={true}
-                                onChange={(newValue) => this.save({pause: newValue})}
+                                selfBoundKey={"toggleFullscreen"}
+                                onChange={(newValue) => this.save({toggleFullscreen: newValue})}
                             />
-                        <KeyBindRow
-                            title="Seek Forward - Major"
-                            value={this.state.majorSeekForward}
-                            alreadyBoundKeys={this.state}
-                            selfBoundKey={"majorSeekForward"}
-                            onChange={(newValue) => this.save({majorSeekForward: newValue})}
-                        />
                             <KeyBindRow
-                                title="Seek Forward - Minor"
-                                value={this.state.minorSeekForward}
+                                title="Toggle Play/Pause"
+                                value={this.state.playPause}
                                 alreadyBoundKeys={this.state}
-                                selfBoundKey={"minorSeekForward"}
-                                subrow={true}
-                                onChange={(newValue) => this.save({minorSeekForward: newValue})}
+                                selfBoundKey={"playPause"}
+                                onChange={(newValue) => this.save({playPause: newValue})}
                             />
-                        <KeyBindRow
-                            title="Seek Backward - Major"
-                            value={this.state.majorSeekBackward}
-                            alreadyBoundKeys={this.state}
-                            selfBoundKey={"majorSeekBackward"}
-                            onChange={(newValue) => this.save({majorSeekBackward: newValue})}
-                        />
+                                <KeyBindRow
+                                    title="Pause"
+                                    value={this.state.pause}
+                                    alreadyBoundKeys={this.state}
+                                    selfBoundKey={"pause"}
+                                    subrow={true}
+                                    onChange={(newValue) => this.save({pause: newValue})}
+                                />
+
+                        <PanelSectionDivider title="Seeking"/>
                             <KeyBindRow
-                                title="Seek Backward - Minor"
-                                value={this.state.minorSeekBackward}
+                                title="Seek Forward - Major"
+                                value={this.state.majorSeekForward}
                                 alreadyBoundKeys={this.state}
-                                selfBoundKey={"minorSeekBackward"}
-                                subrow={true}
-                                onChange={(newValue) => this.save({minorSeekBackward: newValue})}
+                                selfBoundKey={"majorSeekForward"}
+                                onChange={(newValue) => this.save({majorSeekForward: newValue})}
+                            />
+                                <KeyBindRow
+                                    title="Seek Forward - Minor"
+                                    value={this.state.minorSeekForward}
+                                    alreadyBoundKeys={this.state}
+                                    selfBoundKey={"minorSeekForward"}
+                                    subrow={true}
+                                    onChange={(newValue) => this.save({minorSeekForward: newValue})}
+                                />
+                            <KeyBindRow
+                                title="Seek Backward - Major"
+                                value={this.state.majorSeekBackward}
+                                alreadyBoundKeys={this.state}
+                                selfBoundKey={"majorSeekBackward"}
+                                onChange={(newValue) => this.save({majorSeekBackward: newValue})}
+                            />
+                                <KeyBindRow
+                                    title="Seek Backward - Minor"
+                                    value={this.state.minorSeekBackward}
+                                    alreadyBoundKeys={this.state}
+                                    selfBoundKey={"minorSeekBackward"}
+                                    subrow={true}
+                                    onChange={(newValue) => this.save({minorSeekBackward: newValue})}
+                                />
+
+                        <PanelSectionDivider title="Volume"/>
+                            <KeyBindRow
+                                title="Volume Up"
+                                value={this.state.volumeUp}
+                                alreadyBoundKeys={this.state}
+                                selfBoundKey={"volumeUp"}
+                                onChange={(newValue) => this.save({volumeUp: newValue})}
+                            />
+                            <KeyBindRow
+                                title="Volume Down"
+                                value={this.state.volumeDown}
+                                alreadyBoundKeys={this.state}
+                                selfBoundKey={"volumeDown"}
+                                onChange={(newValue) => this.save({volumeDown: newValue})}
+                            />
+                            <KeyBindRow
+                                title="Toggle Mute"
+                                value={this.state.toggleMute}
+                                alreadyBoundKeys={this.state}
+                                selfBoundKey={"toggleMute"}
+                                onChange={(newValue) => this.save({toggleMute: newValue})}
                             />
                     </ControlPanel>
 
                     <div id="reset-container">
                         <div id="reset-button" onClick={() => this.resetSettings()}>
                             reset all settings to defaults
-                        </div>
-                    </div>
-
-                    <div id="reset-container">
-                        <div id="reset-button" onClick={() => chrome.storage.sync.get(null, (data) => console.log(JSON.stringify(data)))}>
-                            get settings
                         </div>
                     </div>
 

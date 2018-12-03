@@ -31,7 +31,7 @@ input.number-input {
         margin: 0;
     }
 
-.seconds-label {
+.unit-label {
     position: relative;
     bottom: 0;
     display: inline;
