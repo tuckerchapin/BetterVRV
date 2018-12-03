@@ -6,6 +6,8 @@ const DEFAULT_OPTIONS = {
     "majorSeekIncrement": 10,
     "minorSeekIncrement": 5,
     "volumeIncrement": 10,
+    "speedIncrement": 0.25,
+    "defaultSpeed": 1,
 
     "toggleFullscreen": ["70", ""],
     "playPause": ["32", "75"],
@@ -17,8 +19,12 @@ const DEFAULT_OPTIONS = {
     "minorSeekBackward": ["37", "16+74"],
 
     "toggleMute": ["77", ""],
-    "volumeUp": ["187", "38"],
-    "volumeDown": ["189", "40"],
+    "volumeUp": ["38", ""],
+    "volumeDown": ["40", ""],
+
+    "speedUp": ["187", ""],
+    "slowDown": ["189", ""],
+    "resetSpeed": ["16+48", ""],
 };
 
 const MOD_KEY = {
