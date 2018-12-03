@@ -1,0 +1,13 @@
+.panel-divider {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #b0aebb;
+    font-variant: all-petite-caps;
+    border-bottom: 2px solid #d8bb00;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+    .panel-divider:not(:first-of-type){
+        margin-top: 20px;
+    }
