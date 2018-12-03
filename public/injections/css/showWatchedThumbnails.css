@@ -5,6 +5,6 @@ article.erc-episode-card.state-watched div.h-thumbnail {
 
 /* Actual thumbnail, and only episode thumbnails */
 /* Avoids movie and "whole season" thumbnails that typically do not contain spoilers. */
-article.erc-episode-card.state-watched div.h-thumbnail img {
+article.erc-episode-card.state-watched div.h-thumbnail img.c-content-image.image {
     filter: none !important;
 }
