@@ -77,6 +77,21 @@ const actions = {
             vrvPlayer.volume = newVolume;
         }
     },
+    "speedUp": (options) => {
+        vrvPlayer.playbackRate = vrvPlayer.playbackRate + options.speedIncrement;
+    },
+    "slowDown": (options) => {
+        let newSpeed = vrvPlayer.playbackRate - options.speedIncrement;
+        if (newSpeed < 0) {
+            // clip the speed
+            vrvPlayer.playbackRate = 0;
+        } else {
+            vrvPlayer.playbackRate = newSpeed;
+        }
+    },
+    "resetSpeed": (options) => {
+        vrvPlayer.playbackRate = options.defaultSpeed;
+    },
 }
 
 let vrvPlayer = document.querySelector("video#player_html5_api");
@@ -85,7 +100,8 @@ chrome.storage.sync.get(
     DEFAULT_OPTIONS,
     (options) => {
         let reverseKeyMap = getReverseKeyMap(options);
-
+        
+        // Fired on user interaction
         document.onkeydown = (e) => {
             if (e.ctrlKey && e.keyCode !== MOD_KEY.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey) {
                 // just the control key and another key
@@ -104,6 +120,9 @@ chrome.storage.sync.get(
             e.stopPropagation();
             e.preventDefault();
         }
+
+        // Fired at start
+        actions.resetSpeed(options);
     }
 );
 
