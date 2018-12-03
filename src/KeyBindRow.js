@@ -22,6 +22,8 @@ class KeyBindRow extends Component {
                     <KeyBinder
                         id={this.kebabTitle + "-primary"}
                         value={this.props.value[0]}
+                        alreadyBoundKeys={this.props.alreadyBoundKeys}
+                        selfBoundKey={this.props.selfBoundKey}
                         onChange={(value) => {
                             this.props.value[0] = value;
                             this.props.onChange(this.props.value);
@@ -30,6 +32,8 @@ class KeyBindRow extends Component {
                     <KeyBinder
                         id={this.kebabTitle + "-secondary"}
                         value={this.props.value[1]}
+                        alreadyBoundKeys={this.props.alreadyBoundKeys}
+                        selfBoundKey={this.props.selfBoundKey}
                         onChange={(value) => {
                             this.props.value[1] = value;
                             this.props.onChange(this.props.value);

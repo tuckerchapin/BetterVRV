@@ -90,7 +90,30 @@ class KeyBinder extends Component {
     }
 
     save() {
-        this.props.onChange(this.state.value);
+        let alreadyBoundKeys = this.getAlreadyBoundKeys();
+        if (alreadyBoundKeys[this.state.value] !== this.props.selfBoundKey) {
+            alert(`${this.keyDisplayString(this.state.value).toUpperCase()} is already bound to another action.`);
+
+            this.setState({
+                value: this.state.lastValue,
+                lastValue: "",
+                lastKeyPressed: "",
+            });
+        } else {
+            this.props.onChange(this.state.value);
+            this.loseFocus();
+        }
+    }
+
+    getAlreadyBoundKeys() {
+        let reverseKeyMap = {};
+        for (const [key, value] of Object.entries(this.props.alreadyBoundKeys)) {
+            if (Array.isArray(value) && value.length === 2) {
+                if (value[0] !== "") reverseKeyMap[value[0]] = key;
+                if (value[1] !== "") reverseKeyMap[value[1]] = key;
+            }
+        }
+        return reverseKeyMap;
     }
 
     loseFocus() {
@@ -103,7 +126,7 @@ class KeyBinder extends Component {
             newState.value = this.state.lastValue
         }
 
-        this.setState(newState, () => this.save());
+        this.setState(newState);
     }
 
     onKeyDown(e) {
@@ -116,7 +139,6 @@ class KeyBinder extends Component {
         }
 
         if (e.key === "Backspace") {
-            this.loseFocus();
             this.setState({
                 value: "",
                 lastValue: this.props.value,
@@ -132,23 +154,24 @@ class KeyBinder extends Component {
                 // A mod is pressed
                 // Add this to the value and wait for another key
                 newState.value = e.keyCode;
+                this.setState(newState);
             } else if (e.ctrlKey|| e.shiftKey || e.altKey) {
                 // A non-mod key is pressed with a mod
                 // Assign the key
                 newState.value = `${this.state.lastKeyPressed}+${e.keyCode}`;
-                this.loseFocus();
+                this.setState(newState, () => this.save());
             } else {
                 // A single key that is not a mod has been pressed
                 // Assign the key
                 newState.value = e.keyCode;
-                this.loseFocus();
+                this.setState(newState, () => this.save());
             }
-
-            this.setState(newState);
         }
     }
 
     onKeyUp(e) {
+        // Mod keys cannot stand on their own
+        // If the key was pressed and released without another key, remove it
         if (e.keyCode === this.state.lastKeyPressed && MOD_KEY[e.keyCode]) {
             this.setState({
                 value: "",
@@ -157,7 +180,7 @@ class KeyBinder extends Component {
         }
     }
 
-    renderKeys(value) {
+    keyDisplayString(value) {
         let keyText = String(value);
 
         if (keyText === "") {
@@ -173,16 +196,16 @@ class KeyBinder extends Component {
     }
 
     renderKeyDisplay() {
-        let keyDisplayText = this.renderKeys(this.state.value);
+        let keyDisplayText = this.keyDisplayString(this.state.value);
         let classes = "keybind-display keybind-shaper";
 
         if (keyDisplayText === null) {
             if (this.state.focused === true) {
                 classes += " keybind-assign";
-                keyDisplayText = "ASSIGN";
+                keyDisplayText = "assign";
             } else {
                 classes += " keybind-none";
-                keyDisplayText = "NONE";
+                keyDisplayText = "none";
             }
         }
 

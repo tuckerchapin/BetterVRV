@@ -7,8 +7,6 @@ import KeyBindRow from "./KeyBindRow";
 
 import './styles/Options.css';
 
-const INDEV = false;
-
 const DEFAULT_OPTIONS = {
     "hideDescriptions": true,
     "hideThumbnails": true,
@@ -36,25 +34,20 @@ class Options extends Component {
     }
 
     load() {
-        if (!INDEV) {
-            chrome.storage.sync.get(
-                this.state,
-                (response) => this.setState(response)
-            );
-        }
+        chrome.storage.sync.get(
+            this.state,
+            (response) => this.setState(response)
+        );
     }
 
     save(newState) {
-        if (INDEV) console.log(newState);
         this.setState(
             newState,
             () => {
-                if (!INDEV) {
-                    chrome.storage.sync.set(
-                        this.state,
-                        () => {if (chrome.runtime.lastError) console.error(chrome.runtime.lastError);}
-                    );
-                }
+                chrome.storage.sync.set(
+                    this.state,
+                    () => {if (chrome.runtime.lastError) console.error(chrome.runtime.lastError);}
+                );
             }
         )
     }
@@ -64,12 +57,10 @@ class Options extends Component {
             this.setState(
                 DEFAULT_OPTIONS,
                 () => {
-                    if (!INDEV) {
-                        chrome.storage.sync.set(
-                            DEFAULT_OPTIONS,
-                            () => {if (chrome.runtime.lastError) console.error(chrome.runtime.lastError);}
-                        );
-                    }
+                    chrome.storage.sync.set(
+                        DEFAULT_OPTIONS,
+                        () => {if (chrome.runtime.lastError) console.error(chrome.runtime.lastError);}
+                    );
                 }
             )
         }
@@ -129,38 +120,52 @@ class Options extends Component {
                         <KeyBindRow
                             title="Toggle Fullscreen"
                             value={this.state.toggleFullscreen}
+                            alreadyBoundKeys={this.state}
+                            selfBoundKey={"toggleFullscreen"}
                             onChange={(newValue) => this.save({toggleFullscreen: newValue})}
                         />
                         <KeyBindRow
                             title="Toggle Play/Pause"
                             value={this.state.playPause}
+                            alreadyBoundKeys={this.state}
+                            selfBoundKey={"playPause"}
                             onChange={(newValue) => this.save({playPause: newValue})}
                         />
                             <KeyBindRow
                                 title="Pause"
                                 value={this.state.pause}
+                                alreadyBoundKeys={this.state}
+                                selfBoundKey={"pause"}
                                 subrow={true}
                                 onChange={(newValue) => this.save({pause: newValue})}
                             />
                         <KeyBindRow
                             title="Seek Forward - Major"
                             value={this.state.majorSeekForward}
+                            alreadyBoundKeys={this.state}
+                            selfBoundKey={"majorSeekForward"}
                             onChange={(newValue) => this.save({majorSeekForward: newValue})}
                         />
                             <KeyBindRow
                                 title="Seek Forward - Minor"
                                 value={this.state.minorSeekForward}
+                                alreadyBoundKeys={this.state}
+                                selfBoundKey={"minorSeekForward"}
                                 subrow={true}
                                 onChange={(newValue) => this.save({minorSeekForward: newValue})}
                             />
                         <KeyBindRow
                             title="Seek Backward - Major"
                             value={this.state.majorSeekBackward}
+                            alreadyBoundKeys={this.state}
+                            selfBoundKey={"majorSeekBackward"}
                             onChange={(newValue) => this.save({majorSeekBackward: newValue})}
                         />
                             <KeyBindRow
                                 title="Seek Backward - Minor"
                                 value={this.state.minorSeekBackward}
+                                alreadyBoundKeys={this.state}
+                                selfBoundKey={"minorSeekBackward"}
                                 subrow={true}
                                 onChange={(newValue) => this.save({minorSeekBackward: newValue})}
                             />
