@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #2f2d42;
-    background-image: url('../../images/vrv_bg_pattern.svg');
+    background-image: url('/images/vrv_bg_pattern.svg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -60,78 +60,37 @@ body {
     font-size: .7rem;
 }
 
-
-/* Control panel styling */
 .section-title {
     font-size: 2rem;
     font-weight: 300;
     line-height: 1.42;
     text-rendering: optimizeLegibility;
-    color: #f9f9fa;
+    color: #f9f9f9;
     text-transform: uppercase;
     margin: 1.5rem 0;
 }
 
-.control-panel-container {
-    height: auto;
-    overflow: auto;
-    margin-bottom: 2rem;
+#reset-container {
+    margin: 100px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
-.control-panel-title {
-    height: auto;
-    color: #b0aebb;
-    font-weight: 500;
-    font-size: 1.25rem;
-    margin-bottom: .625rem;
-    line-height: 1.4;
+#reset-button {
+    padding: 20px;
+    background-color: #ffdd00;
+
+    color: #1b1a26;
+    font-size: 1.25em;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
-.control-panel {
-    background-color: #1b1a26;
-    overflow: auto;
-    padding: 2rem;
-}
-
-.control-row {
-    width: 100%;
-    overflow: auto;
-}
-
-    .control-row:not(:last-child) {
-        margin-bottom: 1.5rem;
+    #reset-button:hover {
+        background-color: #ffea62;
     }
 
-.control-subrow {
-    width: auto;
-    margin-left: 4em;
-}
-
-.control-label {
-    width: auto;
-    overflow: hidden;
-}
-
-.control-title {
-    font-size: .875rem;
-    font-weight: 500;
-    line-height: 1.43;
-    text-rendering: optimizeLegibility;
-    color: #f9f9fa;
-    text-transform: uppercase;
-    opacity: inherit;
-}
-
-.control-description {
-    font-size: .8rem;
-    font-weight: 400;
-    line-height: 1.41;
-    color: #b0aebb;
-    margin-top: .25rem;
-    max-width: 80%;
-    opacity: inherit;
-}
-
-.control-container {
-    float: right;
-}
+    #reset-button:active {
+        background-color: #d8bb00;
+    }

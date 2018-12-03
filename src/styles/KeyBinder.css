@@ -1,0 +1,54 @@
+.keybind-container {
+    margin-left: 1em;
+    position: relative;
+}
+
+.keybind-shaper {
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+.keybind-input {
+    background-color: transparent;
+    border: solid 2px #999999;
+    outline: none;
+
+    color: transparent;
+}
+
+    .keybind-input:focus {
+        border-color: #00b4ff;
+    }
+
+.keybind-display {
+    pointer-events: none;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 3px;
+
+    color: #f9f9f9;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1.25em;
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.keybind-assign {
+    font-size: 1em;
+    font-weight: 400;
+    color: #00b4ff;
+}
+
+.keybind-none {
+    font-size: 1em;
+    font-weight: 400;
+    color: #474658;
+}

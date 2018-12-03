@@ -1,27 +1,6 @@
-inject css AND a js file with two functions, one to enable and one to disable
-then background.js will pass a message when the tab updates OR the tab will pass a message asking the background for settings
+sections and dividers in the keybindings
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-consider moving all of the css into a single file that is always applied, and only executeScript to add/remove classnames as needed
-
-
-
-
+collapsable control panels
 
 
 
@@ -32,7 +11,7 @@ color: #302e42;
 color: #474658;
 color: #1b1a26;
 
-title: #f9f9fa
+title: #f9f9f9
 description: #b0aebb
 
 yellow: #fd0

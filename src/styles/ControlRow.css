@@ -1,0 +1,16 @@
+.control-row {
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+    .control-row:not(:last-child) {
+        margin-bottom: 1.5rem;
+    }
+
+.control-subrow {
+    width: auto;
+    margin-left: 4em;
+}
