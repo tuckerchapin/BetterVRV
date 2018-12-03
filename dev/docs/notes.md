@@ -1,7 +1,6 @@
-allow for:
-    - multiple keys bound to the same action
-    - modifiers/keycombos for an action
-    - reset to defaults
+sections and dividers in the keybindings
+
+collapsable control panels
 
 
 

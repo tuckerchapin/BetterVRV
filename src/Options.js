@@ -139,6 +139,7 @@ class Options extends Component {
                             <KeyBindRow
                                 title="Pause"
                                 value={this.state.pause}
+                                subrow={true}
                                 onChange={(newValue) => this.save({pause: newValue})}
                             />
                         <KeyBindRow
