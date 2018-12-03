@@ -1,4 +1,4 @@
-let defaultOptions = {
+const DEFAULT_OPTIONS = {
     "hideDescriptions": true,
     "hideThumbnails": true,
     "showWatchedThumbnails": false,
@@ -26,17 +26,18 @@ function insertCSS(path) {
     );
 }
 
-chrome.storage.sync.get(defaultOptions,
-    (settings) => {
-        if (settings.hideDescriptions) {
+chrome.storage.sync.get(
+    DEFAULT_OPTIONS,
+    (options) => {
+        if (options.hideDescriptions) {
             insertCSS("injections/css/hideDescriptions.css");
         }
 
-        if (settings.hideThumbnails) {
+        if (options.hideThumbnails) {
             insertCSS("injections/css/hideThumbnails.css");
         }
 
-        if (settings.showWatchedThumbnails) {
+        if (options.showWatchedThumbnails) {
             insertCSS("injections/css/showWatchedThumbnails.css");
         }
     }
