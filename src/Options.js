@@ -6,7 +6,7 @@ import ControlRow from "./ControlRow";
 
 import './styles/Options.css';
 
-const INDEV = !false;
+const INDEV = true;
 
 class Options extends Component {
     constructor(props) {
@@ -37,11 +37,7 @@ class Options extends Component {
 
     save() {
         chrome.storage.sync.set(this.state,
-            () => {
-                if (chrome.runtime.lastError) {
-                    console.error(chrome.runtime.lastError);
-                }
-            }
+            () => {if (chrome.runtime.lastError) console.error(chrome.runtime.lastError);}
         );
     }
 
@@ -116,6 +112,10 @@ class Options extends Component {
                                 )
                             }
                         />
+                    </ControlPanel>
+
+                    <ControlPanel title="Key Bindings">
+                        {/* <KeyRow> */}
                     </ControlPanel>
 
                 </div>
