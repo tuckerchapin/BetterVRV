@@ -188,7 +188,7 @@ class Options extends Component {
                         Consider <a href="https://venmo.com/tuckerchapin">donating.</a>
                     </div>
                     <div id="disclaimer">
-                        VRV, CrunchyRoll, and all other trademarks, service marks, trade names, product names and logos appearing on this site are the property of their respective owners.
+                        VRV, CrunchyRoll, and all other trademarks, service marks, trade names, product names and logos appearing here are the property of their respective owners.
                     </div>
                 </div>
 
