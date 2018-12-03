@@ -51,17 +51,10 @@ const actions = {
             document.webkitExitFullscreen() : document.documentElement.webkitRequestFullscreen();
     },
     "toggleMute": (options) => {
-        if (vrvPlayer.muted) {
-            // Already muted, reset
-            vrvPlayer.volume = previousVolume;
-        } else {
-            // Mute, save volume
-            previousVolume = vrvPlayer.volume;
-            vrvPlayer.volume = 0;
-        }
+        vrvPlayer.muted = !vrvPlayer.muted;
     },
     "volumeUp": (options) => {
-        let newVolume = vrvPlayer.volume + (options.volumeIncrement / 100)
+        let newVolume = vrvPlayer.volume + (options.volumeIncrement / 100);
         if (newVolume > 1) {
             // clip the volume
             vrvPlayer.volume = 1;
@@ -70,7 +63,7 @@ const actions = {
         }
     },
     "volumeDown": (options) => {
-        let newVolume = vrvPlayer.volume - (options.volumeIncrement / 100)
+        let newVolume = vrvPlayer.volume - (options.volumeIncrement / 100);
         if (newVolume < 0) {
             // clip the volume
             vrvPlayer.volume = 0;
@@ -81,7 +74,6 @@ const actions = {
 }
 
 let vrvPlayer = document.querySelector("video#player_html5_api");
-let previousVolume = vrvPlayer.volume;
 
 chrome.storage.sync.get(
     DEFAULT_OPTIONS,
