@@ -9,6 +9,12 @@
     "icons": {
         "128": "images/icon128.png"
     },
+    "background": {
+        "scripts": [
+            "background/onInstall.js"
+        ],
+        "persistent": false
+    },
     "options_page": "index.html",
     "content_scripts": [
         {
@@ -16,8 +22,8 @@
                 "https://vrv.co/*"
             ],
             "js": [
-                "injections/lib.js",
-                "injections/vrvStyling.js"
+                "content_scripts/lib.js",
+                "content_scripts/vrvStyling.js"
             ]
         },
         {
@@ -26,20 +32,20 @@
                 "https://static.vrv.co/vilos/player.html"
             ],
             "css": [
-                "injections/css/playerStyling.css"
+                "content_scripts/css/playerStyling.css"
             ],
             "js": [
-                "injections/lib.js",
-                "injections/keycuts.js",
-                "injections/playerStyling.js",
-                "injections/player.js"
+                "content_scripts/lib.js",
+                "content_scripts/keycuts.js",
+                "content_scripts/playerStyling.js",
+                "content_scripts/player.js"
             ]
         }
     ],
     "web_accessible_resources": [
         "images/*",
         "fonts/*",
-        "injections/css/*"
+        "content_scripts/css/*"
     ],
     "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"
 }
