@@ -25,6 +25,9 @@
             "matches": [
                 "https://static.vrv.co/vilos/player.html"
             ],
+            "css": [
+                "injections/css/playerStyling.css"
+            ],
             "js": [
                 "injections/lib.js",
                 "injections/keycuts.js",

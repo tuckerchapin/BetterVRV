@@ -43,7 +43,13 @@ const actions = {
         }
     },
     "speedUp": (options) => {
-        vrvPlayer.playbackRate = vrvPlayer.playbackRate + options.speedIncrement;
+        let newSpeed = vrvPlayer.playbackRate + options.speedIncrement;
+        if (newSpeed > 16) {
+            // clip the speed
+            vrvPlayer.playbackRate = 16;
+        } else {
+            vrvPlayer.playbackRate = newSpeed;
+        }
     },
     "slowDown": (options) => {
         let newSpeed = vrvPlayer.playbackRate - options.speedIncrement;
