@@ -10,9 +10,9 @@ A suite of improvements to the VRV player
 - [x] speed-controls: Adjust the playback speed.
 - [ ] skip-op: Skip the opening sequence.
 - [ ] skip-ed: Skip the end sequence and bring up the "next episode" prompt sooner.
+- [ ] skip-preview: similar to no-spoilers, skip or do not show the prievew at the end of episode
 
 ## Roadmap
-* skip-previw: similar to no-spoilers, skip or do not show the prievew at the end of episode
 * subtitle-settings
 * force-HD
 * skip-recap: if there is a recap that contains no new content, skip it
