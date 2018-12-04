@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
     "name": "BetterVRV",
-    "shortname": "bvrv",
-    "version": "0.1.1",
+    "short_name": "BetterVRV",
+    "version": "0.1.0",
     "description": "A suite of improvements to the VRV player and experience.",
     "homepage_url": "https://chrome.google.com/webstore/detail/bettervrv/dhghipbelapdpgpdfmkebjnnokhpeock",
     "permissions": ["activeTab", "storage"],
@@ -16,7 +16,7 @@
                 "https://vrv.co/*"
             ],
             "js": [
-                "injections/styling.js"
+                "injections/vrvStyling.js"
             ]
         },
         {
@@ -25,7 +25,8 @@
                 "https://static.vrv.co/vilos/player.html"
             ],
             "js": [
-                "injections/player.js"
+                "injections/player.js",
+                "injections/playerStyling.js"
             ]
         }
     ],

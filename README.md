@@ -17,7 +17,6 @@ A suite of improvements to the VRV player
 * force-HD
 * skip-recap: if there is a recap that contains no new content, skip it
 * user-markup: allow users to submit timestamps/flags for skip parameters (and obviously report them as well)
-* tie-settings: ties settings to account or system-wide
 * unblock-loading: prevent the loading status from blocking the ui
 * skip-title: option to include or exclude the title card (if any) from the skip-op settings
 * new-op-only: option to play openings and endings all the way through when they are new/different from the series/the first time they appear or have changed
