@@ -1,6 +1,6 @@
 .keybind-row {
     width: 100%;
-    overflow: auto;
+    overflow: visible;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

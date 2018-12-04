@@ -1,4 +1,4 @@
-{
+const DEFAULT_OPTIONS = {
     "hideDescriptions": true,
     "hideThumbnails": true,
     "showWatchedThumbnails": false,
@@ -26,4 +26,21 @@
     "speedUp": ["187", ""],
     "slowDown": ["189", ""],
     "resetSpeed": ["16+48", ""],
+};
+
+const MOD_KEY = {
+    "shiftKey": 16,
+    "ctrlKey": 17,
+    "altKey": 18,
+}
+
+function insertCSS(path) {
+    document.head.insertAdjacentHTML(
+        'beforeend',
+        `<link
+            rel="stylesheet"
+            type="text/css"
+            href="${chrome.runtime.getURL(path)}"
+            >`
+    );
 }
