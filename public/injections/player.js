@@ -179,3 +179,14 @@ function getReverseKeyMap(options) {
     }
     return reverseKeyMap;
 }
+
+function insertCSS(path) {
+    document.head.insertAdjacentHTML(
+        'beforeend',
+        `<link
+            rel="stylesheet"
+            type="text/css"
+            href="${chrome.runtime.getURL(path)}"
+            >`
+    );
+}

@@ -1,10 +1,31 @@
-window.onload = () => {
-    let playbackRate = document.querySelector("div.vjs-playback-rate");
-    let playbackRateValue = playbackRate.querySelector("div.vjs-playback-rate-value");
-
-    // playbackRate.classList.remove("vjs-hidden");
-    console.log(playbackRate.classList.contains("vjs-hidden"));
-    playbackRate.classList.remove("vjs-hidden");
-    console.log(playbackRate.classList.contains("vjs-hidden"));
-    playbackRateValue.innerText = 4;
+if (true) {
+    vrvPlayer.removeAttribute("poster");
+    let poster = document.querySelector(".vjs-poster");
+    poster.parentNode.removeChild(poster);
 }
+
+// window.onload = () => {
+//     let playbackRateMenuButton = document.createElement("li");
+//         playbackRateMenuButton.setAttribute("class", "vjs-menu-item playbackRateMenuButton settingsMenuItem baseSettingsMenuItem");
+//         playbackRateMenuButton.setAttribute("tabindex", "-1");
+//         playbackRateMenuButton.setAttribute("role", "menuitem");
+//         playbackRateMenuButton.setAttribute("aria-live", "polite");
+//         playbackRateMenuButton.setAttribute("aria-disabled", "false");
+//         playbackRateMenuButton.innerText = "Speed";
+//
+//     let playbackRateIndicator = document.createElement("span");
+//         playbackRateIndicator.setAttribute("id", "bvrv-playback-rate");
+//         playbackRateIndicator.setAttribute("class", "qualitySelectionDetails");
+//         playbackRateIndicator.innerText = "SPEED";
+//
+//
+//     playbackRateMenuButton.appendChild(playbackRateIndicator);
+//
+//     // HACKY this is relying on this being the last element
+//     let menu = document.getElementsByClassName("vjs-menu-content")[7];
+//     menu.appendChild(playbackRateMenuButton);
+//     // menu.insertBefore(playbackRateMenuButton, menu.childNodes[0] || null);
+//
+//     console.log(playbackRateMenuButton);
+//     console.log(document.querySelector("ul.vjs-menu-content"));
+// }
