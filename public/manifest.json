@@ -16,6 +16,7 @@
                 "https://vrv.co/*"
             ],
             "js": [
+                "injections/lib.js",
                 "injections/vrvStyling.js"
             ]
         },
@@ -25,8 +26,10 @@
                 "https://static.vrv.co/vilos/player.html"
             ],
             "js": [
-                "injections/player.js",
-                "injections/playerStyling.js"
+                "injections/lib.js",
+                "injections/keycuts.js",
+                "injections/playerStyling.js",
+                "injections/player.js"
             ]
         }
     ],

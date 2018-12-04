@@ -1,8 +1,8 @@
-if (true) {
-    vrvPlayer.removeAttribute("poster");
-    let poster = document.querySelector(".vjs-poster");
-    poster.parentNode.removeChild(poster);
-}
+// if (true) {
+//     vrvPlayer.removeAttribute("poster");
+//     let poster = document.querySelector(".vjs-poster");
+//     poster.parentNode.removeChild(poster);
+// }
 
 // window.onload = () => {
 //     let playbackRateMenuButton = document.createElement("li");
