@@ -1,8 +1,6 @@
-sections and dividers in the keybindings
-
 collapsable control panels
 
-
+display for the speed controls
 
 
 
