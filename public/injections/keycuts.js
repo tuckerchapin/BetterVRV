@@ -1,71 +1,106 @@
 const actions = {
-    "majorSeekForward": (options) => {
-        vrvPlayer.currentTime = vrvPlayer.currentTime + options.majorSeekIncrement;
+    "majorSeekForward": (options, callback) => {
+        vrvPlayer.currentTime = vrvPlayer.currentTime + parseFloat(options.majorSeekIncrement);
+
+        afterAction(callback);
     },
-    "majorSeekBackward": (options) => {
-        vrvPlayer.currentTime = vrvPlayer.currentTime - options.majorSeekIncrement;
+    "majorSeekBackward": (options, callback) => {
+        vrvPlayer.currentTime = vrvPlayer.currentTime - parseFloat(options.majorSeekIncrement);
+
+        afterAction(callback);
     },
-    "minorSeekForward": (options) => {
-        vrvPlayer.currentTime = vrvPlayer.currentTime + options.minorSeekIncrement;
+    "minorSeekForward": (options, callback) => {
+        vrvPlayer.currentTime = vrvPlayer.currentTime + parseFloat(options.minorSeekIncrement);
+
+        afterAction(callback);
     },
-    "minorSeekBackward": (options) => {
-        vrvPlayer.currentTime = vrvPlayer.currentTime - options.minorSeekIncrement;
+    "minorSeekBackward": (options, callback) => {
+        vrvPlayer.currentTime = vrvPlayer.currentTime - parseFloat(options.minorSeekIncrement);
+
+        afterAction(callback);
     },
-    "playPause": (options) => {
+    "playPause": (options, callback) => {
         vrvPlayer.paused ? vrvPlayer.play() : vrvPlayer.pause();
+
+        afterAction(callback);
     },
-    "pause": (options) => {
+    "pause": (options, callback) => {
         vrvPlayer.pause();
+
+        afterAction(callback);
     },
     "toggleFullscreen": (options) => {
         document.webkitIsFullScreen ?
             document.webkitExitFullscreen() : document.documentElement.webkitRequestFullscreen();
+
+        afterAction(callback);
     },
-    "toggleMute": (options) => {
+    "toggleMute": (options, callback) => {
         vrvPlayer.muted = !vrvPlayer.muted;
+
+        afterAction(callback);
     },
-    "volumeUp": (options) => {
-        let newVolume = vrvPlayer.volume + (options.volumeIncrement / 100);
+    "volumeUp": (options, callback) => {
+        let newVolume = vrvPlayer.volume + (parseFloat(options.volumeIncrement) / 100);
         if (newVolume > 1) {
             // clip the volume
             vrvPlayer.volume = 1;
         } else {
             vrvPlayer.volume = newVolume;
         }
+
+        afterAction(callback);
     },
-    "volumeDown": (options) => {
-        let newVolume = vrvPlayer.volume - (options.volumeIncrement / 100);
+    "volumeDown": (options, callback) => {
+        let newVolume = vrvPlayer.volume - (parseFloat(options.volumeIncrement) / 100);
         if (newVolume < 0) {
             // clip the volume
             vrvPlayer.volume = 0;
         } else {
             vrvPlayer.volume = newVolume;
         }
+
+        afterAction(callback);
     },
-    "speedUp": (options) => {
-        let newSpeed = vrvPlayer.playbackRate + options.speedIncrement;
+    "speedUp": (options, callback) => {
+        let newSpeed = vrvPlayer.playbackRate + parseFloat(options.speedIncrement);
         if (newSpeed > 16) {
             // clip the speed
             vrvPlayer.playbackRate = 16;
         } else {
             vrvPlayer.playbackRate = newSpeed;
         }
+
+        afterAction(callback);
     },
-    "slowDown": (options) => {
-        let newSpeed = vrvPlayer.playbackRate - options.speedIncrement;
+    "slowDown": (options, callback) => {
+        let newSpeed = vrvPlayer.playbackRate - parseFloat(options.speedIncrement);
         if (newSpeed < 0) {
             // clip the speed
             vrvPlayer.playbackRate = 0;
         } else {
             vrvPlayer.playbackRate = newSpeed;
         }
+
+        afterAction(callback);
     },
-    "resetSpeed": (options) => {
-        vrvPlayer.playbackRate = options.defaultSpeed;
+    "resetSpeed": (options, callback) => {
+        vrvPlayer.playbackRate = parseFloat(options.defaultSpeed);
+
+        afterAction(callback);
     },
 }
 
-function callAction(actions, keyMap, options, event, modifier) {
+function afterAction(callback) {
+    document.querySelector("div#player").dispatchEvent(new Event("useractive", {"bubbles": true}));
+
+    if (!!callback) {
+        console.log("ruh roh")
+        callback();
+    }
+}
+
+function executeKeyAction(actions, keyMap, options, event, modifier) {
     let keyCode = event.keyCode;
 
     if (modifier) {
@@ -127,15 +162,15 @@ function handleKeycuts(options, e) {
 
     if (e.ctrlKey && e.keyCode !== MOD_KEY.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey) {
         // just the control key and another key
-        callAction(actions, reverseKeyMap, options, e, MOD_KEY.ctrlKey);
+        executeKeyAction(actions, reverseKeyMap, options, e, MOD_KEY.ctrlKey);
     } else if (e.shiftKey && e.keyCode !== MOD_KEY.shiftKey && !e.ctrlKey && !e.altKey && !e.metaKey) {
         // just the shift key and another key
-        callAction(actions, reverseKeyMap, options, e, MOD_KEY.shiftKey);
+        executeKeyAction(actions, reverseKeyMap, options, e, MOD_KEY.shiftKey);
     } else if (e.altKey && e.keyCode !== MOD_KEY.altKey && !e.shiftKey && !e.ctrlKey && !e.metaKey) {
         // just the alt key and another key
-        callAction(actions, reverseKeyMap, options, e, MOD_KEY.altKey);
+        executeKeyAction(actions, reverseKeyMap, options, e, MOD_KEY.altKey);
     } else if (!e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey) {
         // no modifiers, just a normal key
-        callAction(actions, reverseKeyMap, options, e);
+        executeKeyAction(actions, reverseKeyMap, options, e);
     }
 }
