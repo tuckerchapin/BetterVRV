@@ -9,6 +9,12 @@
     "icons": {
         "128": "images/icon128.png"
     },
+    "background": {
+        "scripts": [
+            "background/onInstall.js"
+        ],
+        "persistent": false
+    },
     "options_page": "index.html",
     "content_scripts": [
         {
