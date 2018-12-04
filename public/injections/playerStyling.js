@@ -1,6 +1,4 @@
 function stylePlayer(options) {
-    if (options.hideLoadingPoster) {
-    }
 
 }
 
