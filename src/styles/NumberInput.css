@@ -1,5 +1,13 @@
+.number-input-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    overflow: visible;
+}
+
 input.number-input {
-    width: 1.5em;
+    width: 2.25em;
     background-color: transparent;
     padding: 2px 6px;
     border: solid 2px #999999;
@@ -32,14 +40,10 @@ input.number-input {
     }
 
 .unit-label {
-    position: relative;
-    bottom: 0;
-    display: inline;
-    margin-left: 6px;
-
+    margin-left: 5px;
+    width: 10px;
+    overflow: visible;
     font-size: 1.5em;
     font-weight: 300;
     color: #999999;
-
-    text-transform: uppercase;
 }

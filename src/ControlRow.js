@@ -41,6 +41,10 @@ class ControlRow extends Component {
                 id={this.kebabTitle}
                 value={this.props.value}
                 displayUnit={this.props.displayUnit}
+                min={this.props.min}
+                max={this.props.max}
+                increment={this.props.increment}
+                decimal={this.props.decimal}
                 disabled={this.props.disabled}
                 onChange={(value) => this.props.onChange(value)}
             />

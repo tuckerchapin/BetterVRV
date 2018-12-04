@@ -111,6 +111,9 @@ class Options extends Component {
                             description="How far forward/backward the major seek shortcuts will skip."
                             controlType="number"
                             displayUnit="s"
+                            min={1}
+                            max={60}
+                            increment={1}
                             value={this.state.majorSeekIncrement}
                             onChange={(newValue) => this.save({majorSeekIncrement: newValue})}
                         />
@@ -118,6 +121,9 @@ class Options extends Component {
                             description="How far forward/backward the minor seek shortcuts will skip."
                             controlType="number"
                             displayUnit="s"
+                            min={1}
+                            max={60}
+                            increment={1}
                             value={this.state.minorSeekIncrement}
                             onChange={(newValue) => this.save({minorSeekIncrement: newValue})}
                         />
@@ -125,13 +131,20 @@ class Options extends Component {
                             description="How much the volume up/down shortcuts will change the volume"
                             controlType="number"
                             displayUnit="%"
+                            min={1}
+                            max={100}
+                            increment={1}
                             value={this.state.volumeIncrement}
                             onChange={(newValue) => this.save({volumeIncrement: newValue})}
                         />
-                        {/* <ControlRow title="Speed Adjustment Increment"
+                        <ControlRow title="Speed Adjustment Increment"
                             description="How much the speed up/down shortcuts will change the speed"
                             controlType="number"
                             displayUnit="x"
+                            min={0.01}
+                            max={9.99}
+                            increment={0.25}
+                            decimal={true}
                             value={this.state.speedIncrement}
                             onChange={(newValue) => this.save({speedIncrement: newValue})}
                         />
@@ -139,10 +152,14 @@ class Options extends Component {
                             description="Initial speed of play for videos and speed to reset to"
                             controlType="number"
                             displayUnit="x"
-                            subrow={true}
+                            min={0.01}
+                            max={9.99}
+                            increment={0.25}
+                            decimal={true}
                             value={this.state.defaultSpeed}
                             onChange={(newValue) => this.save({defaultSpeed: newValue})}
-                        /> */}
+                            subrow={true}
+                        />
                     </ControlPanel>
 
                     <ControlPanel title="Key Bindings">
