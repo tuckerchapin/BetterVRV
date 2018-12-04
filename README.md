@@ -7,7 +7,7 @@ A suite of improvements to the VRV player
 - [x] no-spoilers: Hide potential spoilers in the thumbnails and descriptions.
 - [x] seek-controls: Better seeking control from the keyboard; JKL, arrow, and adjustable increments.
 - [x] volume-controls: Adjust the volume and mute/unmute.
-- [ ] speed-controls: Adjust the playback speed.
+- [x] speed-controls: Adjust the playback speed.
 - [ ] skip-op: Skip the opening sequence.
 - [ ] skip-ed: Skip the end sequence and bring up the "next episode" prompt sooner.
 

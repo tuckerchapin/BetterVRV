@@ -16,6 +16,8 @@ const DEFAULT_OPTIONS = {
     "majorSeekIncrement": 10,
     "minorSeekIncrement": 5,
     "volumeIncrement": 10,
+    "speedIncrement": 0.25,
+    "defaultSpeed": 1,
 
     "toggleFullscreen": ["70", ""],
     "playPause": ["32", "75"],
@@ -27,8 +29,12 @@ const DEFAULT_OPTIONS = {
     "minorSeekBackward": ["37", "16+74"],
 
     "toggleMute": ["77", ""],
-    "volumeUp": ["187", "38"],
-    "volumeDown": ["189", "40"],
+    "volumeUp": ["38", ""],
+    "volumeDown": ["40", ""],
+
+    "speedUp": ["187", ""],
+    "slowDown": ["189", ""],
+    "resetSpeed": ["16+48", ""],
 };
 
 class Options extends Component {
@@ -105,6 +111,9 @@ class Options extends Component {
                             description="How far forward/backward the major seek shortcuts will skip."
                             controlType="number"
                             displayUnit="s"
+                            min={1}
+                            max={60}
+                            increment={1}
                             value={this.state.majorSeekIncrement}
                             onChange={(newValue) => this.save({majorSeekIncrement: newValue})}
                         />
@@ -112,6 +121,9 @@ class Options extends Component {
                             description="How far forward/backward the minor seek shortcuts will skip."
                             controlType="number"
                             displayUnit="s"
+                            min={1}
+                            max={60}
+                            increment={1}
                             value={this.state.minorSeekIncrement}
                             onChange={(newValue) => this.save({minorSeekIncrement: newValue})}
                         />
@@ -119,8 +131,34 @@ class Options extends Component {
                             description="How much the volume up/down shortcuts will change the volume"
                             controlType="number"
                             displayUnit="%"
+                            min={1}
+                            max={100}
+                            increment={1}
                             value={this.state.volumeIncrement}
                             onChange={(newValue) => this.save({volumeIncrement: newValue})}
+                        />
+                        <ControlRow title="Speed Adjustment Increment"
+                            description="How much the speed up/down shortcuts will change the speed"
+                            controlType="number"
+                            displayUnit="x"
+                            min={0.01}
+                            max={9.99}
+                            increment={0.25}
+                            decimal={true}
+                            value={this.state.speedIncrement}
+                            onChange={(newValue) => this.save({speedIncrement: newValue})}
+                        />
+                        <ControlRow title="Default Playback Speed"
+                            description="Initial speed of play for videos and speed to reset to"
+                            controlType="number"
+                            displayUnit="x"
+                            min={0.01}
+                            max={9.99}
+                            increment={0.25}
+                            decimal={true}
+                            value={this.state.defaultSpeed}
+                            onChange={(newValue) => this.save({defaultSpeed: newValue})}
+                            subrow={true}
                         />
                     </ControlPanel>
 
@@ -183,14 +221,14 @@ class Options extends Component {
 
                         <PanelSectionDivider title="Volume"/>
                             <KeyBindRow
-                                title="Volume Up"
+                                title="Increase Volume"
                                 value={this.state.volumeUp}
                                 alreadyBoundKeys={this.state}
                                 selfBoundKey={"volumeUp"}
                                 onChange={(newValue) => this.save({volumeUp: newValue})}
                             />
                             <KeyBindRow
-                                title="Volume Down"
+                                title="Decrease Volume"
                                 value={this.state.volumeDown}
                                 alreadyBoundKeys={this.state}
                                 selfBoundKey={"volumeDown"}
@@ -203,6 +241,29 @@ class Options extends Component {
                                 selfBoundKey={"toggleMute"}
                                 onChange={(newValue) => this.save({toggleMute: newValue})}
                             />
+
+                            <PanelSectionDivider title="Speed"/>
+                                <KeyBindRow
+                                    title="Increase Speed"
+                                    value={this.state.speedUp}
+                                    alreadyBoundKeys={this.state}
+                                    selfBoundKey={"speedUp"}
+                                    onChange={(newValue) => this.save({speedUp: newValue})}
+                                />
+                                <KeyBindRow
+                                    title="Decrease Speed"
+                                    value={this.state.slowDown}
+                                    alreadyBoundKeys={this.state}
+                                    selfBoundKey={"slowDown"}
+                                    onChange={(newValue) => this.save({slowDown: newValue})}
+                                />
+                                <KeyBindRow
+                                    title="Reset Playback Speed (to Default)"
+                                    value={this.state.resetSpeed}
+                                    alreadyBoundKeys={this.state}
+                                    selfBoundKey={"resetSpeed"}
+                                    onChange={(newValue) => this.save({resetSpeed: newValue})}
+                                />
                     </ControlPanel>
 
                     <div id="reset-container">
