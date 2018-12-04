@@ -151,6 +151,6 @@ do what bttv does for it's popup/button
     "matches": ["https://vrv.co/*"],
     "js": [
         "options.js",
-        "injections/controller.js"
+        "content_scripts/controller.js"
     ]
 }],

@@ -2,15 +2,15 @@ chrome.storage.sync.get(
     DEFAULT_OPTIONS,
     (options) => {
         if (options.hideDescriptions) {
-            insertCSS("injections/css/hideDescriptions.css");
+            insertCSS("content_scripts/css/hideDescriptions.css");
         }
 
         if (options.hideThumbnails) {
-            insertCSS("injections/css/hideThumbnails.css");
+            insertCSS("content_scripts/css/hideThumbnails.css");
         }
 
         if (options.showWatchedThumbnails) {
-            insertCSS("injections/css/showWatchedThumbnails.css");
+            insertCSS("content_scripts/css/showWatchedThumbnails.css");
         }
     }
 );
