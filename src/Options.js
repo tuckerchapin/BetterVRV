@@ -12,6 +12,7 @@ const DEFAULT_OPTIONS = {
     "hideDescriptions": true,
     "hideThumbnails": true,
     "showWatchedThumbnails": false,
+    "hideLoadingPoster": true,
 
     "majorSeekIncrement": 10,
     "minorSeekIncrement": 5,
@@ -103,6 +104,13 @@ class Options extends Component {
                                 controlType="toggle"
                                 value={this.state.hideDescriptions}
                                 onChange={(newValue) => this.save({hideDescriptions: newValue})}
+                            />
+                            <ControlRow title="Hide Poster Image"
+                                description="Hide the poster shown while an episode is loading and preparing to play. There may be FOUC while loading a video."
+                                controlType="toggle"
+                                disabled={true}
+                                value={this.state.hideLoadingPoster}
+                                onChange={(newValue) => this.save({hideLoadingPoster: newValue})}
                             />
                     </ControlPanel>
 

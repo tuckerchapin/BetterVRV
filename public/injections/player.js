@@ -1,12 +1,12 @@
 let vrvPlayer = document.querySelector("video#player_html5_api");
-console.log(actions);
+
 chrome.storage.sync.get(
     DEFAULT_OPTIONS,
     (options) => {
-        // Fired on user interaction
-        document.onkeydown = (e) => handleKeycuts(options, e);
+        stylePlayer(options);
 
-        // Fired at start
-        actions.resetSpeed(options);
+        vrvPlayer.defaultPlaybackRate = options.defaultSpeed;
+
+        document.onkeydown = (e) => handleKeycuts(options, e);
     }
 );

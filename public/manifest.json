@@ -27,6 +27,7 @@
             ],
             "js": [
                 "injections/lib.js",
+                "injections/hideLoadingPoster.js",
                 "injections/keycuts.js",
                 "injections/playerStyling.js",
                 "injections/player.js"

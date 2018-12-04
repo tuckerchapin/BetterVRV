@@ -2,6 +2,7 @@ const DEFAULT_OPTIONS = {
     "hideDescriptions": true,
     "hideThumbnails": true,
     "showWatchedThumbnails": false,
+    "hideLoadingPoster": true,
 
     "majorSeekIncrement": 10,
     "minorSeekIncrement": 5,
