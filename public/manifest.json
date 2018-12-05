@@ -21,6 +21,9 @@
             "matches": [
                 "https://vrv.co/*"
             ],
+            "css": [
+                "content_scripts/css/vrvStyling.css"
+            ],
             "js": [
                 "content_scripts/lib.js",
                 "content_scripts/vrvStyling.js"
@@ -45,7 +48,8 @@
     "web_accessible_resources": [
         "images/*",
         "fonts/*",
-        "content_scripts/css/*"
+        "content_scripts/css/*",
+        "index.html"
     ],
     "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"
 }

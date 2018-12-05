@@ -1,0 +1,14 @@
+.bvrv-dropdown-item {
+    margin-top: 0 !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    border-bottom: .125rem solid #474658;
+}
+
+.bvrv-dropdown-icon {
+    opacity: .7 !important;
+}
+
+    .bvrv-dropdown-item:hover .bvrv-dropdown-icon {
+        opacity: 1 !important;
+    }
