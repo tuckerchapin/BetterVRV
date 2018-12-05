@@ -22,7 +22,7 @@ function addSettingsDropdown() {
     checkExist = setInterval(
         () => {
             let dropdownItems = document.getElementsByClassName("erc-user-dropdown-item");
-            console.log(chrome.extension.getURL("index.html"));
+
             if (dropdownItems.length === 8) {
                 clearInterval(checkExist);
 

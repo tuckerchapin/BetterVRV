@@ -2,43 +2,43 @@ const actions = {
     "majorSeekForward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime + parseFloat(options.majorSeekIncrement);
 
-        afterAction(callback);
+        afterAction(options, callback);
     },
     "majorSeekBackward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime - parseFloat(options.majorSeekIncrement);
 
-        afterAction(callback);
+        afterAction(options, callback);
     },
     "minorSeekForward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime + parseFloat(options.minorSeekIncrement);
 
-        afterAction(callback);
+        afterAction(options, callback);
     },
     "minorSeekBackward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime - parseFloat(options.minorSeekIncrement);
 
-        afterAction(callback);
+        afterAction(options, callback);
     },
     "playPause": (options, callback) => {
         vrvPlayer.paused ? vrvPlayer.play() : vrvPlayer.pause();
 
-        afterAction(callback);
+        afterAction(options, callback);
     },
     "pause": (options, callback) => {
         vrvPlayer.pause();
 
-        afterAction(callback);
+        afterAction(options, callback);
     },
     "toggleFullscreen": (options) => {
         document.webkitIsFullScreen ?
             document.webkitExitFullscreen() : document.documentElement.webkitRequestFullscreen();
 
-        afterAction(callback);
+        afterAction(options, callback);
     },
     "toggleMute": (options, callback) => {
         vrvPlayer.muted = !vrvPlayer.muted;
 
-        afterAction(callback);
+        afterAction(options, callback);
     },
     "volumeUp": (options, callback) => {
         let newVolume = vrvPlayer.volume + (parseFloat(options.volumeIncrement) / 100);
@@ -49,7 +49,7 @@ const actions = {
             vrvPlayer.volume = newVolume;
         }
 
-        afterAction(callback);
+        afterAction(options, callback);
     },
     "volumeDown": (options, callback) => {
         let newVolume = vrvPlayer.volume - (parseFloat(options.volumeIncrement) / 100);
@@ -60,7 +60,7 @@ const actions = {
             vrvPlayer.volume = newVolume;
         }
 
-        afterAction(callback);
+        afterAction(options, callback);
     },
     "speedUp": (options, callback) => {
         let newSpeed = vrvPlayer.playbackRate + parseFloat(options.speedIncrement);
@@ -71,7 +71,7 @@ const actions = {
             vrvPlayer.playbackRate = newSpeed;
         }
 
-        afterAction(callback);
+        afterAction(options, callback);
     },
     "slowDown": (options, callback) => {
         let newSpeed = vrvPlayer.playbackRate - parseFloat(options.speedIncrement);
@@ -82,20 +82,23 @@ const actions = {
             vrvPlayer.playbackRate = newSpeed;
         }
 
-        afterAction(callback);
+        afterAction(options, callback);
     },
     "resetSpeed": (options, callback) => {
         vrvPlayer.playbackRate = parseFloat(options.defaultSpeed);
 
-        afterAction(callback);
+        afterAction(options, callback);
     },
 }
 
-function afterAction(callback) {
-    document.querySelector("div#player").dispatchEvent(new Event("useractive", {"bubbles": true}));
+function afterAction(options, callback) {
+    if (options.showControlsOnShortcut) {
+        let userActionEvent = new Event("useractive");
+        let player = document.querySelector("div#player");
+        player.dispatchEvent(userActionEvent);
+    }
 
     if (!!callback) {
-        console.log("ruh roh")
         callback();
     }
 }
