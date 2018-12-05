@@ -1,6 +1,8 @@
 ![BetterVRV](https://raw.githubusercontent.com/tuckerchapin/BetterVRV/master/public/images/logotype_dark.png)
 
-[<img align="right" src="https://raw.githubusercontent.com/tuckerchapin/BetterVRV/master/dev/ChromeWebstoreBadge.png">](https://chrome.google.com/webstore/detail/bettervrv/dhghipbelapdpgpdfmkebjnnokhpeock)
+<a href="https://chrome.google.com/webstore/detail/bettervrv/dhghipbelapdpgpdfmkebjnnokhpeock" target="_blank">
+<img align="right" src="https://raw.githubusercontent.com/tuckerchapin/BetterVRV/master/dev/ChromeWebstoreBadge.png">
+</a>
 
 Features
 ---
