@@ -305,9 +305,9 @@ class Options extends Component {
                 </div>
 
                 <div id="footer">
-                    <div className="footer-entry">
+                    {/* <div className="footer-entry">
                         Issues? Suggestions? Complaints? <a href="mailto:tuckerchapin@gmail.com">Let me know.</a>
-                    </div>
+                    </div> */}
                     <div className="footer-entry">
                         <a href="https://github.com/tuckerchapin/BetterVRV/">Github.</a>
                     </div>
