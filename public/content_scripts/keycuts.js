@@ -2,43 +2,75 @@ const actions = {
     "majorSeekForward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime + parseFloat(options.majorSeekIncrement);
 
-        afterAction(options, callback);
+        afterAction(options);
+
+        if (!!callback) {
+            callback();
+        }
     },
     "majorSeekBackward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime - parseFloat(options.majorSeekIncrement);
 
-        afterAction(options, callback);
+        afterAction(options);
+
+        if (!!callback) {
+            callback();
+        }
     },
     "minorSeekForward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime + parseFloat(options.minorSeekIncrement);
 
-        afterAction(options, callback);
+        afterAction(options);
+
+        if (!!callback) {
+            callback();
+        }
     },
     "minorSeekBackward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime - parseFloat(options.minorSeekIncrement);
 
-        afterAction(options, callback);
+        afterAction(options);
+
+        if (!!callback) {
+            callback();
+        }
     },
     "playPause": (options, callback) => {
         vrvPlayer.paused ? vrvPlayer.play() : vrvPlayer.pause();
 
-        afterAction(options, callback);
+        afterAction(options);
+
+        if (!!callback) {
+            callback();
+        }
     },
     "pause": (options, callback) => {
         vrvPlayer.pause();
 
-        afterAction(options, callback);
+        afterAction(options);
+
+        if (!!callback) {
+            callback();
+        }
     },
     "toggleFullscreen": (options) => {
         document.webkitIsFullScreen ?
             document.webkitExitFullscreen() : document.documentElement.webkitRequestFullscreen();
 
-        afterAction(options, callback);
+        afterAction(options);
+
+        if (!!callback) {
+            callback();
+        }
     },
     "toggleMute": (options, callback) => {
         vrvPlayer.muted = !vrvPlayer.muted;
 
-        afterAction(options, callback);
+        afterAction(options);
+
+        if (!!callback) {
+            callback();
+        }
     },
     "volumeUp": (options, callback) => {
         let newVolume = vrvPlayer.volume + (parseFloat(options.volumeIncrement) / 100);
@@ -49,7 +81,11 @@ const actions = {
             vrvPlayer.volume = newVolume;
         }
 
-        afterAction(options, callback);
+        afterAction(options);
+
+        if (!!callback) {
+            callback();
+        }
     },
     "volumeDown": (options, callback) => {
         let newVolume = vrvPlayer.volume - (parseFloat(options.volumeIncrement) / 100);
@@ -60,7 +96,11 @@ const actions = {
             vrvPlayer.volume = newVolume;
         }
 
-        afterAction(options, callback);
+        afterAction(options);
+
+        if (!!callback) {
+            callback();
+        }
     },
     "speedUp": (options, callback) => {
         let newSpeed = vrvPlayer.playbackRate + parseFloat(options.speedIncrement);
@@ -71,7 +111,11 @@ const actions = {
             vrvPlayer.playbackRate = newSpeed;
         }
 
-        afterAction(options, callback);
+        afterAction(options);
+
+        if (!!callback) {
+            callback();
+        }
     },
     "slowDown": (options, callback) => {
         let newSpeed = vrvPlayer.playbackRate - parseFloat(options.speedIncrement);
@@ -82,12 +126,20 @@ const actions = {
             vrvPlayer.playbackRate = newSpeed;
         }
 
-        afterAction(options, callback);
+        afterAction(options);
+
+        if (!!callback) {
+            callback();
+        }
     },
     "resetSpeed": (options, callback) => {
         vrvPlayer.playbackRate = parseFloat(options.defaultSpeed);
 
-        afterAction(options, callback);
+        afterAction(options);
+
+        if (!!callback) {
+            callback();
+        }
     },
 }
 
@@ -96,10 +148,6 @@ function afterAction(options, callback) {
         let userActionEvent = new Event("useractive");
         let player = document.querySelector("div#player");
         player.dispatchEvent(userActionEvent);
-    }
-
-    if (!!callback) {
-        callback();
     }
 }
 
