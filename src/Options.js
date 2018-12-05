@@ -90,7 +90,7 @@ class Options extends Component {
                     <img
                         id="vrv-logo"
                         className="header-img"
-                        src="images/vrv-logo.svg"
+                        src="images/vrv_logo.svg"
                         alt="vrv-logo"
                         onClick={() => {window.location.href = "https://vrv.co"}}
                     />

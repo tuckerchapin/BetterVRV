@@ -4,3 +4,11 @@
     padding-bottom: 20px !important;
     border-bottom: .125rem solid #474658;
 }
+
+.bvrv-dropdown-icon {
+    opacity: .7 !important;
+}
+
+    .bvrv-dropdown-item:hover .bvrv-dropdown-icon {
+        opacity: 1 !important;
+    }
