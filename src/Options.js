@@ -9,6 +9,8 @@ import KeyBindRow from "./KeyBindRow";
 import './styles/Options.css';
 
 const DEFAULT_OPTIONS = {
+    "firstInstall": true,
+
     "hideDescriptions": true,
     "hideThumbnails": true,
     "showWatchedThumbnails": false,
@@ -38,8 +40,7 @@ const DEFAULT_OPTIONS = {
     "speedUp": ["187", ""],
     "slowDown": ["189", ""],
     "resetSpeed": ["16+48", ""],
-}
-;
+};
 
 class Options extends Component {
     constructor(props) {

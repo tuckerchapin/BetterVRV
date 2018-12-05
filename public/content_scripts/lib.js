@@ -1,4 +1,6 @@
 const DEFAULT_OPTIONS = {
+    "firstInstall": true,
+
     "hideDescriptions": true,
     "hideThumbnails": true,
     "showWatchedThumbnails": false,

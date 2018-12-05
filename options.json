@@ -1,4 +1,6 @@
 {
+    "firstInstall": true,
+
     "hideDescriptions": true,
     "hideThumbnails": true,
     "showWatchedThumbnails": false,
