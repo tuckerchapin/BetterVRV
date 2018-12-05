@@ -161,7 +161,7 @@ class Options extends Component {
                                 subrow={true}
                             />
                             <ControlRow title="Mute by Default"
-                                description="Videos on VRV will be muted by default at the start."
+                                description="Videos on VRV will be muted by default at the start"
                                 controlType="toggle"
                                 value={this.state.muteByDefault}
                                 onChange={(newValue) => this.save({muteByDefault: newValue})}
