@@ -1,12 +1,9 @@
 ![BetterVRV](https://raw.githubusercontent.com/tuckerchapin/BetterVRV/master/public/images/logotype_dark.png)
+
+[<img align="center" src="https://raw.githubusercontent.com/tuckerchapin/BetterVRV/master/dev/ChromeWebstoreBadge.png">](https://chrome.google.com/webstore/detail/bettervrv/dhghipbelapdpgpdfmkebjnnokhpeock)
+
+Features
 ---
-
-[![Install BetterVrv](https://raw.githubusercontent.com/tuckerchapin/BetterVRV/master/dev/ChromeWebStoreBadge.png)](https://chrome.google.com/webstore/detail/bettervrv/dhghipbelapdpgpdfmkebjnnokhpeock)
-
-A suite of improvements to the VRV player
----
-
-## Features
 - [x] no-spoilers: Hide potential spoilers in the thumbnails and descriptions.
 - [x] seek-controls: Better seeking control from the keyboard; JKL, arrow, and adjustable increments.
 - [x] volume-controls: Adjust the volume and mute/unmute.
@@ -15,7 +12,8 @@ A suite of improvements to the VRV player
 - [ ] skip-ed: Skip the end sequence and bring up the "next episode" prompt sooner.
 - [ ] skip-preview: similar to no-spoilers, skip or do not show the prievew at the end of episode
 
-## Roadmap
+Roadmap
+---
 * subtitle-settings
 * force-HD
 * skip-recap: if there is a recap that contains no new content, skip it
