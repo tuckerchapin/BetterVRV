@@ -1,7 +1,10 @@
-![BetterVRV](https://raw.githubusercontent.com/tuckerchapin/BetterVRV/initial-experiment/images/logotype_dark.png)
+![BetterVRV](https://raw.githubusercontent.com/tuckerchapin/BetterVRV/master/public/images/logotype_dark.png)
 ---
-A suite of improvements to the VRV player
 
+[![Install BetterVrv](https://raw.githubusercontent.com/tuckerchapin/BetterVRV/master/dev/ChromeWebStoreBadge.png)](https://chrome.google.com/webstore/detail/bettervrv/dhghipbelapdpgpdfmkebjnnokhpeock)
+
+A suite of improvements to the VRV player
+---
 
 ## Features
 - [x] no-spoilers: Hide potential spoilers in the thumbnails and descriptions.
