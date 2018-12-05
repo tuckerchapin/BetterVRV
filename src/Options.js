@@ -309,11 +309,11 @@ class Options extends Component {
                         Issues? Suggestions? Complaints? <a href="mailto:tuckerchapin@gmail.com">Let me know.</a>
                     </div>
                     <div className="footer-entry">
-                        <a href="https://github.com/tuckerchapin/BetterVRV/issues">Github.</a>
+                        <a href="https://github.com/tuckerchapin/BetterVRV/">Github.</a>
                     </div>
-                    <div className="footer-entry">
+                    {/* <div className="footer-entry">
                         Consider <a href="https://venmo.com/tuckerchapin">donating.</a>
-                    </div>
+                    </div> */}
                     <div id="disclaimer">
                         VRV, CrunchyRoll, and all other trademarks, service marks, trade names, product names and logos appearing here are the property of their respective owners.
                     </div>
