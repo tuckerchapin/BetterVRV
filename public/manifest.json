@@ -2,12 +2,17 @@
     "manifest_version": 2,
     "name": "BetterVRV",
     "short_name": "BetterVRV",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "A suite of improvements to the VRV player and experience.",
     "homepage_url": "https://chrome.google.com/webstore/detail/bettervrv/dhghipbelapdpgpdfmkebjnnokhpeock",
     "permissions": ["activeTab", "storage"],
     "icons": {
-        "128": "images/icon128.png"
+        "16": "images/icon16.png",
+        "19": "images/icon19.png",
+        "38": "images/icon38.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png",
+        "256": "images/icon256.png",
     },
     "background": {
         "scripts": [
