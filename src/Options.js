@@ -9,14 +9,18 @@ import KeyBindRow from "./KeyBindRow";
 import './styles/Options.css';
 
 const DEFAULT_OPTIONS = {
+    "firstInstall": true,
+
     "hideDescriptions": true,
     "hideThumbnails": true,
     "showWatchedThumbnails": false,
-    "hideLoadingPoster": true,
+    "hideLoadingPoster": false,
 
     "majorSeekIncrement": 10,
     "minorSeekIncrement": 5,
     "volumeIncrement": 10,
+    "defaultVolume": 100,
+    "muteByDefault": false,
     "speedIncrement": 0.25,
     "defaultSpeed": 1,
 
@@ -145,6 +149,24 @@ class Options extends Component {
                             value={this.state.volumeIncrement}
                             onChange={(newValue) => this.save({volumeIncrement: newValue})}
                         />
+                            <ControlRow title="Default Volume"
+                                description="The initial volume of the VRV player"
+                                controlType="number"
+                                displayUnit="%"
+                                min={1}
+                                max={100}
+                                increment={10}
+                                value={this.state.defaultVolume}
+                                onChange={(newValue) => this.save({defaultVolume: newValue})}
+                                subrow={true}
+                            />
+                            <ControlRow title="Mute by Default"
+                                description="Videos on VRV will be muted by default at the start"
+                                controlType="toggle"
+                                value={this.state.muteByDefault}
+                                onChange={(newValue) => this.save({muteByDefault: newValue})}
+                                subrow={true}
+                            />
                         <ControlRow title="Speed Adjustment Increment"
                             description="How much the speed up/down shortcuts will change the speed"
                             controlType="number"
@@ -156,18 +178,18 @@ class Options extends Component {
                             value={this.state.speedIncrement}
                             onChange={(newValue) => this.save({speedIncrement: newValue})}
                         />
-                        <ControlRow title="Default Playback Speed"
-                            description="Initial speed of play for videos and speed to reset to"
-                            controlType="number"
-                            displayUnit="x"
-                            min={0.01}
-                            max={9.99}
-                            increment={0.25}
-                            decimal={true}
-                            value={this.state.defaultSpeed}
-                            onChange={(newValue) => this.save({defaultSpeed: newValue})}
-                            subrow={true}
-                        />
+                            <ControlRow title="Default Playback Speed"
+                                description="Initial speed of play for videos and speed to reset to"
+                                controlType="number"
+                                displayUnit="x"
+                                min={0.01}
+                                max={9.99}
+                                increment={0.25}
+                                decimal={true}
+                                value={this.state.defaultSpeed}
+                                onChange={(newValue) => this.save({defaultSpeed: newValue})}
+                                subrow={true}
+                            />
                     </ControlPanel>
 
                     <ControlPanel title="Key Bindings">
