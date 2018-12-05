@@ -26,7 +26,7 @@ function stylePlayer(options) {
         document.getElementById("bvrv-speed-value").innerText = parseFloat(vrvPlayer.playbackRate).toFixed(2);
     };
 
-    document.getElementById("bvrv-speed-value").onclick = () => actions.resetSpeed(options);
+    document.getElementById("bvrv-speed-display").onclick = () => actions.resetSpeed(options);
     document.getElementById("bvrv-speed-increase").onclick = () => actions.speedUp(options);
     document.getElementById("bvrv-speed-decrease").onclick = () => actions.slowDown(options);
 }
