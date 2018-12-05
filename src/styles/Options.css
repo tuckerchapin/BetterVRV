@@ -9,22 +9,39 @@ body {
 }
 
 #header {
-    background-color: #1b1a26;
-    position: fixed;
-    height: auto;
     width: 100%;
-    z-index: 999999;
-    border-bottom: #fd0 3px solid;
+    height: 70px;
+    z-index: 2147483647;
+    position: fixed;
+    background-color: #1b1a26;
+    border-bottom: #fd0 2px solid;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 #logo {
-    height: 2rem;
-    display: block;
-    margin: 1rem auto;
+    height: 30px;
 }
 
+#vrv-logo {
+    height: 20px;
+    position: absolute;
+    right: 15px;
+    border: solid 2px rgba(216, 187, 0, .5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+    #vrv-logo:hover {
+        background-color: rgba(71, 70, 88, 0.5);
+        border-color: rgba(216, 187, 0, 1);
+    }
+
 #container {
-    padding-top: calc(4rem + 3px);
+    padding-top: 72px;
     padding-bottom: 2rem;
     width: 50rem;
     overflow: auto;

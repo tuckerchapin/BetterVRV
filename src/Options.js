@@ -81,7 +81,19 @@ class Options extends Component {
             <div>
 
                 <div id="header">
-                    <img id="logo" src="../images/logotype.png" alt="logo"/>
+                    <img
+                        id="logo"
+                        className="header-img"
+                        src="images/logotype.png"
+                        alt="logo"
+                    />
+                    <img
+                        id="vrv-logo"
+                        className="header-img"
+                        src="images/vrv-logo.svg"
+                        alt="vrv-logo"
+                        onClick={() => {window.location.href = "https://vrv.co"}}
+                    />
                 </div>
 
                 <div id="container">
