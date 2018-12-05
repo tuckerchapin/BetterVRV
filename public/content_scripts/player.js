@@ -4,6 +4,8 @@ chrome.storage.sync.get(
     DEFAULT_OPTIONS,
     (options) => {
         vrvPlayer.defaultPlaybackRate = options.defaultSpeed;
+        vrvPlayer.volume = options.defaultVolume;
+        vrvPlayer.defaultMuted = options.muteByDefault;
 
         window.onload = () => stylePlayer(options);
 

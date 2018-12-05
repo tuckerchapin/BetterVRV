@@ -2,11 +2,13 @@ const DEFAULT_OPTIONS = {
     "hideDescriptions": true,
     "hideThumbnails": true,
     "showWatchedThumbnails": false,
-    "hideLoadingPoster": true,
+    "hideLoadingPoster": false,
 
     "majorSeekIncrement": 10,
     "minorSeekIncrement": 5,
     "volumeIncrement": 10,
+    "defaultVolume": 100,
+    "muteByDefault": false,
     "speedIncrement": 0.25,
     "defaultSpeed": 1,
 

@@ -37,6 +37,8 @@ class NumberInput extends Component {
     }
 
     onKeyPress(e) {
+        // TODO: If this.props.min is zero, it will be treated as no minimum
+        // Currently just don't set zero as the minimum unless there is no minimum
         if (e.key === "Escape" || e.key === "Enter") {
             this.inputRef.current.blur();
         } else if (e.key === "ArrowUp") {
