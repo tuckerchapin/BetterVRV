@@ -14,8 +14,33 @@ chrome.storage.sync.get(
         }
 
         addSettingsDropdown();
+        reorderFrontPage();
     }
 );
+
+function reorderFrontPage() {
+    let vrvHomepage = document.querySelector("div.vrv-homepage");
+    if (vrvHomepage) {
+        insertCSS("content_scripts/top-site/css/reorderFrontpage.css");
+        checkExist = setInterval(
+            () => {
+                let continueWatching = document.querySelector("div#continue_watching");
+                let watchlist = document.querySelector("div#watchlist_122");
+                let recommendations = document.querySelector("div#recommendations");
+
+                if (continueWatching && watchlist && recommendations) {
+                    clearInterval(checkExist);
+
+                    let feedContainer = document.querySelector("div.erc-feed-container");
+                    feedContainer.insertBefore(recommendations, feedContainer.firstChild);
+                    feedContainer.insertBefore(watchlist, feedContainer.firstChild);
+                    feedContainer.insertBefore(continueWatching, feedContainer.firstChild);
+                }
+            },
+            100
+        );
+    }
+}
 
 function addSettingsDropdown() {
     checkExist = setInterval(
