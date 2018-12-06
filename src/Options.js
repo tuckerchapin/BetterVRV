@@ -89,13 +89,14 @@ class Options extends Component {
                         src="images/logotype.png"
                         alt="logo"
                     />
-                    <img
-                        id="vrv-logo"
-                        className="header-img"
-                        src="images/vrv_logo.svg"
-                        alt="vrv-logo"
-                        onClick={() => {window.location.href = "https://vrv.co"}}
-                    />
+                    <a id="vrv-logo-link" href="https://vrv.co">
+                        <img
+                            id="vrv-logo"
+                            className="header-img"
+                            src="images/vrv_logo.svg"
+                            alt="vrv-logo"
+                        />
+                    </a>
                 </div>
 
                 <div id="container">
@@ -328,6 +329,9 @@ class Options extends Component {
                 </div>
 
                 <div id="footer">
+                    <div className="footer-entry">
+                        BetterVRV v{chrome.runtime.getManifest().version}
+                    </div>
                     {/* <div className="footer-entry">
                         Issues? Suggestions? Complaints? <a href="mailto:tuckerchapin@gmail.com">Let me know.</a>
                     </div> */}

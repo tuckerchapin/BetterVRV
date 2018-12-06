@@ -26,9 +26,13 @@ body {
     height: 30px;
 }
 
+#vrv-logo-link {
+    position: absolute;
+    right: 15px;
+}
+
 #vrv-logo {
     height: 20px;
-    position: absolute;
     right: 15px;
     border: solid 2px rgba(216, 187, 0, .5);
     padding: 10px;
