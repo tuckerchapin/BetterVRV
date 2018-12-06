@@ -10,12 +10,14 @@ Features
 - [x] seek-controls: Better seeking control from the keyboard; JKL, arrow, and adjustable increments.
 - [x] volume-controls: Adjust the volume and mute/unmute.
 - [x] speed-controls: Adjust the playback speed.
+- [ ] better-autoplay: Bring up an autoplay ui button N-seconds from the end of an episode to skip to the next.
 - [ ] skip-op: Skip the opening sequence.
 - [ ] skip-ed: Skip the end sequence and bring up the "next episode" prompt sooner.
 - [ ] skip-preview: similar to no-spoilers, skip or do not show the prievew at the end of episode
 
 Roadmap
 ---
+* quick-watchlist: add "add to/remove from watchlist" buttons or at least icons to series and movie headers on the front page and watchlist pages
 * subtitle-settings
 * force-HD
 * skip-recap: if there is a recap that contains no new content, skip it
