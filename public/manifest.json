@@ -40,14 +40,14 @@
                 "https://static.vrv.co/vilos/player.html"
             ],
             "css": [
-                "content_scripts/player/css/playerStyling.css",
-                "content_scripts/player/css/controlStyling.css",
-                "content_scripts/player/css/statusIconStyling.css"
+                "content_scripts/player/css/player.css",
+                "content_scripts/player/css/controls.css",
+                "content_scripts/player/css/statusIcons.css"
             ],
             "js": [
                 "content_scripts/lib.js",
                 "content_scripts/player/js/keycuts.js",
-                "content_scripts/player/js/playerStyling.js",
+                "content_scripts/player/js/stylePlayer.js",
                 "content_scripts/player/js/player.js"
             ]
         }

@@ -1,6 +1,18 @@
 function stylePlayer(options) {
     insertSpeedDisplay(options);
     insertStatusIcon(options);
+    insertNextEpisodeButton(options);
+}
+
+function insertNextEpisodeButton(options) {
+    document.body.insertAdjacentHTML(
+        'beforeend',
+        `
+        <div id="" class="bvrv bvrv-skip-button">
+            NEXT EPISODE
+        </div>
+        `
+    )
 }
 
 function insertStatusIcon(options) {
