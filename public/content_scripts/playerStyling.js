@@ -13,6 +13,7 @@ function insertStatusIcon(options) {
                     id="bvrv-status-icon"
                     class="bvrv"
                 />
+                <div id="bvrv-status-value" class="bvrv"></div>
             </div>
         </div>
         `

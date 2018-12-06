@@ -2,7 +2,7 @@ const actions = {
     "majorSeekForward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime + parseFloat(options.majorSeekIncrement);
 
-        afterAction("seekForward", options);
+        afterAction("majorSeekForward", options);
 
         if (callback && typeof(callback) === "function") {
             callback();
@@ -11,7 +11,7 @@ const actions = {
     "majorSeekBackward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime - parseFloat(options.majorSeekIncrement);
 
-        afterAction("seekBackward", options);
+        afterAction("majorSeekBackward", options);
 
         if (callback && typeof(callback) === "function") {
             callback();
@@ -20,7 +20,7 @@ const actions = {
     "minorSeekForward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime + parseFloat(options.minorSeekIncrement);
 
-        afterAction("seekForward", options);
+        afterAction("minorSeekForward", options);
 
         if (callback && typeof(callback) === "function") {
             callback();
@@ -29,7 +29,7 @@ const actions = {
     "minorSeekBackward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime - parseFloat(options.minorSeekIncrement);
 
-        afterAction("seekBackward", options);
+        afterAction("minorSeekBackward", options);
 
         if (callback && typeof(callback) === "function") {
             callback();
@@ -101,7 +101,7 @@ const actions = {
     },
     "volumeDown": (options, callback) => {
         let newVolume = vrvPlayer.volume - (parseFloat(options.volumeIncrement) / 100);
-        if (newVolume < 0) {
+        if (newVolume < .01) {
             // clip the volume
             vrvPlayer.muted = true;
             afterAction("muted", options);
@@ -161,6 +161,13 @@ function afterAction(action, options) {
 }
 
 function showStatusIcon(action) {
+    let statusValue = document.getElementById("bvrv-status-value");
+    if (action in FORMATTED_VALUES) {
+        statusValue.innerText = FORMATTED_VALUES[action]();
+    } else {
+        statusValue.innerText = "";
+    }
+
     if (STATUS_ICONS[action]) {
         let iconContainer = document.getElementById("bvrv-status-icon-container");
         iconContainer.classList.remove("bvrv-fade-out");
@@ -170,8 +177,6 @@ function showStatusIcon(action) {
 
         void iconContainer.offsetWidth;
         iconContainer.classList.add("bvrv-fade-out");
-        // var newone = iconContainer.cloneNode(true);
-        // iconContainer.parentNode.replaceChild(newone, iconContainer);
     }
 }
 

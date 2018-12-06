@@ -20,6 +20,10 @@
     height: 100%;
 }
 
+#bvrv-status-value {
+    color: #f9f9fa;
+}
+
 .bvrv-fade-out {
     animation: fadeOut 2s ease;
 }
