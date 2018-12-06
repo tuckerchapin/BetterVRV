@@ -4,10 +4,7 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="400px" height="400px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
 <circle fill="#474658" cx="200" cy="200" r="200"/>
-<g id="speed_1_">
-	<polygon fill="#F9F9FA" points="194,139.378 299,200 194,260.622 	"/>
-	<polygon fill="#F9F9FA" points="115,139.378 220,200 115,260.622 	"/>
-</g>
-<polygon id="plus" fill="#F9F9FA" points="237,72 209,72 209,45 190,45 190,72 162,72 162,91 190,91 190,120 209,120 209,91 237,91 
-	"/>
+<polygon fill="#F9F9FA" points="299,200 194,139.378 194,184.989 115,139.378 115,260.622 194,215.011 194,260.622 "/>
+<polygon id="plus" fill="#474658" points="246,193.28 228.08,193.28 228.08,176 215.92,176 215.92,193.28 198,193.28 198,205.44 
+	215.92,205.44 215.92,224 228.08,224 228.08,205.44 246,205.44 "/>
 </svg>

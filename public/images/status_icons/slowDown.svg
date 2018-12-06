@@ -4,9 +4,6 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="400px" height="400px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
 <circle fill="#474658" cx="200" cy="200" r="200"/>
-<g id="speed_1_">
-	<polygon fill="#F9F9FA" points="194,139.378 299,200 194,260.622 	"/>
-	<polygon fill="#F9F9FA" points="115,139.378 220,200 115,260.622 	"/>
-</g>
-<rect id="minus" x="162" y="298" fill="#F9F9FA" width="75" height="19"/>
+<polygon fill="#F9F9FA" points="299,200 194,139.378 194,184.989 115,139.378 115,260.622 194,215.011 194,260.622 "/>
+<rect id="minus" x="198" y="193.92" fill="#474658" width="48" height="12.16"/>
 </svg>
