@@ -16,8 +16,7 @@ chrome.storage.sync.get(
         addSettingsDropdown();
     }
 );
-// #b0aebb
-// #f9f9fa //rgba(249, 249, 250, 1)
+
 function addSettingsDropdown() {
     checkExist = setInterval(
         () => {

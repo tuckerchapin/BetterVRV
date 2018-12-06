@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="400px" height="400px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
+<circle fill="#474658" cx="200" cy="200" r="200"/>
+<polygon id="speaker" fill="#F9F9FA" points="141.286,159 79,159 79,241 141.286,241 222,302.143 222,97.857 "/>
+<g id="unmute">
+	<path fill="#F9F9FA" d="M310,200c0,29.382-11.441,57.005-32.219,77.781l10.605,10.605C311.009,265.768,325,234.518,325,200
+		c0-34.518-13.991-65.768-36.611-88.388l-10.606,10.606C298.559,142.995,310,170.618,310,200z"/>
+	<path fill="#F9F9FA" d="M272.5,200c0,19.988-8.131,38.113-21.259,51.241l10.631,10.631C277.706,246.038,287.5,224.163,287.5,200
+		c0-24.162-9.794-46.037-25.628-61.872l-10.631,10.63C264.369,161.887,272.5,180.012,272.5,200z"/>
+</g>
+</svg>

@@ -2,103 +2,117 @@ const actions = {
     "majorSeekForward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime + parseFloat(options.majorSeekIncrement);
 
-        afterAction(options);
+        afterAction("majorSeekForward", options);
 
-        if (!!callback) {
+        if (callback && typeof(callback) === "function") {
             callback();
         }
     },
     "majorSeekBackward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime - parseFloat(options.majorSeekIncrement);
 
-        afterAction(options);
+        afterAction("majorSeekBackward", options);
 
-        if (!!callback) {
+        if (callback && typeof(callback) === "function") {
             callback();
         }
     },
     "minorSeekForward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime + parseFloat(options.minorSeekIncrement);
 
-        afterAction(options);
+        afterAction("minorSeekForward", options);
 
-        if (!!callback) {
+        if (callback && typeof(callback) === "function") {
             callback();
         }
     },
     "minorSeekBackward": (options, callback) => {
         vrvPlayer.currentTime = vrvPlayer.currentTime - parseFloat(options.minorSeekIncrement);
 
-        afterAction(options);
+        afterAction("minorSeekBackward", options);
 
-        if (!!callback) {
+        if (callback && typeof(callback) === "function") {
             callback();
         }
     },
     "playPause": (options, callback) => {
-        vrvPlayer.paused ? vrvPlayer.play() : vrvPlayer.pause();
+        if (vrvPlayer.paused) {
+            vrvPlayer.play();
+            afterAction("play", options);
+        } else {
+            vrvPlayer.pause();
+            afterAction("pause", options);
+        }
 
-        afterAction(options);
-
-        if (!!callback) {
+        if (callback && typeof(callback) === "function") {
             callback();
         }
     },
     "pause": (options, callback) => {
         vrvPlayer.pause();
 
-        afterAction(options);
+        afterAction("pause", options);
 
-        if (!!callback) {
+        if (callback && typeof(callback) === "function") {
             callback();
         }
     },
     "toggleFullscreen": (options) => {
-        document.webkitIsFullScreen ?
-            document.webkitExitFullscreen() : document.documentElement.webkitRequestFullscreen();
+        if (document.webkitIsFullScreen) {
+            document.webkitExitFullscreen();
+            afterAction("exitFullscreen", options);
+        } else {
+            document.documentElement.webkitRequestFullscreen();
+            afterAction("enterFullscreen", options);
+        }
 
-        afterAction(options);
-
-        if (!!callback) {
+        if (callback && typeof(callback) === "function") {
             callback();
         }
     },
     "toggleMute": (options, callback) => {
         vrvPlayer.muted = !vrvPlayer.muted;
 
-        afterAction(options);
+        if (vrvPlayer.muted) {
+            afterAction("muted", options);
+        } else {
+            afterAction("unmuted", options);
+        }
 
-        if (!!callback) {
+        if (callback && typeof(callback) === "function") {
             callback();
         }
     },
     "volumeUp": (options, callback) => {
         let newVolume = vrvPlayer.volume + (parseFloat(options.volumeIncrement) / 100);
-        if (newVolume > 1) {
+        vrvPlayer.muted = false;
+        if (newVolume >= 1) {
             // clip the volume
             vrvPlayer.volume = 1;
+            afterAction("volumeMax", options);
         } else {
             vrvPlayer.volume = newVolume;
+            afterAction("volumeUp", options);
         }
 
-        afterAction(options);
-
-        if (!!callback) {
+        if (callback && typeof(callback) === "function") {
             callback();
         }
     },
     "volumeDown": (options, callback) => {
         let newVolume = vrvPlayer.volume - (parseFloat(options.volumeIncrement) / 100);
-        if (newVolume < 0) {
-            // clip the volume
+        if (newVolume < .01) {
+            // clip the volume and mute
+            vrvPlayer.muted = true;
             vrvPlayer.volume = 0;
+            afterAction("muted", options);
         } else {
+            vrvPlayer.muted = false;
             vrvPlayer.volume = newVolume;
+            afterAction("volumeDown", options);
         }
 
-        afterAction(options);
-
-        if (!!callback) {
+        if (callback && typeof(callback) === "function") {
             callback();
         }
     },
@@ -109,11 +123,10 @@ const actions = {
             vrvPlayer.playbackRate = 16;
         } else {
             vrvPlayer.playbackRate = newSpeed;
+            afterAction("speedUp", options);
         }
 
-        afterAction(options);
-
-        if (!!callback) {
+        if (callback && typeof(callback) === "function") {
             callback();
         }
     },
@@ -124,30 +137,56 @@ const actions = {
             vrvPlayer.playbackRate = 0;
         } else {
             vrvPlayer.playbackRate = newSpeed;
+            afterAction("slowDown", options);
         }
 
-        afterAction(options);
-
-        if (!!callback) {
+        if (callback && typeof(callback) === "function") {
             callback();
         }
     },
     "resetSpeed": (options, callback) => {
         vrvPlayer.playbackRate = parseFloat(options.defaultSpeed);
 
-        afterAction(options);
+        afterAction("resetSpeed", options);
 
-        if (!!callback) {
+        if (callback && typeof(callback) === "function") {
             callback();
         }
     },
 }
 
-function afterAction(options, callback) {
+function afterAction(action, options) {
     if (options.showControlsOnShortcut) {
-        let userActionEvent = new Event("useractive");
-        let player = document.querySelector("div#player");
-        player.dispatchEvent(userActionEvent);
+        showStatusIcon(action, options);
+    }
+}
+
+function showStatusIcon(action, options) {
+    if (STATUS_ICONS[action]) {
+        let iconContainer = document.getElementById("bvrv-status-icon-container");
+        iconContainer.classList.remove("bvrv-fade-out");
+
+
+        let statusValue = document.getElementById("bvrv-status-value");
+        if (action in FORMATTED_VALUES) {
+            statusValue.innerText = FORMATTED_VALUES[action](options);
+
+            if (action.includes("Seek")) {
+                statusValue.classList.remove("bvrv-status-value-below");
+                statusValue.classList.add("bvrv-status-value-center");
+            } else {
+                statusValue.classList.remove("bvrv-status-value-center");
+                statusValue.classList.add("bvrv-status-value-below");
+            }
+        } else {
+            statusValue.innerText = "";
+        }
+
+        let icon = document.getElementById("bvrv-status-icon");
+        icon.src = chrome.extension.getURL(STATUS_ICONS[action]);
+
+        void iconContainer.offsetWidth;
+        iconContainer.classList.add("bvrv-fade-out");
     }
 }
 

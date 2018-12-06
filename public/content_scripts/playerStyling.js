@@ -1,4 +1,26 @@
 function stylePlayer(options) {
+    insertSpeedDisplay(options);
+    insertStatusIcon(options);
+}
+
+function insertStatusIcon(options) {
+    document.body.insertAdjacentHTML(
+        'beforeend',
+        `
+        <div id="bvrv-status-icon-overlay" class="bvrv">
+            <div id="bvrv-status-icon-container" class="bvrv">
+                <img
+                    id="bvrv-status-icon"
+                    class="bvrv"
+                />
+                <div id="bvrv-status-value" class="bvrv"></div>
+            </div>
+        </div>
+        `
+    );
+}
+
+function insertSpeedDisplay(options) {
     let settingsButton = document.querySelector("div.settingsMenuButton.vjs-button.vjs-control");
     settingsButton.insertAdjacentHTML(
         'beforebegin',
@@ -30,48 +52,3 @@ function stylePlayer(options) {
     document.getElementById("bvrv-speed-increase").onclick = () => actions.speedUp(options);
     document.getElementById("bvrv-speed-decrease").onclick = () => actions.slowDown(options);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// window.onload = () => {
-//     let playbackRateMenuButton = document.createElement("li");
-//         playbackRateMenuButton.setAttribute("class", "vjs-menu-item playbackRateMenuButton settingsMenuItem baseSettingsMenuItem");
-//         playbackRateMenuButton.setAttribute("tabindex", "-1");
-//         playbackRateMenuButton.setAttribute("role", "menuitem");
-//         playbackRateMenuButton.setAttribute("aria-live", "polite");
-//         playbackRateMenuButton.setAttribute("aria-disabled", "false");
-//         playbackRateMenuButton.innerText = "Speed";
-//
-//     let playbackRateIndicator = document.createElement("span");
-//         playbackRateIndicator.setAttribute("id", "bvrv-playback-rate");
-//         playbackRateIndicator.setAttribute("class", "qualitySelectionDetails");
-//         playbackRateIndicator.innerText = "SPEED";
-//
-//
-//     playbackRateMenuButton.appendChild(playbackRateIndicator);
-//
-//     // HACKY this is relying on this being the last element
-//     let menu = document.getElementsByClassName("vjs-menu-content")[7];
-//     menu.appendChild(playbackRateMenuButton);
-//     // menu.insertBefore(playbackRateMenuButton, menu.childNodes[0] || null);
-//
-//     console.log(playbackRateMenuButton);
-//     console.log(document.querySelector("ul.vjs-menu-content"));
-// }
