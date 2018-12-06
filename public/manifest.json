@@ -27,11 +27,11 @@
                 "https://vrv.co/*"
             ],
             "css": [
-                "content_scripts/css/vrvStyling.css"
+                "content_scripts/top-site/css/vrvStyling.css"
             ],
             "js": [
                 "content_scripts/lib.js",
-                "content_scripts/vrvStyling.js"
+                "content_scripts/top-site/js/vrvStyling.js"
             ]
         },
         {
@@ -40,15 +40,15 @@
                 "https://static.vrv.co/vilos/player.html"
             ],
             "css": [
-                "content_scripts/css/playerStyling.css",
-                "content_scripts/css/controlStyling.css",
-                "content_scripts/css/statusIconStyling.css"
+                "content_scripts/player/css/playerStyling.css",
+                "content_scripts/player/css/controlStyling.css",
+                "content_scripts/player/css/statusIconStyling.css"
             ],
             "js": [
                 "content_scripts/lib.js",
-                "content_scripts/keycuts.js",
-                "content_scripts/playerStyling.js",
-                "content_scripts/player.js"
+                "content_scripts/player/js/keycuts.js",
+                "content_scripts/player/js/playerStyling.js",
+                "content_scripts/player/js/player.js"
             ]
         }
     ],
