@@ -24,7 +24,7 @@ const DEFAULT_OPTIONS = {
     "speedIncrement": 0.25,
     "defaultSpeed": 1,
 
-    "showControlsOnShortcut": false,
+    "showControlsOnShortcut": true,
 
     "toggleFullscreen": ["70", ""],
     "playPause": ["32", "75"],
@@ -207,10 +207,9 @@ class Options extends Component {
                     </ControlPanel>
 
                     <ControlPanel title="Miscellaneous">
-                        <ControlRow title="Show Controls on Shortcut"
-                            description="This will show the controls for the player every time you execute a shortcut, as if you had interacted with the player with your mouse."
+                        <ControlRow title="Show Shortcut Feedback"
+                            description="Any keycut used will be gently indicated at the center of the screen."
                             controlType="toggle"
-                            disabled={true}
                             value={this.state.showControlsOnShortcut}
                             onChange={(newValue) => this.save({showControlsOnShortcut: newValue})}
                         />

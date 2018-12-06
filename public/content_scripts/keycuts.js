@@ -156,12 +156,8 @@ const actions = {
 
 function afterAction(action, options) {
     if (options.showControlsOnShortcut) {
-        let userActionEvent = new Event("useractive");
-        let player = document.querySelector("div#player");
-        player.dispatchEvent(userActionEvent);
+        showStatusIcon(action);
     }
-
-    showStatusIcon(action);
 }
 
 function showStatusIcon(action) {

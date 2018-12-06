@@ -14,7 +14,7 @@ const DEFAULT_OPTIONS = {
     "speedIncrement": 0.25,
     "defaultSpeed": 1,
 
-    "showControlsOnShortcut": false,
+    "showControlsOnShortcut": true,
 
     "toggleFullscreen": ["70", ""],
     "playPause": ["32", "75"],
