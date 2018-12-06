@@ -11,6 +11,8 @@ import './styles/Options.css';
 const DEFAULT_OPTIONS = {
     "firstInstall": true,
 
+    "reorderFrontPage": true,
+
     "hideDescriptions": true,
     "hideThumbnails": true,
     "showWatchedThumbnails": false,
@@ -103,34 +105,43 @@ class Options extends Component {
 
                     <div className="section-title">Settings</div>
 
+                    <ControlPanel title="General">
+                        <ControlRow title="Reorder Homepage"
+                            description="Bring relevant content to the top of the homepage. All the content on the homepage will still be available, but the first three sections will be Continue Watching, Your Watchlist, and Recommendations (in that order)."
+                            controlType="toggle"
+                            value={this.state.reorderFrontPage}
+                            onChange={(newValue) => this.save({reorderFrontPage: newValue})}
+                        />
+                    </ControlPanel>
+
                     <ControlPanel title="Spoilers">
-                            <ControlRow title="Hide Thumbnails"
-                                description="All thumbnails will be blurred. The placeholder image used by the player while loading the episode will also be blurred."
+                        <ControlRow title="Hide Thumbnails"
+                            description="All thumbnails will be blurred. The placeholder image used by the player while loading the episode will also be blurred."
+                            controlType="toggle"
+                            value={this.state.hideThumbnails}
+                            onChange={(newValue) => this.save({hideThumbnails: newValue})}
+                        />
+                            <ControlRow title="Show Watched Thumbnails"
+                                description="Thumbnails on episodes you've already watched will not be blurred."
                                 controlType="toggle"
-                                value={this.state.hideThumbnails}
-                                onChange={(newValue) => this.save({hideThumbnails: newValue})}
+                                value={this.state.showWatchedThumbnails}
+                                disabled={!this.state.hideThumbnails}
+                                subrow={true}
+                                onChange={(newValue) => this.save({showWatchedThumbnails: newValue})}
                             />
-                                <ControlRow title="Show Watched Thumbnails"
-                                    description="Thumbnails on episodes you've already watched will not be blurred."
-                                    controlType="toggle"
-                                    value={this.state.showWatchedThumbnails}
-                                    disabled={!this.state.hideThumbnails}
-                                    subrow={true}
-                                    onChange={(newValue) => this.save({showWatchedThumbnails: newValue})}
-                                />
-                            <ControlRow title="Hide Descriptions"
-                                description="All episode descriptions will be hidden."
-                                controlType="toggle"
-                                value={this.state.hideDescriptions}
-                                onChange={(newValue) => this.save({hideDescriptions: newValue})}
-                            />
-                            <ControlRow title="Hide Poster Image"
-                                description="Hide the poster shown while an episode is loading and preparing to play. There may be FOUC while loading a video."
-                                controlType="toggle"
-                                disabled={true}
-                                value={this.state.hideLoadingPoster}
-                                onChange={(newValue) => this.save({hideLoadingPoster: newValue})}
-                            />
+                        <ControlRow title="Hide Descriptions"
+                            description="All episode descriptions will be hidden."
+                            controlType="toggle"
+                            value={this.state.hideDescriptions}
+                            onChange={(newValue) => this.save({hideDescriptions: newValue})}
+                        />
+                        <ControlRow title="Hide Poster Image"
+                            description="Hide the poster shown while an episode is loading and preparing to play. There may be FOUC while loading a video."
+                            controlType="toggle"
+                            disabled={true}
+                            value={this.state.hideLoadingPoster}
+                            onChange={(newValue) => this.save({hideLoadingPoster: newValue})}
+                        />
                     </ControlPanel>
 
                     <ControlPanel title="Tuning">
