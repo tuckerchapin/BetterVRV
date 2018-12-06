@@ -7,4 +7,8 @@ Remove the contorl blocking from the loading spinner
 
 Should remove the cancerous passing around of the options object, and set a global or something
 
-Make sections or dividers in the options page collapsable 
+Make sections or dividers in the options page collapsable
+
+
+SKIPPING
+---
