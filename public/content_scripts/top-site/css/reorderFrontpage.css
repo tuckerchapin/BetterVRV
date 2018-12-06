@@ -1,0 +1,16 @@
+div > article.erc-hero-card {
+    padding-top: 3.75rem !important;
+}
+
+div.erc-hero-card-background-overlay.bottom-angled span.background-gradient {
+    background: linear-gradient(
+        rgba(27,26,38,1) 10%,
+        rgba(27,26,38,.7)30%,
+        rgba(27,26,38,.7)70%,
+        rgba(27,26,38,1) 90%
+        ) !important;
+}
+
+div#continue_watching {
+    padding-top: 4.25rem !important;
+}

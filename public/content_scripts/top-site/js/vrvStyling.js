@@ -13,17 +13,46 @@ chrome.storage.sync.get(
             insertCSS("content_scripts/top-site/css/showWatchedThumbnails.css");
         }
 
+        if (options.reorderFrontPage) {
+            reorderFrontPage();
+        }
+
         addSettingsDropdown();
     }
 );
 
+function reorderFrontPage() {
+    let vrvHomepage = document.querySelector("div.vrv-homepage");
+    if (vrvHomepage) {
+        insertCSS("content_scripts/top-site/css/reorderFrontPage.css");
+        checkFPFeedExists = setInterval(
+            () => {
+                let continueWatching = document.getElementById("continue_watching");
+                let watchlist = document.getElementById("watchlist_122");
+                let recommendations = document.getElementById("recommendations");
+
+                if (continueWatching && watchlist && recommendations) {
+                    console.log("checked");
+                    clearInterval(checkFPFeedExists);
+
+                    let feedContainer = document.getElementsByClassName("erc-feed-container")[0];
+                    feedContainer.insertBefore(recommendations, feedContainer.firstChild);
+                    feedContainer.insertBefore(watchlist, feedContainer.firstChild);
+                    feedContainer.insertBefore(continueWatching, feedContainer.firstChild);
+                }
+            },
+            100
+        );
+    }
+}
+
 function addSettingsDropdown() {
-    checkExist = setInterval(
+    checkDropdownExists = setInterval(
         () => {
             let dropdownItems = document.getElementsByClassName("erc-user-dropdown-item");
 
             if (dropdownItems.length === 8) {
-                clearInterval(checkExist);
+                clearInterval(checkDropdownExists);
 
                 dropdownItems[0].insertAdjacentHTML(
                     'beforebegin',
