@@ -136,7 +136,7 @@ const actions = {
             vrvPlayer.playbackRate = 0;
         } else {
             vrvPlayer.playbackRate = newSpeed;
-            afterAction("speedDown", options);
+            afterAction("slowDown", options);
         }
 
         if (callback && typeof(callback) === "function") {
@@ -161,16 +161,25 @@ function afterAction(action, options) {
 }
 
 function showStatusIcon(action) {
-    let statusValue = document.getElementById("bvrv-status-value");
-    if (action in FORMATTED_VALUES) {
-        statusValue.innerText = FORMATTED_VALUES[action]();
-    } else {
-        statusValue.innerText = "";
-    }
-
     if (STATUS_ICONS[action]) {
         let iconContainer = document.getElementById("bvrv-status-icon-container");
         iconContainer.classList.remove("bvrv-fade-out");
+
+
+        let statusValue = document.getElementById("bvrv-status-value");
+        if (action in FORMATTED_VALUES) {
+            statusValue.innerText = FORMATTED_VALUES[action]();
+
+            if (action.includes("Seek")) {
+                statusValue.classList.remove("bvrv-status-value-below");
+                statusValue.classList.add("bvrv-status-value-center");
+            } else {
+                statusValue.classList.remove("bvrv-status-value-center");
+                statusValue.classList.add("bvrv-status-value-below");
+            }
+        } else {
+            statusValue.innerText = "";
+        }
 
         let icon = document.getElementById("bvrv-status-icon");
         icon.src = chrome.extension.getURL(STATUS_ICONS[action]);
