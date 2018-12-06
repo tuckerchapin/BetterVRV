@@ -23,6 +23,8 @@
 #bvrv-status-value {
     color: #f9f9fa;
     background-color: #474658;
+    border-radius: 5px;
+    border: none;
 }
 
     .bvrv-status-value-center {
@@ -39,8 +41,6 @@
         display: inline-block;
         margin-top: 10px;
         padding: 5px;
-        border-radius: 5px;
-        border: none;
     }
 
 .bvrv-fade-out {

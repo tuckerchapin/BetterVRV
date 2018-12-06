@@ -86,7 +86,7 @@ const actions = {
     "volumeUp": (options, callback) => {
         let newVolume = vrvPlayer.volume + (parseFloat(options.volumeIncrement) / 100);
         vrvPlayer.muted = false;
-        if (newVolume > 1) {
+        if (newVolume >= 1) {
             // clip the volume
             vrvPlayer.volume = 1;
             afterAction("volumeMax", options);
@@ -102,8 +102,9 @@ const actions = {
     "volumeDown": (options, callback) => {
         let newVolume = vrvPlayer.volume - (parseFloat(options.volumeIncrement) / 100);
         if (newVolume < .01) {
-            // clip the volume
+            // clip the volume and mute
             vrvPlayer.muted = true;
+            vrvPlayer.volume = 0;
             afterAction("muted", options);
         } else {
             vrvPlayer.muted = false;
@@ -156,11 +157,11 @@ const actions = {
 
 function afterAction(action, options) {
     if (options.showControlsOnShortcut) {
-        showStatusIcon(action);
+        showStatusIcon(action, options);
     }
 }
 
-function showStatusIcon(action) {
+function showStatusIcon(action, options) {
     if (STATUS_ICONS[action]) {
         let iconContainer = document.getElementById("bvrv-status-icon-container");
         iconContainer.classList.remove("bvrv-fade-out");
@@ -168,7 +169,7 @@ function showStatusIcon(action) {
 
         let statusValue = document.getElementById("bvrv-status-value");
         if (action in FORMATTED_VALUES) {
-            statusValue.innerText = FORMATTED_VALUES[action]();
+            statusValue.innerText = FORMATTED_VALUES[action](options);
 
             if (action.includes("Seek")) {
                 statusValue.classList.remove("bvrv-status-value-below");

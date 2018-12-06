@@ -56,20 +56,20 @@ const STATUS_ICONS = {
     "volumeZero": "images/status_icons/volumeZero.svg",
 }
 
-function getSpeed() {
+function getSpeed(options) {
     return String(parseFloat(vrvPlayer.playbackRate).toFixed(2)) + "x";
 }
 
-function getVolume() {
+function getVolume(options) {
     return String(parseInt(vrvPlayer.volume * 100)) + "%";
 }
 
-function getMajorTimeSkip() {
-    return String(parseInt(DEFAULT_OPTIONS["majorSeekIncrement"])) + "s";
+function getMajorTimeSkip(options) {
+    return String(parseInt(options["majorSeekIncrement"])) + "s";
 }
 
-function getMinorTimeSkip() {
-    return String(parseInt(DEFAULT_OPTIONS["minorSeekIncrement"])) + "s";
+function getMinorTimeSkip(options) {
+    return String(parseInt(options["minorSeekIncrement"])) + "s";
 }
 
 const FORMATTED_VALUES = {
