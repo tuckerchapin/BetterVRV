@@ -1,0 +1,36 @@
+#bvrv-status-icon-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bvrv-status-icon-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+#bvrv-status-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.bvrv-fade-out {
+    animation: fadeOut 2s ease;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 0;
+    }
+}

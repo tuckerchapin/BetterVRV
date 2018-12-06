@@ -40,6 +40,19 @@ const MOD_KEY = {
     "altKey": 18,
 }
 
+const STATUS_ICONS = {
+    "muted": "images/status_icons/muted.svg",
+    "seekBackward": "images/status_icons/seekBackward.svg",
+    "seekForward": "images/status_icons/seekForward.svg",
+    "slowDown": "images/status_icons/slowDown.svg",
+    "speedUp": "images/status_icons/speedUp.svg",
+    "unmuted": "images/status_icons/unmuted.svg",
+    "volumeDown": "images/status_icons/volumeDown.svg",
+    "volumeMax": "images/status_icons/volumeMax.svg",
+    "volumeUp": "images/status_icons/volumeUp.svg",
+    "volumeZero": "images/status_icons/volumeZero.svg",
+}
+
 function insertCSS(path) {
     document.head.insertAdjacentHTML(
         'beforeend',

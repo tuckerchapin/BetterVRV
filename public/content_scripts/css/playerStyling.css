@@ -2,60 +2,10 @@ html:focus, body:focus, #player:focus, #player_html5_api:focus {
     outline: none;
 }
 
-#bvrv-control-container {
-    display: flex;
-    height:  100%;
-    flex-grow: 1;
-    padding-right: 100px;
-    flex-direction: column;
-    align-items: flex-end;
+.bvrv-invisible {
+    visibility: hidden;
 }
 
-.bvrv-control {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: row;
-    align-items: center;
-    border: solid 2px rgba(98, 94, 138, 0.5) !important;
-    margin: calc((50px - (1rem + 10px)) / 2) !important;
-    border-radius: 5px;
-    justify-content: space-evenly;
-    min-width: 80px;
-}
-
-.bvrv-control-button {
-    margin-right: -2px;
-    margin-bottom: -2px;
-}
-
-/* Hack to properly color unicode heavy_plus_sign and heavy_minus_sign */
-#bvrv-speed-decrease:before {
-   content: '\2796';
-}
-
-#bvrv-speed-increase:before {
-   content: '\2795';
-}
-
- #bvrv-speed-decrease:before, #bvrv-speed-increase:before {
-    color: transparent;
-    text-shadow: 0 0 rgba(255, 255, 255, 0.7);
-}
-
-    #bvrv-speed-decrease:hover:before, #bvrv-speed-increase:hover:before {
-       text-shadow: 0 0 #ffdd00;
-   }
-
-.bvrv-control-display {
-    align-items: baseline;
-    height: 1rem;
-}
-
-    .bvrv-control-display:hover {
-        color: #ffdd00;
-    }
-
-.bvrv-speed-control-unit {
-    font-size: 1rem;
-    line-height: .75rem;
+.bvrv-visible {
+    visibility: visible;
 }
