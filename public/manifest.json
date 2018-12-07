@@ -42,7 +42,8 @@
             "css": [
                 "content_scripts/player/css/player.css",
                 "content_scripts/player/css/controls.css",
-                "content_scripts/player/css/statusIcons.css"
+                "content_scripts/player/css/statusIcons.css",
+                "content_scripts/player/css/skipButtons.css"
             ],
             "js": [
                 "content_scripts/lib.js",
