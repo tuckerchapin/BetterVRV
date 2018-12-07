@@ -58,7 +58,8 @@
         "images/status_icons/*",
         "fonts/*",
         "content_scripts/*",
-        "index.html"
+        "index.html",
+        "content_scripts/player/js/test.js"
     ],
     "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"
 }

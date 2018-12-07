@@ -14,8 +14,7 @@ function insertNextEpisodeButton(options) {
         `
     )
 
-    let vjsObject = videojs("player_html5_api");
-    setTimeout(() => console.log(vjsObject.userActive()), 500);
+    insertJS("content_scripts/player/js/test.js");
 }
 
 function insertStatusIcon(options) {
