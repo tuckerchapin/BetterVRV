@@ -3,7 +3,12 @@
     right: 20px;
     color: rgba(216, 187, 0, .5);
     border: solid 3px rgba(216, 187, 0, .5);
-    padding: 20px;
+    height: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
     .bvrv-skip-button:hover {

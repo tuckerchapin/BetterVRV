@@ -8,7 +8,7 @@ function insertNextEpisodeButton(options) {
     document.body.insertAdjacentHTML(
         'beforeend',
         `
-        <div id="" class="bvrv bvrv-skip-button">
+        <div id="bvrv-next-episode-button" class="bvrv bvrv-skip-button bvrv-skip-button-useractive">
             NEXT EPISODE
         </div>
         `
