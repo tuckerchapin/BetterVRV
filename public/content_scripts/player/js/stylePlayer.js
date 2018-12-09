@@ -1,23 +1,23 @@
 function stylePlayer(options) {
     insertSpeedDisplay(options);
     insertStatusIcon(options);
-    insertNextEpisodeButton(options);
+    insertSkipIntroButton(options);
 }
 
 function hideLoadingPoster() {
-    insertCSS("content_scripts/player/css/hideLoadingPoster.css");
-    document.querySelector("div#player").removeAttribute("poster");
-    document.querySelector("video#player_html5_api").removeAttribute("poster");
-    let poster = document.querySelector("div.vjs-poster");
-    poster.parentNode.removeChild(poster);
+    // insertCSS("content_scripts/player/css/hideLoadingPoster.css");
+    // document.querySelector("div#player").removeAttribute("poster");
+    // document.querySelector("video#player_html5_api").removeAttribute("poster");
+    // let poster = document.querySelector("div.vjs-poster");
+    // poster.parentNode.removeChild(poster);
 }
 
-function insertNextEpisodeButton(options) {
+function insertSkipIntroButton(options) {
     document.body.insertAdjacentHTML(
         'beforeend',
         `
         <div id="bvrv-next-episode-button" class="bvrv bvrv-skip-button bvrv-skip-button-useractive">
-            NEXT EPISODE
+            SKIP INTRO
         </div>
         `
     );

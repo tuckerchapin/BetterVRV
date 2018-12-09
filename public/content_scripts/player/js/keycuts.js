@@ -156,6 +156,16 @@ const actions = {
 }
 
 function afterAction(action, options) {
+    if (action === "pause") {
+        window.postMessage(
+            {
+                type: MESSAGE_TYPES.fireEvent,
+                listener: "userActive",
+                value: true
+            },
+            "*"
+        );
+    }
     if (options.showControlsOnShortcut) {
         showStatusIcon(action, options);
     }
