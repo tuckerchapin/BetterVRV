@@ -31,6 +31,7 @@
             ],
             "js": [
                 "content_scripts/lib.js",
+                "content_scripts/const.js",
                 "content_scripts/top-site/js/vrvStyling.js"
             ]
         },
@@ -47,6 +48,7 @@
             ],
             "js": [
                 "content_scripts/lib.js",
+                "content_scripts/const.js",
                 "content_scripts/player/js/injector.js",
                 "content_scripts/player/js/keycuts.js",
                 "content_scripts/player/js/stylePlayer.js",

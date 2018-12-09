@@ -1,15 +1,23 @@
 let vjsObject = videojs("player_html5_api");
 
-window.addEventListener("message", function(event) {
-  if (event.data.type && (event.data.type == "BETTERVRV")) {
-      console.log(event.data.content);
-  }
-}, false);
+// vjsObject.poster("");
 
-// window.postMessage(
-//   {
-//       type: "BETTERVRV",
-//       content: "content"
-//   },
-//   "*"
-// );
+vjsObject.on("useractive", function(e) {
+    window.postMessage(
+        {
+            type: MESSAGE_TYPES.listenerFired,
+            event: JSON.parse(JSON.stringify(e))
+        },
+        "*"
+    );
+});
+
+vjsObject.on("userinactive", function(e) {
+    window.postMessage(
+        {
+            type: MESSAGE_TYPES.listenerFired,
+            event: JSON.parse(JSON.stringify(e))
+        },
+        "*"
+    );
+});
