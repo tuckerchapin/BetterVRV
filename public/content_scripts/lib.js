@@ -101,10 +101,6 @@ function insertCSS(path) {
 }
 
 function insertJS(path) {
-    // document.head.insertAdjacentHTML(
-    //     'beforeend',
-    //     `<script type="text/javascript" src="${chrome.runtime.getURL(path)}"></script>`
-    // );
     var s = document.createElement("script");
     s.src = chrome.extension.getURL(path);
     s.onload = function() {

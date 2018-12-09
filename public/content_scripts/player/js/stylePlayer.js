@@ -12,9 +12,7 @@ function insertNextEpisodeButton(options) {
             NEXT EPISODE
         </div>
         `
-    )
-
-    insertJS("content_scripts/player/js/test.js");
+    );
 }
 
 function insertStatusIcon(options) {

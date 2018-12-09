@@ -47,6 +47,7 @@
             ],
             "js": [
                 "content_scripts/lib.js",
+                "content_scripts/player/js/injector.js",
                 "content_scripts/player/js/keycuts.js",
                 "content_scripts/player/js/stylePlayer.js",
                 "content_scripts/player/js/player.js"
@@ -58,8 +59,7 @@
         "images/status_icons/*",
         "fonts/*",
         "content_scripts/*",
-        "index.html",
-        "content_scripts/player/js/test.js"
+        "index.html"
     ],
     "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"
 }
