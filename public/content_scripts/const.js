@@ -38,7 +38,8 @@ const DEFAULT_OPTIONS = {
 
 const MESSAGE_TYPES = {
     listenerFired: "listenerFired",
-    fireEvent: "fireEvent",
+    setValue: "setValue",
+
 };
 
 const MOD_KEY = {

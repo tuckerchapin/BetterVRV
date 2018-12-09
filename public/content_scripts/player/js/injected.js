@@ -6,11 +6,11 @@ window.addEventListener(
     (message) => {
         if (message.data.type) {
             // Fire a listener from the content scripts
-            if (message.data.type === MESSAGE_TYPES.fireEvent) {
-                vjsObject[message.data.listener](message.data.value);
+            if (message.data.type === MESSAGE_TYPES.setValue) {
+                vjsObject[message.data.attribute](message.data.value);
             }
 
-            // if (message.data.type)
+            if (message.data.type)
 
             // vjsObject.poster("");
 

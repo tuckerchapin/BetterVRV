@@ -159,8 +159,8 @@ function afterAction(action, options) {
     if (action === "pause") {
         window.postMessage(
             {
-                type: MESSAGE_TYPES.fireEvent,
-                listener: "userActive",
+                type: MESSAGE_TYPES.setValue,
+                attribute: "userActive",
                 value: true
             },
             "*"
