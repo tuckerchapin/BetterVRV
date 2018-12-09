@@ -4,6 +4,14 @@ function stylePlayer(options) {
     insertNextEpisodeButton(options);
 }
 
+function hideLoadingPoster() {
+    insertCSS("content_scripts/player/css/hideLoadingPoster.css");
+    document.querySelector("div#player").removeAttribute("poster");
+    document.querySelector("video#player_html5_api").removeAttribute("poster");
+    let poster = document.querySelector("div.vjs-poster");
+    poster.parentNode.removeChild(poster);
+}
+
 function insertNextEpisodeButton(options) {
     document.body.insertAdjacentHTML(
         'beforeend',

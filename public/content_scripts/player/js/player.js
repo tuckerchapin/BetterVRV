@@ -8,6 +8,10 @@ chrome.storage.sync.get(
         // vrvPlayer.defaultMuted = options.muteByDefault; // Does not work for some reason
         vrvPlayer.muted = options.muteByDefault;
 
+        if (options.hideLoadingPoster) {
+            hideLoadingPoster();
+        }
+
         window.onload = () => stylePlayer(options);
 
         document.onkeydown = (e) => handleKeycuts(options, e);
