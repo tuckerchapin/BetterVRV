@@ -2,7 +2,7 @@ function stylePlayer(options) {
     insertSpeedDisplay(options);
     insertStatusIcon(options);
     insertSkipIntroButton(options);
-    insertSkipOutroButton(options);
+    insertNextEpisodeButton(options);
 }
 
 function insertSkipIntroButton(options) {

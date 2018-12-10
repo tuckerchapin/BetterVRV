@@ -11,7 +11,6 @@ let outroPlaying = false;
 vrvPlayer.addEventListener(
     "timeupdate",
     (e) => {
-        console.log(introPlaying, outroPlaying);
         if (introPlaying) {
             // check if the time is greater than the intro
             if (vrvPlayer.currentTime > timestamps.intro[1] || vrvPlayer.currentTime < timestamps.intro[0]) {
@@ -31,16 +30,20 @@ vrvPlayer.addEventListener(
                 // intro is playing
                 introPlaying = true;
                 let introSkipButton = document.getElementById("bvrv-skip-intro-button");
-                document.getElementById("bvrv-skip-intro-button").onclick = () => {
+                introSkipButton.onclick = () => {
                     vrvPlayer.currentTime = parseFloat(timestamps.intro[1]);
+                    introPlaying = false;
+                    introSkipButton.classList.add("bvrv-display-none");
                 };
                 introSkipButton.classList.remove("bvrv-display-none");
             } else if (vrvPlayer.currentTime >= timestamps.outro[0] && vrvPlayer.currentTime <= timestamps.outro[1]) {
                 // outro is playing
                 outroPlaying = true;
                 let nextEpisodeButton = document.getElementById("bvrv-next-episode-button");
-                document.getElementById("bvrv-next-episode-button").onclick = () => {
+                nextEpisodeButton.onclick = () => {
                     vrvPlayer.currentTime = vrvPlayer.duration; //parseFloat(timestamps.intro[1]);
+                    outroPlaying = false;
+                    nextEpisodeButton.classList.add("bvrv-display-none");
                 };
                 nextEpisodeButton.classList.remove("bvrv-display-none");
             }
