@@ -19,15 +19,15 @@ function insertSkipIntroButton(options) {
     );
 }
 
-function insertSkipOutroButton(options) {
+function insertNextEpisodeButton(options) {
     document.body.insertAdjacentHTML(
         'beforeend',
         `
         <div
-            id="bvrv-skip-outro-button"
+            id="bvrv-next-episode-button"
             class="bvrv bvrv-skip-button bvrv-skip-button-useractive bvrv-display-none"
         >
-            SKIP OUTRO
+            NEXT EPISODE
         </div>
         `
     );

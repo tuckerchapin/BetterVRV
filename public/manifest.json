@@ -53,6 +53,7 @@
                 "content_scripts/player/js/keycuts.js",
                 "content_scripts/player/js/stylePlayer.js",
                 "content_scripts/player/js/player.js",
+                "content_scripts/player/js/skipTiming.js",
                 "content_scripts/player/js/messageListeners.js",
                 "content_scripts/player/js/injector.js"
             ]
