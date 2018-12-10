@@ -41,6 +41,7 @@
                 "https://static.vrv.co/vilos/player.html"
             ],
             "css": [
+                "content_scripts/player/css/hideLoadingPoster.css",
                 "content_scripts/player/css/player.css",
                 "content_scripts/player/css/controls.css",
                 "content_scripts/player/css/statusIcons.css",

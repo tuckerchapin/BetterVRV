@@ -2,14 +2,32 @@ function stylePlayer(options) {
     insertSpeedDisplay(options);
     insertStatusIcon(options);
     insertSkipIntroButton(options);
+    insertSkipOutroButton(options);
 }
 
 function insertSkipIntroButton(options) {
     document.body.insertAdjacentHTML(
         'beforeend',
         `
-        <div id="bvrv-next-episode-button" class="bvrv bvrv-skip-button bvrv-skip-button-useractive">
+        <div
+            id="bvrv-skip-intro-button"
+            class="bvrv bvrv-skip-button bvrv-skip-button-useractive bvrv-display-none"
+        >
             SKIP INTRO
+        </div>
+        `
+    );
+}
+
+function insertSkipOutroButton(options) {
+    document.body.insertAdjacentHTML(
+        'beforeend',
+        `
+        <div
+            id="bvrv-skip-outro-button"
+            class="bvrv bvrv-skip-button bvrv-skip-button-useractive bvrv-display-none"
+        >
+            SKIP OUTRO
         </div>
         `
     );

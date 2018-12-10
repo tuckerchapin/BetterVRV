@@ -2,10 +2,6 @@ html:focus, body:focus, #player:focus, #player_html5_api:focus {
     outline: none;
 }
 
-.bvrv-invisible {
-    visibility: hidden;
-}
-
-.bvrv-visible {
-    visibility: visible;
+.bvrv-display-none {
+    display: none !important;
 }
