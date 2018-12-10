@@ -4,22 +4,6 @@ function stylePlayer(options) {
     insertSkipIntroButton(options);
 }
 
-function hideLoadingPoster() {
-    window.postMessage(
-        {
-            type: MESSAGE_TYPES.setValue,
-            attribute: "poster",
-            value: ""
-        },
-        "*"
-    );
-    // insertCSS("content_scripts/player/css/hideLoadingPoster.css");
-    // document.querySelector("div#player").removeAttribute("poster");
-    // document.querySelector("video#player_html5_api").removeAttribute("poster");
-    // let poster = document.querySelector("div.vjs-poster");
-    // poster.parentNode.removeChild(poster);
-}
-
 function insertSkipIntroButton(options) {
     document.body.insertAdjacentHTML(
         'beforeend',

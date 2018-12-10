@@ -1,4 +1,5 @@
 let vjsObject = videojs("player_html5_api");
+vjsObject.poster("");
 
 // Listen for messages from the content scripts
 window.addEventListener(
@@ -9,10 +10,6 @@ window.addEventListener(
             if (message.data.type === MESSAGE_TYPES.setValue) {
                 vjsObject[message.data.attribute](message.data.value);
             }
-
-            if (message.data.type)
-
-            // vjsObject.poster("");
 
             // Return a value to the content scripts
         }
