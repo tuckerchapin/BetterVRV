@@ -1,0 +1,56 @@
+let options = DEFAULT_OPTIONS;
+window.addEventListener(
+    'message',
+    (event) => {
+        if (event.data.sender && event.data.sender === "bvrv") {
+            options = event.data.options;
+        }
+    },
+    false
+);
+
+
+function observerCallback(mutationsList, observer) {
+    for(let mutation of mutationsList) {
+        if (mutation.type == 'attributes') {
+            if (mutation.attributeName === "src") {
+                let player = videojs("player_html5_api");
+
+                observer.disconnect();
+                createObserver(document.getElementById("player_html5_api"), observerCallback);
+
+                if (player.src() !== "") {
+                    console.log(player.src());
+
+                    // consider changing this to on ready
+                    // player.on(
+                    //     "loadedmetadata",
+                    //     (e) => {
+                    //         console.log("loaded meta data");
+                    //         initBVRV(player);
+                    //     }
+                    // );
+
+                    player.ready(
+                        () => {
+                            console.log("player ready");
+                            initBVRV(player);
+                        }
+                    );
+                } else {
+                    console.log("no source");
+                }
+            }
+        }
+    }
+}
+
+function createObserver(element, callback) {
+    let observer = new MutationObserver(callback);
+    observer.observe(
+        element,
+        { attributes: true, childList: true, subtree: true }
+    );
+}
+
+createObserver(document.getElementById("player_html5_api"), observerCallback);

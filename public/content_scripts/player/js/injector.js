@@ -14,4 +14,17 @@
 //     false
 // );
 
-insertJS("content_scripts/player/js/testinjected.js");
+insertJS("content_scripts/const.js");
+insertJS("content_scripts/player/js/observer.js");
+insertJS("content_scripts/player/js/initBVRV.js");
+
+chrome.storage.sync.get(
+    DEFAULT_OPTIONS,
+    (options) => window.postMessage(
+        {
+            sender: "bvrv",
+            options,
+        },
+        "*"
+    )
+);

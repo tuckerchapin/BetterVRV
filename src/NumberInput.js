@@ -62,7 +62,7 @@ class NumberInput extends Component {
         if (!!this.decimal) {
             return parseFloat(value).toFixed(2);
         }
-        return parseInt(value).toFixed(0);
+        return parseInt(value);
     }
 
     onChange(value) {

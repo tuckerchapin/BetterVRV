@@ -63,3 +63,34 @@ const STATUS_ICONS = {
     "volumeUp": "images/status_icons/volumeUp.svg",
     "volumeZero": "images/status_icons/volumeZero.svg",
 };
+
+function getSpeed(options) {
+    return String(parseFloat(vrvPlayer.playbackRate).toFixed(2)) + "x";
+}
+
+function getVolume(options) {
+    return String(parseInt(vrvPlayer.volume * 100)) + "%";
+}
+
+function getMajorTimeSkip(options) {
+    return String(parseInt(options["majorSeekIncrement"])) + "s";
+}
+
+function getMinorTimeSkip(options) {
+    return String(parseInt(options["minorSeekIncrement"])) + "s";
+}
+
+const FORMATTED_VALUES = {
+    "majorSeekBackward": getMajorTimeSkip,
+    "majorSeekForward": getMajorTimeSkip,
+    "minorSeekBackward": getMinorTimeSkip,
+    "minorSeekForward": getMinorTimeSkip,
+    "slowDown": getSpeed,
+    "speedUp": getSpeed,
+    "resetSpeed": getSpeed,
+    "unmuted": getVolume,
+    "volumeDown": getVolume,
+    "volumeMax": getVolume,
+    "volumeUp": getVolume,
+    "volumeZero": getVolume,
+};
