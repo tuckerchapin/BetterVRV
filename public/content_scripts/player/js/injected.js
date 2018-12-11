@@ -2,7 +2,7 @@ let vjsObject = videojs("player_html5_api");
 
 // Hide the loading poster
 vjsObject.poster("");
-let poster = document.querySelector("div.vjs-poster");
+let poster = document.getElementsByClassName("vjs-poster")[0];
 poster.parentNode.removeChild(poster);
 
 // Listen for messages from the content scripts

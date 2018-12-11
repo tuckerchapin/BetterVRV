@@ -22,7 +22,7 @@ chrome.storage.sync.get(
 );
 
 function reorderFrontPage() {
-    let vrvHomepage = document.querySelector("div.vrv-homepage");
+    let vrvHomepage = document.getElementsByClassName("vrv-homepage")[0];
     if (vrvHomepage) {
         insertCSS("content_scripts/top-site/css/reorderFrontPage.css");
         checkFPFeedExists = setInterval(
@@ -32,7 +32,6 @@ function reorderFrontPage() {
                 let recommendations = document.getElementById("recommendations");
 
                 if (continueWatching && watchlist && recommendations) {
-                    console.log("checked");
                     clearInterval(checkFPFeedExists);
 
                     let feedContainer = document.getElementsByClassName("erc-feed-container")[0];

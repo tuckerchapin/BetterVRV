@@ -1,4 +1,4 @@
-let vrvPlayer = document.querySelector("video#player_html5_api");
+let vrvPlayer = document.getElementById("player_html5_api");
 
 function setUpPlayer(options) {
     vrvPlayer.defaultPlaybackRate = options.defaultSpeed;

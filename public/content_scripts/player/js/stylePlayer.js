@@ -51,7 +51,7 @@ function insertStatusIcon(options) {
 }
 
 function insertSpeedDisplay(options) {
-    let settingsButton = document.querySelector("div.settingsMenuButton.vjs-button.vjs-control");
+    let settingsButton = document.getElementsByClassName("settingsMenuButton vjs-button vjs-control")[0];
     settingsButton.insertAdjacentHTML(
         'beforebegin',
         `
