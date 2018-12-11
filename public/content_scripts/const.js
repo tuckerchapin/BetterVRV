@@ -64,19 +64,19 @@ const STATUS_ICONS = {
     "volumeZero": "images/status_icons/volumeZero.svg",
 };
 
-function getSpeed(options) {
+function getSpeed() {
     return String(parseFloat(vrvPlayer.playbackRate).toFixed(2)) + "x";
 }
 
-function getVolume(options) {
+function getVolume() {
     return String(parseInt(vrvPlayer.volume * 100)) + "%";
 }
 
-function getMajorTimeSkip(options) {
+function getMajorTimeSkip() {
     return String(parseInt(options["majorSeekIncrement"])) + "s";
 }
 
-function getMinorTimeSkip(options) {
+function getMinorTimeSkip() {
     return String(parseInt(options["minorSeekIncrement"])) + "s";
 }
 
