@@ -181,13 +181,13 @@ function showStatusIcon(player, action) {
             statusValue.innerText = formattedValues[action](player);
 
             if (action.includes("Seek")) {
-                statusValue.classList.remove("bvrv-status-value-below");
+                statusValue.classList.remove("bvrv-status-value-below", "bvrv-status-value-empty");
                 statusValue.classList.add("bvrv-status-value-center");
             } else if (action === "muted") {
-                statusValue.classList.remove("bvrv-status-value-center");
-                statusValue.classList.remove("bvrv-status-value-below");
+                statusValue.classList.remove("bvrv-status-value-center", "bvrv-status-value-below");
+                statusValue.classList.add("bvrv-status-value-empmty");
             } else {
-                statusValue.classList.remove("bvrv-status-value-center");
+                statusValue.classList.remove("bvrv-status-value-center", "bvrv-status-value-empty");
                 statusValue.classList.add("bvrv-status-value-below");
             }
         } else {

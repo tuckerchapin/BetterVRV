@@ -3,7 +3,7 @@ function handleTiming(player) {
         "intro": [35, 125],
         "outro": [1417, 1420],
         "preview": [1420, 1435],
-        "isPostScene": false, // <-- CHECK FOR THIS
+        "isPostScene": false,
     };
 
     let introPlaying = false;
