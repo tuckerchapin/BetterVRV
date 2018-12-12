@@ -17,6 +17,24 @@ function insertSkipIntroButton(player) {
         </div>
         `
     );
+
+    player.on(
+        "useractive",
+        () => {
+            let classList = document.getElementById("bvrv-skip-intro-button").classList;
+            classList.remove("bvrv-skip-button-userinactive");
+            classList.add("bvrv-skip-button-useractive");
+        }
+    );
+
+    player.on(
+        "userinactive",
+        () => {
+            let classList = document.getElementById("bvrv-skip-intro-button").classList;
+            classList.remove("bvrv-skip-button-useractive");
+            classList.add("bvrv-skip-button-userinactive");
+        }
+    );
 }
 
 function insertNextEpisodeButton(player) {
@@ -25,11 +43,29 @@ function insertNextEpisodeButton(player) {
         `
         <div
             id="bvrv-next-episode-button"
-            class="bvrv bvrv-skip-button bvrv-skip-button-useractive bvrv-display-none"
+            class="bvrv bvrv-skip-button bvrv-skip-button-useractive bvrv-display-none1"
         >
             NEXT EPISODE
         </div>
         `
+    );
+
+    player.on(
+        "useractive",
+        () => {
+            let classList = document.getElementById("bvrv-next-episode-button").classList;
+            classList.remove("bvrv-skip-button-userinactive");
+            classList.add("bvrv-skip-button-useractive");
+        }
+    );
+
+    player.on(
+        "userinactive",
+        () => {
+            let classList = document.getElementById("bvrv-next-episode-button").classList;
+            classList.remove("bvrv-skip-button-useractive");
+            classList.add("bvrv-skip-button-userinactive");
+        }
     );
 }
 
