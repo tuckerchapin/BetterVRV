@@ -14,7 +14,7 @@ let statusIcons = {
     "volumeZero": chrome.runtime.getURL("images/status_icons/volumeZero.svg")
 };
 
-insertJS("content_scripts/const.js");
+insertJS("content_scripts/defaultOptions.js");
 insertJS("content_scripts/player/js/getReverseKeyMap.js");
 insertJS("content_scripts/player/js/formattedValues.js");
 insertJS("content_scripts/player/js/handleKeycuts.js");

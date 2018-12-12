@@ -31,7 +31,7 @@
             ],
             "js": [
                 "content_scripts/insertScript.js",
-                "content_scripts/const.js",
+                "content_scripts/defaultOptions.js",
                 "content_scripts/top-site/js/vrvStyling.js"
             ]
         },
@@ -49,7 +49,7 @@
             ],
             "js": [
                 "content_scripts/insertScript.js",
-                "content_scripts/const.js",
+                "content_scripts/defaultOptions.js",
                 "content_scripts/player/js/injector.js"
             ]
         }

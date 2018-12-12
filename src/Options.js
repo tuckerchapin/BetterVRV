@@ -13,6 +13,8 @@ const DEFAULT_OPTIONS = {
 
     "reorderFrontPage": true,
 
+    "autoSkipIntro": true,
+
     "hideDescriptions": true,
     "hideThumbnails": true,
     "showWatchedThumbnails": false,

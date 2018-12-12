@@ -38,15 +38,19 @@ function handleTiming(player) {
             } else {
                 if (currentTime >= timestamps.intro[0] && currentTime <= timestamps.intro[1]) {
                     // intro is playing
-                    introPlaying = true;
-
-                    let introSkipButton = document.getElementById("bvrv-skip-intro-button");
-                    introSkipButton.onclick = () => {
+                    if (options.autoSkipIntro) {
                         player.currentTime(parseFloat(timestamps.intro[1]));
-                        introPlaying = false;
-                        introSkipButton.classList.add("bvrv-display-none");
-                    };
-                    introSkipButton.classList.remove("bvrv-display-none");
+                    } else {
+                        introPlaying = true;
+
+                        let introSkipButton = document.getElementById("bvrv-skip-intro-button");
+                        introSkipButton.onclick = () => {
+                            player.currentTime(parseFloat(timestamps.intro[1]));
+                            introPlaying = false;
+                            introSkipButton.classList.add("bvrv-display-none");
+                        };
+                        introSkipButton.classList.remove("bvrv-display-none");
+                    }
                 } else if (currentTime >= timestamps.outro[0] && currentTime <= timestamps.outro[1]) {
                     // outro is playing
                     outroPlaying = true;
