@@ -16,20 +16,17 @@ chrome.tabs.query(
         query.find().then(
             (results) => {
                 if (results.length === 0) {
-                    
+
+                } else {
+                    document.getElementById("intro-start").innerText = results[0].get("introStart");
+                    document.getElementById("intro-end").innerText = results[0].get("introEnd");
+                    document.getElementById("outro-start").innerText = results[0].get("outroStart");
+                    document.getElementById("outro-end").innerText = results[0].get("outroEnd");
+                    document.getElementById("preview-start").innerText = results[0].get("previewStart");
+                    document.getElementById("preview-end").innerText = results[0].get("previewEnd");
+                    document.getElementById("is-post-scene").innerText =
+                        results[0].get("isPostScene") ? "a" : "no";
                 }
-                results.forEach(
-                    (result) =>{
-                        document.getElementById("intro-start").innerText = result.get("introStart");
-                        document.getElementById("intro-end").innerText = result.get("introEnd");
-                        document.getElementById("outro-start").innerText = result.get("outroStart");
-                        document.getElementById("outro-end").innerText = result.get("outroEnd");
-                        document.getElementById("preview-start").innerText = result.get("previewStart");
-                        document.getElementById("preview-end").innerText = result.get("previewEnd");
-                        document.getElementById("is-post-scene").innerText =
-                            result.get("isPostScene") ? "a" : "no";
-                    }
-                )
             },
             (error) => {
                 console.error(error);
