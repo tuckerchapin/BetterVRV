@@ -14,7 +14,7 @@ function getMinorTimeSkip(player) {
     return String(parseInt(options.minorSeekIncrement)) + "s";
 }
 
-const FORMATTED_VALUES = {
+const formattedValues = {
     "majorSeekBackward": getMajorTimeSkip,
     "majorSeekForward": getMajorTimeSkip,
     "minorSeekBackward": getMinorTimeSkip,

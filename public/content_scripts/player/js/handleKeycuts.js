@@ -168,32 +168,32 @@ function afterAction(player, action) {
 }
 
 function showStatusIcon(player, action) {
-    // if (STATUS_ICONS[action]) {
-    //     let iconContainer = document.getElementById("bvrv-status-icon-container");
-    //     iconContainer.classList.remove("bvrv-fade-out");
-    //
-    //
-    //     let statusValue = document.getElementById("bvrv-status-value");
-    //     if (action in FORMATTED_VALUES) {
-    //         statusValue.innerText = FORMATTED_VALUES[action](player);
-    //
-    //         if (action.includes("Seek")) {
-    //             statusValue.classList.remove("bvrv-status-value-below");
-    //             statusValue.classList.add("bvrv-status-value-center");
-    //         } else {
-    //             statusValue.classList.remove("bvrv-status-value-center");
-    //             statusValue.classList.add("bvrv-status-value-below");
-    //         }
-    //     } else {
-    //         statusValue.innerText = "";
-    //     }
-    //
-    //     let icon = document.getElementById("bvrv-status-icon");
-    //     // icon.src = chrome.extension.getURL(STATUS_ICONS[action]);
-    //
-    //     void iconContainer.offsetWidth;
-    //     iconContainer.classList.add("bvrv-fade-out");
-    // }
+    if (statusIcons[action]) {
+        let iconContainer = document.getElementById("bvrv-status-icon-container");
+        iconContainer.classList.remove("bvrv-fade-out");
+
+
+        let statusValue = document.getElementById("bvrv-status-value");
+        if (action in formattedValues) {
+            statusValue.innerText = formattedValues[action](player);
+
+            if (action.includes("Seek")) {
+                statusValue.classList.remove("bvrv-status-value-below");
+                statusValue.classList.add("bvrv-status-value-center");
+            } else {
+                statusValue.classList.remove("bvrv-status-value-center");
+                statusValue.classList.add("bvrv-status-value-below");
+            }
+        } else {
+            statusValue.innerText = "";
+        }
+
+        let icon = document.getElementById("bvrv-status-icon");
+        icon.src = statusIcons[action];
+
+        void iconContainer.offsetWidth;
+        iconContainer.classList.add("bvrv-fade-out");
+    }
 }
 
 function executeKeyAction(player, event, modifier) {

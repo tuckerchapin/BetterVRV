@@ -1,5 +1,5 @@
 let options = DEFAULT_OPTIONS;
-let STATUS_ICONS = {};
+let statusIcons = {};
 let reverseKeyMap = {};
 
 window.addEventListener(
@@ -7,7 +7,7 @@ window.addEventListener(
     (event) => {
         if (event.data.sender && event.data.sender === "bvrv") {
             options = event.data.options;
-            STATUS_ICONS = event.data.statusIcons;
+            statusIcons = event.data.statusIcons;
             reverseKeyMap = getReverseKeyMap(options);
         }
     },
