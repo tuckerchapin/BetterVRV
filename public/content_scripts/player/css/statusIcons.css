@@ -46,6 +46,10 @@
         border: none;
     }
 
+    .bvrv-status-value-empty {
+        display: none;
+    }
+
 .bvrv-fade-out {
     animation: fadeOut 2s ease;
 }

@@ -13,10 +13,12 @@ const DEFAULT_OPTIONS = {
 
     "reorderFrontPage": true,
 
+    "autoSkipIntro": true,
+
     "hideDescriptions": true,
     "hideThumbnails": true,
     "showWatchedThumbnails": false,
-    "hideLoadingPoster": false,
+    "hideLoadingPoster": true,
 
     "majorSeekIncrement": 10,
     "minorSeekIncrement": 5,

@@ -1,4 +1,4 @@
-{
+const DEFAULT_OPTIONS = {
     "firstInstall": true,
 
     "reorderFrontPage": true,
@@ -36,4 +36,10 @@
     "speedUp": ["187", ""],
     "slowDown": ["189", ""],
     "resetSpeed": ["16+48", ""],
-}
+};
+
+const MOD_KEY = {
+    "shiftKey": 16,
+    "ctrlKey": 17,
+    "altKey": 18,
+};
