@@ -4,6 +4,7 @@
     height: 0;
     color: rgba(216, 187, 0, .5);
     border: solid 3px rgba(216, 187, 0, .5);
+    background: rgba(98, 94, 138, 0.5);
     padding: 20px;
     display: flex;
     justify-content: center;

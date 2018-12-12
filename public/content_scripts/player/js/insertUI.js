@@ -43,7 +43,7 @@ function insertNextEpisodeButton(player) {
         `
         <div
             id="bvrv-next-episode-button"
-            class="bvrv bvrv-skip-button bvrv-skip-button-useractive bvrv-display-none1"
+            class="bvrv bvrv-skip-button bvrv-skip-button-useractive bvrv-display-none"
         >
             NEXT EPISODE
         </div>

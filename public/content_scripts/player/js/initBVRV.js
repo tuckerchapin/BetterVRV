@@ -1,7 +1,7 @@
 function initBVRV(player) {
     setDefaults(player);
     insertUI(player);
-    // window.onload = () => stylePlayer(options);
+    handleTiming(player);
 
     document.onkeydown = (e) => handleKeycuts(player, e);
 }
