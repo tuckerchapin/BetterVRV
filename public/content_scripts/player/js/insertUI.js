@@ -37,6 +37,38 @@ function insertSkipIntroButton(player) {
     );
 }
 
+function insertSkipOutroButton(player) {
+    document.body.insertAdjacentHTML(
+        'beforeend',
+        `
+        <div
+            id="bvrv-skip-outro-button"
+            class="bvrv bvrv-skip-button bvrv-skip-button-useractive bvrv-display-none"
+        >
+            SKIP OUTRO
+        </div>
+        `
+    );
+
+    player.on(
+        "useractive",
+        () => {
+            let classList = document.getElementById("bvrv-skip-outro-button").classList;
+            classList.remove("bvrv-skip-button-userinactive");
+            classList.add("bvrv-skip-button-useractive");
+        }
+    );
+
+    player.on(
+        "userinactive",
+        () => {
+            let classList = document.getElementById("bvrv-skip-outro-button").classList;
+            classList.remove("bvrv-skip-button-useractive");
+            classList.add("bvrv-skip-button-userinactive");
+        }
+    );
+}
+
 function insertNextEpisodeButton(player) {
     document.body.insertAdjacentHTML(
         'beforeend',
