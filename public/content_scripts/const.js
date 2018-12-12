@@ -36,61 +36,8 @@ const DEFAULT_OPTIONS = {
     "resetSpeed": ["16+48", ""],
 };
 
-const MESSAGE_TYPES = {
-    listenerFired: "listenerFired",
-    setValue: "setValue",
-
-};
-
 const MOD_KEY = {
     "shiftKey": 16,
     "ctrlKey": 17,
     "altKey": 18,
-};
-
-const STATUS_ICONS = {
-    "muted": "images/status_icons/muted.svg",
-    "majorSeekBackward": "images/status_icons/seekBackward.svg",
-    "majorSeekForward": "images/status_icons/seekForward.svg",
-    "minorSeekBackward": "images/status_icons/seekBackward.svg",
-    "minorSeekForward": "images/status_icons/seekForward.svg",
-    "slowDown": "images/status_icons/slowDown.svg",
-    "speedUp": "images/status_icons/speedUp.svg",
-    "resetSpeed": "images/status_icons/resetSpeed.svg",
-    "unmuted": "images/status_icons/unmuted.svg",
-    "volumeDown": "images/status_icons/volumeDown.svg",
-    "volumeMax": "images/status_icons/volumeMax.svg",
-    "volumeUp": "images/status_icons/volumeUp.svg",
-    "volumeZero": "images/status_icons/volumeZero.svg",
-};
-
-function getSpeed() {
-    return String(parseFloat(vrvPlayer.playbackRate).toFixed(2)) + "x";
-}
-
-function getVolume() {
-    return String(parseInt(vrvPlayer.volume * 100)) + "%";
-}
-
-function getMajorTimeSkip() {
-    return String(parseInt(options["majorSeekIncrement"])) + "s";
-}
-
-function getMinorTimeSkip() {
-    return String(parseInt(options["minorSeekIncrement"])) + "s";
-}
-
-const FORMATTED_VALUES = {
-    "majorSeekBackward": getMajorTimeSkip,
-    "majorSeekForward": getMajorTimeSkip,
-    "minorSeekBackward": getMinorTimeSkip,
-    "minorSeekForward": getMinorTimeSkip,
-    "slowDown": getSpeed,
-    "speedUp": getSpeed,
-    "resetSpeed": getSpeed,
-    "unmuted": getVolume,
-    "volumeDown": getVolume,
-    "volumeMax": getVolume,
-    "volumeUp": getVolume,
-    "volumeZero": getVolume,
 };

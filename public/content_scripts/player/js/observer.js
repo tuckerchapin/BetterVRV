@@ -1,49 +1,14 @@
 let options = DEFAULT_OPTIONS;
+let STATUS_ICONS = {};
 let reverseKeyMap = {};
-
-function getReverseKeyMap() {
-    let reverseKeyMap = {};
-    for (const [key, value] of Object.entries(options)) {
-        if (Array.isArray(value) && value.length === 2) {
-            if (value[0] !== "") {
-                if (String(value[0]).indexOf("+") !== -1) {
-                    // command uses modifier
-                    let [modifier, keystroke] = String(value[0]).split("+");
-                    if (!reverseKeyMap[modifier]) {
-                        // mod dictionary empty
-                        reverseKeyMap[modifier] = {};
-                    }
-                    reverseKeyMap[modifier][keystroke] = key
-                } else {
-                    // no modifier
-                    reverseKeyMap[value[0]] = key;
-                }
-            }
-            if (value[1] !== "") {
-                if (String(value[1]).indexOf("+") !== -1) {
-                    // command uses modifier
-                    let [modifier, keystroke] = String(value[1]).split("+");
-                    if (!reverseKeyMap[modifier]) {
-                        // mod dictionary empty
-                        reverseKeyMap[modifier] = {};
-                    }
-                    reverseKeyMap[modifier][keystroke] = key
-                } else {
-                    // no modifier
-                    reverseKeyMap[value[1]] = key;
-                }
-            }
-        }
-    }
-    return reverseKeyMap;
-}
 
 window.addEventListener(
     'message',
     (event) => {
         if (event.data.sender && event.data.sender === "bvrv") {
             options = event.data.options;
-            reverseKeyMap = getReverseKeyMap()
+            STATUS_ICONS = event.data.statusIcons;
+            reverseKeyMap = getReverseKeyMap(options);
         }
     },
     false
@@ -59,7 +24,6 @@ function observerCallback(mutationsList, observer) {
                 createObserver(document.getElementById("player_html5_api"), observerCallback);
 
                 if (player.src() !== "") {
-                    console.log(player.src());
 
                     // consider changing this to on ready
                     // player.on(
@@ -72,7 +36,6 @@ function observerCallback(mutationsList, observer) {
 
                     player.ready(
                         () => {
-                            console.log("player ready");
                             initBVRV(player);
                         }
                     );
