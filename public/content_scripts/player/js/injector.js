@@ -17,8 +17,9 @@ let statusIcons = {
 insertJS("content_scripts/const.js");
 insertJS("content_scripts/player/js/observer.js");
 insertJS("content_scripts/player/js/initBVRV.js");
-insertJS("content_scripts/player/js/getReverseKeyMap.js");
 insertJS("content_scripts/player/js/handleKeycuts.js");
+insertJS("content_scripts/player/js/insertUI.js");
+insertJS("content_scripts/player/js/getReverseKeyMap.js");
 insertJS("content_scripts/player/js/formattedValues.js");
 
 chrome.storage.sync.get(

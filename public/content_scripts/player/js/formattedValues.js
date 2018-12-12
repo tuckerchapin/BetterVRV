@@ -7,11 +7,11 @@ function getVolume(player) {
 }
 
 function getMajorTimeSkip(player) {
-    return String(parseInt(options["majorSeekIncrement"])) + "s";
+    return String(parseInt(options.majorSeekIncrement)) + "s";
 }
 
 function getMinorTimeSkip(player) {
-    return String(parseInt(options["minorSeekIncrement"])) + "s";
+    return String(parseInt(options.minorSeekIncrement)) + "s";
 }
 
 const FORMATTED_VALUES = {

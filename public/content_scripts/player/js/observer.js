@@ -24,21 +24,7 @@ function observerCallback(mutationsList, observer) {
                 createObserver(document.getElementById("player_html5_api"), observerCallback);
 
                 if (player.src() !== "") {
-
-                    // consider changing this to on ready
-                    // player.on(
-                    //     "loadedmetadata",
-                    //     (e) => {
-                    //         console.log("loaded meta data");
-                    //         initBVRV(player);
-                    //     }
-                    // );
-
-                    player.ready(
-                        () => {
-                            initBVRV(player);
-                        }
-                    );
+                    player.ready(() => initBVRV(player));
                 } else {
                     console.log("no source");
                 }
