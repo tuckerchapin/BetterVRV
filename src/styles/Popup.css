@@ -22,6 +22,18 @@
     background-color: #2f2d42;
 }
 
+#popup-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#popup-header-logo {
+    height: 30px;
+}
+
 #loading-spinner-container {
     height: 300px;
     width: 300px;
@@ -61,4 +73,15 @@
 
 #popup-episode-title {
     font-size: 1.75em;
+}
+
+#missing-annotations-notice {
+    color: #b0aebb;
+    font-size: 1em;
+    font-weight: 300;
+}
+
+#annotations-container {
+    display: flex;
+    flex-direction: column;
 }

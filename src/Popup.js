@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Parse from 'parse';
 
 import VRVLoadingSpinner from './VRVLoadingSpinner';
+import AnnotationRow from './AnnotationRow';
 
 import './styles/Popup.css';
 
@@ -92,7 +93,6 @@ class Popup extends Component {
 
                     this.Timestamp.save().then(
                         (result) => {
-
                             this.setState({loading: false});
                         },
                         (error) => {
@@ -110,22 +110,22 @@ class Popup extends Component {
     hasMissingAnnotations() {
         // First check that the "hasX" fields have values
         if (
-            (this.state.hasIntro != undefined) &&
-            (this.state.hasOutro != undefined) &&
-            (this.state.hasPreview != undefined) &&
-            (this.state.hasPostScene != undefined)
+            (this.state.hasIntro !== undefined) &&
+            (this.state.hasOutro !== undefined) &&
+            (this.state.hasPreview !== undefined) &&
+            (this.state.hasPostScene !== undefined)
         ) {
             // If the "hasX" field is false, then that's fine and it doesn't need to have "xStart" and "xEnd"
             // If the "hasX" field is true, then it needs both the "xStart" and "xEnd" attribute to be considered complete
             if (
                 (!this.state.hasIntro ||
-                    (("introStart" in this.state) && ("introEnd" in this.state))) &&
+                    ((this.state.introStart !== undefined) && (this.state.introEnd !== undefined))) &&
                 (!this.state.hasOutro ||
-                    (("outroStart" in this.state) && ("outroEnd" in this.state))) &&
+                    ((this.state.outroStart !== undefined) && (this.state.outroEnd !== undefined))) &&
                 (!this.state.hasPreview ||
-                    (("previewStart" in this.state) && ("previewEnd" in this.state))) &&
+                    ((this.state.previewStart !== undefined) && (this.state.previewEnd !== undefined))) &&
                 (!this.state.hasPostScene ||
-                    (("postSceneStart" in this.state) && ("postSceneEnd" in this.state)))
+                    ((this.state.postSceneStart !== undefined) && (this.state.postSceneEnd !== undefined)))
             ) {
                 // If all of these are the case, then it has no missing annotations.
                 return false;
@@ -135,6 +135,17 @@ class Popup extends Component {
 
         // In any other case, it has missing annotations.
         return true;
+    }
+
+    renderMissingAnnotationNotice() {
+        return (
+            <div>
+                <div id="missing-annotations-notice">
+                    It seems we're missing some annotations for this episode. BetterVRV has to rely on our community for intro/outro/etc. annotations. Please help by annotating this episode.
+                </div>
+                <div class="popup-divider"></div>
+            </div>
+        );
     }
 
     renderLoading() {
@@ -148,12 +159,35 @@ class Popup extends Component {
     }
 
     renderLoaded() {
-        alert("has missing annotations: " + this.hasMissingAnnotations());
         return (
-            <div style={{wordWrap: "normal", whiteSpace: "pre"}}>
-                {JSON.stringify(this.state, null, 4)}
-                <br />
-                {JSON.stringify(this.Timestamp, null, 4)}
+            <div>
+                {this.hasMissingAnnotations() ? this.renderMissingAnnotationNotice() : null}
+                <div id="annotations-container">
+                    <AnnotationRow
+                        label="intro"
+                        has={this.state.hasIntro}
+                        starts={this.state.introStart}
+                        ends={this.state.introEnd}
+                    />
+                    <AnnotationRow
+                        label="outro"
+                        has={this.state.hasOutro}
+                        starts={this.state.outroStart}
+                        ends={this.state.outroEnd}
+                    />
+                    <AnnotationRow
+                        label="preview"
+                        has={this.state.hasPreview}
+                        starts={this.state.previewStart}
+                        ends={this.state.previewEnd}
+                    />
+                    <AnnotationRow
+                        label="after-credits scene"
+                        has={this.state.hasPostScene}
+                        starts={this.state.postSceneStart}
+                        ends={this.state.postSceneEnd}
+                    />
+                </div>
             </div>
         );
     }
@@ -162,6 +196,7 @@ class Popup extends Component {
         return (
             <div id="match-white-popup-border">
                 <div class="popup-container">
+
                     <div id="popup-header">
                         <div id="popup-title-detail-container">
                             <div id="popup-series-title" class="popup-title-detail ellipsis-truncate">
@@ -176,8 +211,20 @@ class Popup extends Component {
                             {this.state.episodeTitle}
                         </div>
                     </div>
+
                     <div class="popup-divider"></div>
+
                     {this.state.loading ? this.renderLoading() : this.renderLoaded()}
+
+                    <div class="popup-divider"></div>
+
+                    <div id="popup-footer">
+                        <img
+                            id="popup-header-logo"
+                            src="images/icon_noborder.svg"
+                            alt="logo"
+                        />
+                    </div>
                 </div>
             </div>
         );
