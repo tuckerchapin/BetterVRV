@@ -135,6 +135,8 @@ body {
     user-select: none;
     height: auto;
     overflow: auto;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 a {

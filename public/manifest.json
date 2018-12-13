@@ -22,7 +22,7 @@
     },
     "options_page": "index.html",
     "page_action": {
-        "default_popup": "popup/popup.html",
+        "default_popup": "index.html?popup=true",
         "default_icon": {
             "16": "images/icon16.png",
             "19": "images/icon19.png",
@@ -72,7 +72,6 @@
         "images/status_icons/*",
         "fonts/*",
         "content_scripts/*",
-        "popup/*",
         "index.html"
     ],
     "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"

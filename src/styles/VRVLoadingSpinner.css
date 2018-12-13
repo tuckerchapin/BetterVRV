@@ -1,0 +1,30 @@
+.vrv-loading-spinner svg {
+display: block; }
+.vrv-loading-spinner svg polygon {
+fill: transparent; }
+.vrv-loading-spinner svg polygon:nth-child(1) {
+animation: vrv-spinner-color 1s infinite ease-in-out;
+animation-delay: 0.1666666667s; }
+.vrv-loading-spinner svg polygon:nth-child(2) {
+animation: vrv-spinner-color 1s infinite ease-in-out;
+animation-delay: 0.3333333333s; }
+.vrv-loading-spinner svg polygon:nth-child(3) {
+animation: vrv-spinner-color 1s infinite ease-in-out;
+animation-delay: 0.5s; }
+.vrv-loading-spinner svg polygon:nth-child(4) {
+animation: vrv-spinner-color 1s infinite ease-in-out;
+animation-delay: 0.6666666667s; }
+.vrv-loading-spinner svg polygon:nth-child(5) {
+animation: vrv-spinner-color 1s infinite ease-in-out;
+animation-delay: 0.8333333333s; }
+.vrv-loading-spinner svg polygon:nth-child(6) {
+animation: vrv-spinner-color 1s infinite ease-in-out;
+animation-delay: 1s; }
+
+@keyframes vrv-spinner-color {
+0% {
+fill: transparent; }
+50% {
+fill: #ffdd00; }
+100% {
+fill: transparent; } }

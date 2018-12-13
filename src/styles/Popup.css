@@ -1,0 +1,50 @@
+#match-white-popup-border {
+    border: solid 2px white;
+    border-top: none;
+    border-bottom: none;
+}
+
+.popup-container {
+    width: 300px;
+    color: #f9f9fa;
+    background-color: #1b1a26;
+    font-size: 1em;
+    border-radius: 5px;
+    padding: 10px;
+
+    min-height: 100px;
+}
+
+.popup-divider {
+    height: 2px;
+    width: calc(100% + (10px * 2));
+    margin: 10px 0 10px -10px;
+    background-color: #2f2d42;
+}
+
+#loading-spinner-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loading-spinner {
+    width: 50px;
+    height: 50px;
+}
+
+#popup-title {
+    display: flex;
+    flex-direction: column;
+}
+
+#popup-series-title {
+    color: #b0aebb;
+    font-size: 1em;
+}
+
+#popup-episode-title {
+    font-size: 1.5em;
+}

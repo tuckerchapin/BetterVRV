@@ -1,3 +1,5 @@
+alert(window.location.href);
+
 Parse.serverURL = 'https://parseapi.back4app.com'; // server
 Parse.initialize(
   'CfnxYFbrcy0Eh517CcjOAlrAOH9hfe7dpOqfMcJj', // app id
