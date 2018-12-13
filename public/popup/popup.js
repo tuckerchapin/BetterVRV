@@ -63,6 +63,7 @@ chrome.tabs.query(
 //         chrome.tabs.sendMessage(
 //             tabs[0].id,
 //             {
+//                 target: "player"
 //                 get: "currentTime"
 //             },
 //             (response) => document.getElementById("current-time").innerText = response.currentTime

@@ -5,13 +5,13 @@
 }
 
 .popup-container {
-    width: 300px;
     color: #f9f9fa;
     background-color: #1b1a26;
     font-size: 1em;
     border-radius: 5px;
     padding: 10px;
 
+    width: 300px;
     min-height: 100px;
 }
 
@@ -35,16 +35,30 @@
     height: 50px;
 }
 
-#popup-title {
+#popup-header {
     display: flex;
     flex-direction: column;
 }
 
-#popup-series-title {
-    color: #b0aebb;
-    font-size: 1em;
+#popup-title-detail-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 5px;
 }
 
-#popup-episode-title {
-    font-size: 1.5em;
+.popup-title-detail {
+    color: #b0aebb;
+    font-size: 1em;
+    white-space: pre;
+}
+
+#popup-series-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#popup-title {
+    font-size: 1.75em;
 }

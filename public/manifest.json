@@ -41,6 +41,7 @@
                 "content_scripts/top-site/css/vrvStyling.css"
             ],
             "js": [
+                "content_scripts/top-site/js/popupMessenger.js",
                 "content_scripts/insertScript.js",
                 "content_scripts/defaultOptions.js",
                 "content_scripts/top-site/js/vrvStyling.js"

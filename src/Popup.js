@@ -18,57 +18,58 @@ class Popup extends Component {
 
         this.state = {
             loading: true,
-            vrvContentId: "",
-            series: "",
-            episode: "",
+            // seasonNumber,
+            // episodeNumber,
+            // episodeTitle,
+            // seriesTitle,
+            // seriesId,
+            // episodeId,
         };
 
         chrome.tabs.query(
             {active: true, currentWindow: true},
             (tabs) => {
-                let urlChunks = tabs[0].url.split("/");
-                let titleChunk = urlChunks[5].split(":");
-                this.setState(
+                chrome.tabs.sendMessage(
+                    tabs[0].id,
                     {
-                        vrvContentId: urlChunks[4],
-                        series: titleChunk[0].replace(/-/g, ' '),
-                        episode: titleChunk[1].replace(/-/g, ' '),
+                        target: "top-site",
+                        get: "info",
                     },
-                    () => this.fetchParseData()
+                    (response) => this.setState(response)
                 );
             }
         );
     }
 
-    fetchParseData() {
-        const Timestamps = Parse.Object.extend('Timestamps');
-        const query = new Parse.Query(Timestamps);
-        query.equalTo("vrvContentId", this.state.vrvContentId);
-        query.find().then(
-            (results) => {
-                if (results.length === 0) {
-                    this.setState({loading: false, noData: true});
-                } else {
-                    this.setState({
-                        loading: false,
-                        isIntro: results[0].get("isIntro"),
-                        introStart: results[0].get("introStart"),
-                        introEnd: results[0].get("introEnd"),
-                        isOutro: results[0].get("isOutro"),
-                        outroStart: results[0].get("outroStart"),
-                        outroEnd: results[0].get("outroEnd"),
-                        isPreview: results[0].get("isPreview"),
-                        previewStart: results[0].get("previewStart"),
-                        previewEnd: results[0].get("previewEnd"),
-                        isPostScene: results[0].get("isPostScene"),
-                    });
-                }
-            },
-            (error) => {
-                console.error(error);
-            }
-        );
-    }
+    // fetchParseData() {
+    //     const Timestamps = Parse.Object.extend('Timestamps');
+    //     const query = new Parse.Query(Timestamps);
+    //     query.equalTo("vrvContentId", this.state.vrvContentId);
+    //     query.find().then(
+    //         (results) => {
+    //             if (results.length === 0) {
+    //                 this.setState({loading: false, noData: true});
+    //             } else {
+    //                 this.setState({
+    //                     loading: false,
+    //                     isIntro: results[0].get("isIntro"),
+    //                     introStart: results[0].get("introStart"),
+    //                     introEnd: results[0].get("introEnd"),
+    //                     isOutro: results[0].get("isOutro"),
+    //                     outroStart: results[0].get("outroStart"),
+    //                     outroEnd: results[0].get("outroEnd"),
+    //                     isPreview: results[0].get("isPreview"),
+    //                     previewStart: results[0].get("previewStart"),
+    //                     previewEnd: results[0].get("previewEnd"),
+    //                     isPostScene: results[0].get("isPostScene"),
+    //                 });
+    //             }
+    //         },
+    //         (error) => {
+    //             console.error(error);
+    //         }
+    //     );
+    // }
 
     renderLoading() {
         return (
@@ -90,9 +91,17 @@ class Popup extends Component {
         return (
             <div id="match-white-popup-border">
                 <div class="popup-container">
-                    <div id="popup-title">
-                        <div id="popup-series-title">{this.state.series}</div>
-                        <div id="popup-episode-title">{this.state.episode}</div>
+                    <div id="popup-header">
+                        <div id="popup-title-detail-container">
+                            <div id="popup-series-title" class="popup-title-detail">
+                                {this.state.seriesTitle}
+                            </div>
+                            <span class="popup-title-detail"> | </span>
+                            <div id="popup-episode-numbers" class="popup-title-detail">
+                                S{this.state.seasonNumber}E{this.state.episodeNumber}
+                            </div>
+                        </div>
+                        <div id="popup-title">{this.state.episodeTitle}</div>
                     </div>
                     <div class="popup-divider"></div>
                     {this.state.loading ? this.renderLoading() : this.renderLoaded()}
