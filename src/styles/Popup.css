@@ -53,12 +53,12 @@
     white-space: pre;
 }
 
-#popup-series-title {
+.ellipsis-truncate {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-#popup-title {
+#popup-episode-title {
     font-size: 1.75em;
 }

@@ -93,7 +93,7 @@ class Popup extends Component {
                 <div class="popup-container">
                     <div id="popup-header">
                         <div id="popup-title-detail-container">
-                            <div id="popup-series-title" class="popup-title-detail">
+                            <div id="popup-series-title" class="popup-title-detail ellipsis-truncate">
                                 {this.state.seriesTitle}
                             </div>
                             <span class="popup-title-detail"> | </span>
@@ -101,7 +101,9 @@ class Popup extends Component {
                                 S{this.state.seasonNumber}E{this.state.episodeNumber}
                             </div>
                         </div>
-                        <div id="popup-title">{this.state.episodeTitle}</div>
+                        <div id="popup-episode-title" class="ellipsis-truncate">
+                            {this.state.episodeTitle}
+                        </div>
                     </div>
                     <div class="popup-divider"></div>
                     {this.state.loading ? this.renderLoading() : this.renderLoaded()}
