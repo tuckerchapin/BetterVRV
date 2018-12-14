@@ -17,7 +17,7 @@ class Popup extends Component {
           'Ke0lTaWiPPvLmpDOLLrukkbdAq34GTxVIEh4wcAU' // js key
         );
 
-        this.Timestamp = {};
+        this.timestamp = {};
 
         this.state = {
             loading: true,
@@ -43,6 +43,10 @@ class Popup extends Component {
             // postSceneEnd,
         };
 
+        this.getTabInfo();
+    }
+
+    getTabInfo() {
         chrome.tabs.query(
             {active: true, currentWindow: true},
             (tabs) => {
@@ -52,15 +56,15 @@ class Popup extends Component {
                         target: "top-site",
                         get: "info",
                     },
-                    (response) => this.setState(response, () => this.loadData())
+                    (response) => this.setState(response, () => this.loadParseData())
                 );
             }
         );
     }
 
     saveData(newData) {
-        this.Timestamp.set(newData);
-        this.Timestamp.save().then(
+        this.timestamp.set(newData);
+        this.timestamp.save().then(
             (result) => {
                 this.setState(newData);
             },
@@ -70,14 +74,14 @@ class Popup extends Component {
         );
     }
 
-    loadData() {
+    loadParseData() {
         const Timestamps = Parse.Object.extend('Timestamps');
         const query = new Parse.Query(Timestamps);
         query.equalTo("episodeId", this.state.episodeId);
         query.first().then(
             (result) => {
                 if (result) {
-                    this.Timestamp = result;
+                    this.timestamp = result;
 
                     this.setState({
                         loading: false,
@@ -96,16 +100,16 @@ class Popup extends Component {
                         postSceneEnd: result.get("postSceneEnd"),
                     });
                 } else {
-                    this.Timestamp = new Timestamps();
+                    this.timestamp = new Timestamps();
 
-                    this.Timestamp.set({
+                    this.timestamp.set({
                         episodeId: this.state.episodeId,
                         episodeTitle: this.state.episodeTitle,
                         seasonNumber: this.state.seasonNumber,
                         episodeNumber: this.state.episodeNumber
                     });
 
-                    this.Timestamp.save().then(
+                    this.timestamp.save().then(
                         (result) => {
                             this.setState({loading: false});
                         },
@@ -119,6 +123,16 @@ class Popup extends Component {
                 console.error(error);
             }
         );
+    }
+
+    flag(value) {
+        const Flags = Parse.Object.extend("Flags");
+        const flag = new Flags();
+
+        flag.set("episode", this.timestamp);
+        flag.set("attribute", value);
+
+        flag.save();
     }
 
     hasMissingAnnotations() {
@@ -209,6 +223,7 @@ class Popup extends Component {
                         start={this.state.introStart}
                         end={this.state.introEnd}
                         onHasUpdate={(newHas) => this.saveData({hasIntro: newHas})}
+                        onFlagged={() => this.flag("intro")}
                     />
                     <AnnotationRow
                         label="Outro"
@@ -216,6 +231,7 @@ class Popup extends Component {
                         start={this.state.outroStart}
                         end={this.state.outroEnd}
                         onHasUpdate={(newHas) => this.saveData({hasOutro: newHas})}
+                        onFlagged={() => this.flag("outro")}
                     />
                     <AnnotationRow
                         label="Post-Outro"
@@ -223,6 +239,7 @@ class Popup extends Component {
                         start={this.state.postSceneStart}
                         end={this.state.postSceneEnd}
                         onHasUpdate={(newHas) => this.saveData({hasPostScene: newHas})}
+                        onFlagged={() => this.flag("postScene")}
                     />
                     <AnnotationRow
                         label="Preview"
@@ -230,6 +247,7 @@ class Popup extends Component {
                         start={this.state.previewStart}
                         end={this.state.previewEnd}
                         onHasUpdate={(newHas) => this.saveData({hasPreview: newHas})}
+                        onFlagged={() => this.flag("preview")}
                     />
                 </div>
 

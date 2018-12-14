@@ -117,6 +117,7 @@ class AnnotationRow extends Component {
                     src="images/flag.svg"
                     alt="Flag this annotation"
                     draggable="false"
+                    onClick={() => this.props.onFlagged()}
                 />
             </div>
         );
