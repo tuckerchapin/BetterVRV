@@ -1,5 +1,59 @@
 .annotation-row-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;;
+    /* justify-content: space-between; */
+    align-items: flex-end;
+    min-height: 34px;
+}
+
+    .annotation-row-container:not(:first-child) {
+        margin-top: 5px;
+    }
+
+.annotation-label {
+    text-transform: capitalize;
+    font-size: 1.5em;
+    min-width: 100px;
+    margin-right: 20px;
+}
+
+.annotation-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+    .annotation-value {
+        font-size: 1.25em;
+        font-weight: 200;
+    }
+
+.annotation-time-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 75px;
+}
+
+    .annotation-time-container:first-child {
+        margin-right: 10px;
+    }
+
+.annotation-time-detail {
+    color: #b0aebb;
+    font-size: 1em;
+    font-weight: 300;
+}
+
+    /* .time-detail-start {
+        text-align: left;
+    }
+
+    .time-detail-end {
+        text-align: right;
+    } */
+
+.annotation-value {
+    font-size: 1.25em;
+    font-weight: 200;
 }

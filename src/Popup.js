@@ -143,7 +143,7 @@ class Popup extends Component {
                 <div id="missing-annotations-notice">
                     It seems we're missing some annotations for this episode. BetterVRV has to rely on our community for intro/outro/etc. annotations. Please help by annotating this episode.
                 </div>
-                <div class="popup-divider"></div>
+                <div className="popup-divider"></div>
             </div>
         );
     }
@@ -166,26 +166,26 @@ class Popup extends Component {
                     <AnnotationRow
                         label="intro"
                         has={this.state.hasIntro}
-                        starts={this.state.introStart}
-                        ends={this.state.introEnd}
+                        start={this.state.introStart}
+                        end={this.state.introEnd}
                     />
                     <AnnotationRow
                         label="outro"
                         has={this.state.hasOutro}
-                        starts={this.state.outroStart}
-                        ends={this.state.outroEnd}
+                        start={this.state.outroStart}
+                        end={this.state.outroEnd}
                     />
                     <AnnotationRow
                         label="preview"
                         has={this.state.hasPreview}
-                        starts={this.state.previewStart}
-                        ends={this.state.previewEnd}
+                        start={this.state.previewStart}
+                        end={this.state.previewEnd}
                     />
                     <AnnotationRow
-                        label="after-credits scene"
+                        label="post-outro"
                         has={this.state.hasPostScene}
-                        starts={this.state.postSceneStart}
-                        ends={this.state.postSceneEnd}
+                        start={this.state.postSceneStart}
+                        end={this.state.postSceneEnd}
                     />
                 </div>
             </div>
@@ -195,28 +195,28 @@ class Popup extends Component {
     render() {
         return (
             <div id="match-white-popup-border">
-                <div class="popup-container">
+                <div className="popup-container">
 
                     <div id="popup-header">
                         <div id="popup-title-detail-container">
-                            <div id="popup-series-title" class="popup-title-detail ellipsis-truncate">
+                            <div id="popup-series-title" className="popup-title-detail ellipsis-truncate">
                                 {this.state.seriesTitle}
                             </div>
-                            <span class="popup-title-detail"> | </span>
-                            <div id="popup-episode-numbers" class="popup-title-detail">
+                            <span className="popup-title-detail"> | </span>
+                            <div id="popup-episode-numbers" className="popup-title-detail">
                                 S{this.state.seasonNumber}E{this.state.episodeNumber}
                             </div>
                         </div>
-                        <div id="popup-episode-title" class="ellipsis-truncate">
+                        <div id="popup-episode-title" className="ellipsis-truncate">
                             {this.state.episodeTitle}
                         </div>
                     </div>
 
-                    <div class="popup-divider"></div>
+                    <div className="popup-divider"></div>
 
                     {this.state.loading ? this.renderLoading() : this.renderLoaded()}
 
-                    <div class="popup-divider"></div>
+                    <div className="popup-divider"></div>
 
                     <div id="popup-footer">
                         <img
