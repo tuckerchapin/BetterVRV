@@ -17,10 +17,14 @@ class AnnotationRow extends Component {
 
     componentWillReceiveProps(newProps) {
         this.setState({
-            has: this.props.has,
-            displayStart: this.formatSecondsForDisplay(this.props.start),
-            displayEnd: this.formatSecondsForDisplay(this.props.end),
+            has: newProps.has,
+            displayStart: this.formatSecondsForDisplay(newProps.start),
+            displayEnd: this.formatSecondsForDisplay(newProps.end),
         });
+    }
+
+    setHas(newHas) {
+        this.setState({has: newHas}, () => this.props.onChange(newHas));
     }
 
     formatSecondsForDisplay(timeInSeconds) {
@@ -70,7 +74,7 @@ class AnnotationRow extends Component {
                 <BinaryPill
                     left="yes"
                     right="no"
-                    onChoice={(choice) => this.setState({has: (choice === "yes")})}
+                    onChoice={(choice) => this.setHas(choice === "yes")}
                 />
             </div>
         );

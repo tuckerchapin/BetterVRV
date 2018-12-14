@@ -187,24 +187,28 @@ class Popup extends Component {
                         has={this.state.hasIntro}
                         start={this.state.introStart}
                         end={this.state.introEnd}
+                        onChange={(newHas) => this.setState({hasIntro: newHas})}
                     />
                     <AnnotationRow
                         label="Outro"
                         has={this.state.hasOutro}
                         start={this.state.outroStart}
                         end={this.state.outroEnd}
+                        onChange={(newHas) => this.setState({hasOutro: newHas})}
                     />
                     <AnnotationRow
                         label="Post-Outro"
                         has={this.state.hasPostScene}
                         start={this.state.postSceneStart}
                         end={this.state.postSceneEnd}
+                        onChange={(newHas) => this.setState({hasPostScene: newHas})}
                     />
                     <AnnotationRow
                         label="Preview"
                         has={this.state.hasPreview}
                         start={this.state.previewStart}
                         end={this.state.previewEnd}
+                        onChange={(newHas) => this.setState({hasPreview: newHas})}
                     />
                 </div>
 
