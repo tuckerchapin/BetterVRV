@@ -94,6 +94,7 @@ class Options extends Component {
                         className="header-img"
                         src="images/logotype.png"
                         alt="logo"
+                        draggable="false"
                     />
                     <a id="vrv-logo-link" href="https://vrv.co">
                         <img
@@ -101,6 +102,7 @@ class Options extends Component {
                             className="header-img"
                             src="images/vrv_logo.svg"
                             alt="vrv-logo"
+                            draggable="false"
                         />
                     </a>
                 </div>

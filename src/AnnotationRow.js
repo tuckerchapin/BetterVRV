@@ -24,7 +24,7 @@ class AnnotationRow extends Component {
     }
 
     setHas(newHas) {
-        this.setState({has: newHas}, () => this.props.onChange(newHas));
+        this.setState({has: newHas}, () => this.props.onHasUpdate(newHas));
     }
 
     formatSecondsForDisplay(timeInSeconds) {
@@ -101,16 +101,23 @@ class AnnotationRow extends Component {
                 </div>
             </div>
         );
-
     }
 
     renderAnnotations() {
         return (
-            <div className="annotation-row-container">
-                <div className="annotation-label">
-                    {this.props.label}
+            <div className="annotation-plus-flag">
+                <div className="annotation-row-container">
+                    <div className="annotation-label">
+                        {this.props.label}
+                    </div>
+                    {(this.state.has === false) ? this.renderNone() : this.renderTimes()}
                 </div>
-                {(this.state.has === false) ? this.renderNone() : this.renderTimes()}
+                <img
+                    className="flag-annotation"
+                    src="images/flag.svg"
+                    alt="Flag this annotation"
+                    draggable="false"
+                />
             </div>
         );
     }

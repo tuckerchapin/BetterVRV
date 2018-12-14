@@ -52,13 +52,25 @@ class Popup extends Component {
                         target: "top-site",
                         get: "info",
                     },
-                    (response) => this.setState(response, () => this.fetchParseData())
+                    (response) => this.setState(response, () => this.loadData())
                 );
             }
         );
     }
 
-    fetchParseData() {
+    saveData(newData) {
+        this.Timestamp.set(newData);
+        this.Timestamp.save().then(
+            (result) => {
+                this.setState(newData);
+            },
+            (error) => {
+                console.error(error);
+            }
+        );
+    }
+
+    loadData() {
         const Timestamps = Parse.Object.extend('Timestamps');
         const query = new Parse.Query(Timestamps);
         query.equalTo("episodeId", this.state.episodeId);
@@ -86,10 +98,12 @@ class Popup extends Component {
                 } else {
                     this.Timestamp = new Timestamps();
 
-                    this.Timestamp.set('episodeId', this.state.episodeId);
-                    this.Timestamp.set('episodeTitle', this.state.episodeTitle);
-                    this.Timestamp.set('seasonNumber', this.state.seasonNumber);
-                    this.Timestamp.set('episodeNumber', this.state.episodeNumber);
+                    this.Timestamp.set({
+                        episodeId: this.state.episodeId,
+                        episodeTitle: this.state.episodeTitle,
+                        seasonNumber: this.state.seasonNumber,
+                        episodeNumber: this.state.episodeNumber
+                    });
 
                     this.Timestamp.save().then(
                         (result) => {
@@ -137,13 +151,18 @@ class Popup extends Component {
         return true;
     }
 
-    renderMissingAnnotationNotice() {
+    flagAnnotationNotice() {
         return (
-            <div>
-                <div id="missing-annotations-notice">
-                    It seems we're missing some annotations for this episode. BetterVRV has to rely on our community for intro/outro/etc. annotations. Please help by annotating this episode.
-                </div>
-                <div className="popup-divider"></div>
+            <div className="annotations-notice">
+                If any of these annotations need editing or are incorrect, please let us know by flagging them with the icon on the right.
+            </div>
+        );
+    }
+
+    missingAnnotationNotice() {
+        return (
+            <div className="annotations-notice">
+                It seems we're missing some annotations for this episode. BetterVRV has to rely on our community for intro/outro/etc. annotations. Please help by annotating this episode.
             </div>
         );
     }
@@ -179,7 +198,9 @@ class Popup extends Component {
 
                 <div className="popup-divider"></div>
 
-                {this.hasMissingAnnotations() ? this.renderMissingAnnotationNotice() : null}
+                {this.hasMissingAnnotations() ? this.missingAnnotationNotice() : this.flagAnnotationNotice()}
+
+                <div className="popup-divider"></div>
 
                 <div id="annotations-container">
                     <AnnotationRow
@@ -187,28 +208,28 @@ class Popup extends Component {
                         has={this.state.hasIntro}
                         start={this.state.introStart}
                         end={this.state.introEnd}
-                        onChange={(newHas) => this.setState({hasIntro: newHas})}
+                        onHasUpdate={(newHas) => this.saveData({hasIntro: newHas})}
                     />
                     <AnnotationRow
                         label="Outro"
                         has={this.state.hasOutro}
                         start={this.state.outroStart}
                         end={this.state.outroEnd}
-                        onChange={(newHas) => this.setState({hasOutro: newHas})}
+                        onHasUpdate={(newHas) => this.saveData({hasOutro: newHas})}
                     />
                     <AnnotationRow
                         label="Post-Outro"
                         has={this.state.hasPostScene}
                         start={this.state.postSceneStart}
                         end={this.state.postSceneEnd}
-                        onChange={(newHas) => this.setState({hasPostScene: newHas})}
+                        onHasUpdate={(newHas) => this.saveData({hasPostScene: newHas})}
                     />
                     <AnnotationRow
                         label="Preview"
                         has={this.state.hasPreview}
                         start={this.state.previewStart}
                         end={this.state.previewEnd}
-                        onChange={(newHas) => this.setState({hasPreview: newHas})}
+                        onHasUpdate={(newHas) => this.saveData({hasPreview: newHas})}
                     />
                 </div>
 
@@ -219,6 +240,7 @@ class Popup extends Component {
                         id="popup-header-logo"
                         src="images/icon_noborder.svg"
                         alt="logo"
+                        draggable="false"
                     />
                 </div>
             </div>

@@ -73,7 +73,7 @@
     font-size: 1.75em;
 }
 
-#missing-annotations-notice {
+.annotations-notice {
     color: #b0aebb;
     font-size: 1em;
     font-weight: 300;
