@@ -1,7 +1,7 @@
 .annotation-row-container {
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     align-items: flex-end;
     min-height: 34px;
 }
@@ -10,10 +10,27 @@
         margin-top: 5px;
     }
 
+.annotation-dne-label-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+    .annotation-dne-prompt {
+        color: #b0aebb;
+        font-size: 1em;
+        font-weight: 300;
+    }
+
+    .annotation-dne-label {
+        font-size: 1.25em;
+        font-weight: 200;
+        text-transform: capitalize;
+    }
+
 .annotation-label {
     text-transform: capitalize;
     font-size: 1.5em;
-    min-width: 100px;
     margin-right: 20px;
 }
 
@@ -24,15 +41,10 @@
     align-items: flex-end;
 }
 
-    .annotation-value {
-        font-size: 1.25em;
-        font-weight: 200;
-    }
-
 .annotation-time-container {
     display: flex;
     flex-direction: column;
-    min-width: 75px;
+    min-width: 60px;
 }
 
     .annotation-time-container:first-child {
@@ -43,17 +55,18 @@
     color: #b0aebb;
     font-size: 1em;
     font-weight: 300;
+    text-align: right;
 }
 
-    /* .time-detail-start {
-        text-align: left;
-    }
-
-    .time-detail-end {
-        text-align: right;
-    } */
-
-.annotation-value {
+.annotation-time {
     font-size: 1.25em;
     font-weight: 200;
+    text-align: right;
+}
+
+.annotation-none {
+    font-size: 1.25em;
+    font-weight: 200;
+    color: #b0aebb;
+    /* align-self: center; */
 }

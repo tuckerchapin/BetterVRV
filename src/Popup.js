@@ -160,32 +160,61 @@ class Popup extends Component {
 
     renderLoaded() {
         return (
-            <div>
+            <div className="popup-container">
+
+                <div id="popup-header">
+                    <div id="popup-title-detail-container">
+                        <div id="popup-series-title" className="popup-title-detail ellipsis-truncate">
+                            {this.state.seriesTitle}
+                        </div>
+                        <span className="popup-title-detail"> | </span>
+                        <div id="popup-episode-numbers" className="popup-title-detail">
+                            S{this.state.seasonNumber}E{this.state.episodeNumber}
+                        </div>
+                    </div>
+                    <div id="popup-episode-title" className="ellipsis-truncate">
+                        {this.state.episodeTitle}
+                    </div>
+                </div>
+
+                <div className="popup-divider"></div>
+
                 {this.hasMissingAnnotations() ? this.renderMissingAnnotationNotice() : null}
+
                 <div id="annotations-container">
                     <AnnotationRow
-                        label="intro"
+                        label="Intro"
                         has={this.state.hasIntro}
                         start={this.state.introStart}
                         end={this.state.introEnd}
                     />
                     <AnnotationRow
-                        label="outro"
+                        label="Outro"
                         has={this.state.hasOutro}
                         start={this.state.outroStart}
                         end={this.state.outroEnd}
                     />
                     <AnnotationRow
-                        label="preview"
+                        label="Post-Outro"
+                        has={this.state.hasPostScene}
+                        start={this.state.postSceneStart}
+                        end={this.state.postSceneEnd}
+                    />
+                    <AnnotationRow
+                        label="Preview"
                         has={this.state.hasPreview}
                         start={this.state.previewStart}
                         end={this.state.previewEnd}
                     />
-                    <AnnotationRow
-                        label="post-outro"
-                        has={this.state.hasPostScene}
-                        start={this.state.postSceneStart}
-                        end={this.state.postSceneEnd}
+                </div>
+
+                <div className="popup-divider"></div>
+
+                <div id="popup-footer">
+                    <img
+                        id="popup-header-logo"
+                        src="images/icon_noborder.svg"
+                        alt="logo"
                     />
                 </div>
             </div>
@@ -195,37 +224,7 @@ class Popup extends Component {
     render() {
         return (
             <div id="match-white-popup-border">
-                <div className="popup-container">
-
-                    <div id="popup-header">
-                        <div id="popup-title-detail-container">
-                            <div id="popup-series-title" className="popup-title-detail ellipsis-truncate">
-                                {this.state.seriesTitle}
-                            </div>
-                            <span className="popup-title-detail"> | </span>
-                            <div id="popup-episode-numbers" className="popup-title-detail">
-                                S{this.state.seasonNumber}E{this.state.episodeNumber}
-                            </div>
-                        </div>
-                        <div id="popup-episode-title" className="ellipsis-truncate">
-                            {this.state.episodeTitle}
-                        </div>
-                    </div>
-
-                    <div className="popup-divider"></div>
-
-                    {this.state.loading ? this.renderLoading() : this.renderLoaded()}
-
-                    <div className="popup-divider"></div>
-
-                    <div id="popup-footer">
-                        <img
-                            id="popup-header-logo"
-                            src="images/icon_noborder.svg"
-                            alt="logo"
-                        />
-                    </div>
-                </div>
+                {this.state.loading ? this.renderLoading() : this.renderLoaded()}
             </div>
         );
     }

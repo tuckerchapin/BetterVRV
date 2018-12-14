@@ -2,17 +2,15 @@
     border: solid 2px white;
     border-top: none;
     border-bottom: none;
+    background-color: #1b1a26;
 }
 
 .popup-container {
     color: #f9f9fa;
-    background-color: #1b1a26;
     font-size: 1em;
-    border-radius: 5px;
     padding: 10px;
 
-    width: 300px;
-    min-height: 100px;
+    width: 320px;
 }
 
 .popup-divider {
@@ -35,8 +33,8 @@
 }
 
 #loading-spinner-container {
-    height: 300px;
-    width: 300px;
+    height: calc(320px + (10px * 2));
+    width: calc(320px + (10px * 2));
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,6 +1,7 @@
 /*global chrome*/
 import React, { Component } from 'react';
 
+import BinaryPill from './BinaryPill';
 import './styles/AnnotationRow.css';
 
 class AnnotationRow extends Component {
@@ -8,6 +9,7 @@ class AnnotationRow extends Component {
         super(props);
 
         this.state = {
+            has: this.props.has,
             displayStart: this.formatSecondsForDisplay(this.props.start),
             displayEnd: this.formatSecondsForDisplay(this.props.end),
         }
@@ -15,6 +17,7 @@ class AnnotationRow extends Component {
 
     componentWillReceiveProps(newProps) {
         this.setState({
+            has: this.props.has,
             displayStart: this.formatSecondsForDisplay(this.props.start),
             displayEnd: this.formatSecondsForDisplay(this.props.end),
         });
@@ -49,13 +52,34 @@ class AnnotationRow extends Component {
     }
 
     renderDNE() {
-        return "We don't know anything about this episode's " + this.props.label;
+        let article = "a";
+        if ("aeiou".indexOf(this.props.label.charAt(0)) !== -1) {
+            article += "n";
+        }
+
+        return (
+            <div className="annotation-row-container">
+                <div className="annotation-dne-label-container">
+                    <div className="annotation-dne-prompt">
+                        Does this episode have {article}
+                    </div>
+                    <div className="annotation-dne-label">
+                        {this.props.label}?
+                    </div>
+                </div>
+                <BinaryPill
+                    left="yes"
+                    right="no"
+                    onChoice={(choice) => this.setState({has: (choice === "yes")})}
+                />
+            </div>
+        );
     }
 
     renderNone() {
         return (
-            <div className="annotation-container">
-                <span className="annotation-value">No {this.props.label}</span>
+            <div className="annotation-container annotation-none">
+                No {this.props.label.toLowerCase()}
             </div>
         );
     }
@@ -69,7 +93,7 @@ class AnnotationRow extends Component {
                 </div>
                 <div className="annotation-time-container">
                     <div className="annotation-time-detail time-detail-end">ends at</div>
-                    <div className="annotation-value">{this.state.displayEnd}</div>
+                    <div className="annotation-time">{this.state.displayEnd}</div>
                 </div>
             </div>
         );
@@ -82,13 +106,13 @@ class AnnotationRow extends Component {
                 <div className="annotation-label">
                     {this.props.label}
                 </div>
-                {(this.props.has === false) ? this.renderNone() : this.renderTimes()}
+                {(this.state.has === false) ? this.renderNone() : this.renderTimes()}
             </div>
         );
     }
 
     render() {
-        if (this.props.has === undefined) {
+        if (this.state.has === undefined) {
             return this.renderDNE();
         } else {
             return this.renderAnnotations();
