@@ -98,7 +98,6 @@
         justify-content: center;
         font-weight: 300;
         font-size: 1.5em;
-        margin-bottom: 10px;
     }
 
         #add-annotation-time-display {
@@ -156,6 +155,7 @@
             -webkit-appearance: none;
             padding: 5px 10px;
             text-align-last: center;
+            margin-bottom: 10px;
         }
 
             #add-annotation-type-dropdown:hover, #add-annotation-type-dropdown:active {

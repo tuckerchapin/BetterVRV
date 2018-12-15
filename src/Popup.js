@@ -48,6 +48,11 @@ class Popup extends Component {
         this.state = {
             loading: true,
             isCreatingAnnotation: false,
+            annotationValid: false,
+            // annotationType,
+
+            // currentTime,
+            // duration,
 
             // seasonNumber,
             // episodeNumber,
@@ -176,6 +181,47 @@ class Popup extends Component {
         flag.set("attribute", value);
 
         flag.save();
+    }
+
+    checkAnnotationValidity(annotation) {
+        if ((this.state.currentTime > 0) && (this.state.currentTime < this.state.duration)) {
+            if (annotation.indexOf("Start") !== -1) {
+                let correspondingTimestamp = annotation.slice(0, -5) + "End";
+                if (
+                    (this.state[correspondingTimestamp] === undefined) ||
+                    (this.state[annotation] < this.state[correspondingTimestamp])
+                ) {
+                    this.setState({annotationValid: true, annotationType: annotation});
+                }
+            } else if (annotation.indexOf("End") !== -1) {
+                let correspondingTimestamp = annotation.slice(0, -3) + "Start";
+                if (
+                    (this.state[correspondingTimestamp] === undefined) ||
+                    (this.state[annotation] > this.state[correspondingTimestamp])
+                ) {
+                    this.setState({annotationValid: true, annotationType: annotation});
+                }
+            }
+        }
+    }
+
+    submitAnnotation() {
+        if (this.state.annotationValid) {
+            let correspondingHas = "has" + this.state.annotationType.charAt(0).toUpperCase();
+            if (this.state.annotationType.indexOf("End") !== -1) {
+                correspondingHas += this.state.annotationType.slice(1, -3);
+            } else if (this.state.annotationType.indexOf("Start") !== -1) {
+                correspondingHas += this.state.annotationType.slice(1, -5);
+            }
+
+            let annotationData ={}
+            annotationData[this.state.annotationType] = this.state.currentTime;
+            annotationData[correspondingHas] = true;
+
+            this.setState({isCreatingAnnotation: false}, () => this.saveData(annotationData));
+        } else {
+            alert("This timestamp doesn't seem to be valid!\n\nCheck that you selected the right event and that it is after/before the corresponding start/end timestamps.");
+        }
     }
 
     formatSecondsForDisplay(timeInSeconds) {
@@ -312,6 +358,19 @@ class Popup extends Component {
         return (
             <div id="add-annotation-container">
                 <div id="add-annotation-information-container">
+                    <select
+                        id="add-annotation-type-dropdown"
+                        onChange={(e) => this.checkAnnotationValidity(e.target.value)}
+                    >
+                        {this.missingTimeAnnotations.length > 1 ?
+                            (<option value="" disabled selected hidden>What happens?</option>) : null}
+                        {this.missingTimeAnnotations.map(annotation => (
+                            <option
+                                value={annotation}
+                                class="add-annotation-type-option"
+                            >{this.annotationDisplayTypes[annotation]}</option>
+                        ))}
+                    </select>
                     <div id="add-annotation-time-display">
                         <div id="add-annotation-time-at">
                             @
@@ -323,19 +382,6 @@ class Popup extends Component {
                         	↻
                         </div>
                     </div>
-                    <select
-                        id="add-annotation-type-dropdown"
-                        onChange={(e) => alert(e.target.value)}
-                    >
-                        {this.missingTimeAnnotations.length > 1 ?
-                            (<option value="" disabled selected hidden>What happens?</option>) : null}
-                        {this.missingTimeAnnotations.map(annotation => (
-                            <option
-                                value={annotation}
-                                class="add-annotation-type-option"
-                            >{this.annotationDisplayTypes[annotation]}</option>
-                        ))}
-                    </select>
                 </div>
                 <div id="add-annotation-buttons-container">
                     <div
@@ -348,7 +394,7 @@ class Popup extends Component {
                     <div
                         id="submit-annotation-button"
                         className="add-annotation-button"
-                        onClick={() => window.confirm("hello")}
+                        onClick={() => this.submitAnnotation()}
                     >
                         Submit
                     </div>
