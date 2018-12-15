@@ -46,7 +46,7 @@ class AnnotationRow extends Component {
         let decimalPortion = parseInt((timeInSeconds % 1) * 100);
 
         let formattedTime =
-            `${twoPad(minutesPortion)}:${twoPad(secondsPortion)}.${twoPad(parseInt(decimalPortion * 100))}`;
+            `${twoPad(minutesPortion)}:${twoPad(secondsPortion)}.${twoPad(decimalPortion)}`;
 
         if (hoursPortion > 0) {
             return String(hoursPortion) + ":" + formattedTime;

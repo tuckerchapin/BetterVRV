@@ -19,8 +19,35 @@ class Popup extends Component {
 
         this.timestamp = {};
 
+        this.missingTimeAnnotations = [
+            // "hasIntro",
+            // "hasOutro",
+            // "hasPreview",
+            // "hasPostScene",
+            "introStart",
+            "introEnd",
+            "outroStart",
+            "outroEnd",
+            "previewStart",
+            "previewEnd",
+            "postSceneStart",
+            "postSceneEnd",
+        ];
+
+        this.annotationDisplayTypes = {
+            introStart: "Intro starts",
+            introEnd: "Intro ends",
+            outroStart: "Outro starts",
+            outroEnd: "Outro ends",
+            previewStart: "Preview starts",
+            previewEnd: "Preview ends",
+            postSceneStart: "Post-outro starts",
+            postSceneEnd: "Post-outro ends",
+        }
+
         this.state = {
             loading: true,
+            isCreatingAnnotation: false,
 
             // seasonNumber,
             // episodeNumber,
@@ -57,6 +84,22 @@ class Popup extends Component {
                         get: "info",
                     },
                     (response) => this.setState(response, () => this.loadParseData())
+                );
+            }
+        );
+    }
+
+    getCurrentPlayerInfo() {
+        chrome.tabs.query(
+            {active: true, currentWindow: true},
+            (tabs) => {
+                chrome.tabs.sendMessage(
+                    tabs[0].id,
+                    {
+                        target: "player",
+                        get: "currentInfo",
+                    },
+                    (response) => this.setState(response)
                 );
             }
         );
@@ -135,6 +178,34 @@ class Popup extends Component {
         flag.save();
     }
 
+    formatSecondsForDisplay(timeInSeconds) {
+        if (timeInSeconds === undefined) {
+            return "??:??.??";
+        }
+
+        function twoPad(value) {
+            let s = String(value);
+            if (s.length === 1) {
+                return "0" + s;
+            }
+            return s;
+        }
+
+        let hoursPortion = parseInt(timeInSeconds / (60 * 60));
+        let minutesPortion = parseInt((timeInSeconds - (hoursPortion * (60 * 60))) / 60);
+        let secondsPortion = parseInt((timeInSeconds - (hoursPortion * (60 * 60)) - (minutesPortion * 60)));
+        let decimalPortion = parseInt((timeInSeconds % 1) * 100);
+
+        let formattedTime =
+            `${twoPad(minutesPortion)}:${twoPad(secondsPortion)}.${twoPad(decimalPortion)}`;
+
+        if (hoursPortion > 0) {
+            return String(hoursPortion) + ":" + formattedTime;
+        }
+
+        return formattedTime;
+    }
+
     hasMissingAnnotations() {
         // First check that the "hasX" fields have values
         if (
@@ -161,6 +232,46 @@ class Popup extends Component {
 
         }
 
+        let newMissingAnnotations = [];
+
+        if (this.state.hasIntro === undefined || this.state.hasIntro) {
+            if (this.state.introStart === undefined) {
+                newMissingAnnotations.push("introStart")
+            }
+            if (this.state.introEnd === undefined) {
+                newMissingAnnotations.push("introEnd")
+            }
+        }
+
+        if (this.state.hasOutro === undefined || this.state.hasOutro) {
+            if (this.state.outroStart === undefined) {
+                newMissingAnnotations.push("outroStart")
+            }
+            if (this.state.outroEnd === undefined) {
+                newMissingAnnotations.push("outroEnd")
+            }
+        }
+
+        if (this.state.hasPreview === undefined || this.state.hasPreview) {
+            if (this.state.previewStart === undefined) {
+                newMissingAnnotations.push("previewStart")
+            }
+            if (this.state.previewEnd === undefined) {
+                newMissingAnnotations.push("previewEnd")
+            }
+        }
+
+        if (this.state.hasPostScene === undefined || this.state.hasPostScene) {
+            if (this.state.postSceneStart === undefined) {
+                newMissingAnnotations.push("postSceneStart")
+            }
+            if (this.state.postSceneEnd === undefined) {
+                newMissingAnnotations.push("postSceneEnd")
+            }
+        }
+
+        this.missingTimeAnnotations = newMissingAnnotations;
+
         // In any other case, it has missing annotations.
         return true;
     }
@@ -177,6 +288,71 @@ class Popup extends Component {
         return (
             <div className="annotations-notice">
                 It seems we're missing some annotations for this episode. BetterVRV has to rely on our community for intro/outro/etc. annotations. Please help by annotating this episode.
+            </div>
+        );
+    }
+
+    renderPromptCreateAnnotation() {
+        return (
+            <div id="add-annotation-container">
+                <div
+                    className="add-annotation-button"
+                    onClick={() => this.setState(
+                        {isCreatingAnnotation: true},
+                        () => this.getCurrentPlayerInfo()
+                    )}
+                >
+                    Add New Timestamp
+                </div>
+            </div>
+        );
+    }
+
+    renderCreatingAnnotation() {
+        return (
+            <div id="add-annotation-container">
+                <div id="add-annotation-information-container">
+                    <div id="add-annotation-time-display">
+                        <div id="add-annotation-time-at">
+                            @
+                        </div>
+                        <div id="add-annotation-time">
+                            {this.formatSecondsForDisplay(this.state.currentTime)}
+                        </div>
+                        <div id="add-annotation-time-reload" onClick={() => this.getCurrentPlayerInfo()}>
+                        	↻
+                        </div>
+                    </div>
+                    <select
+                        id="add-annotation-type-dropdown"
+                        onChange={(e) => alert(e.target.value)}
+                    >
+                        {this.missingTimeAnnotations.length > 1 ?
+                            (<option value="" disabled selected hidden>What happens?</option>) : null}
+                        {this.missingTimeAnnotations.map(annotation => (
+                            <option
+                                value={annotation}
+                                class="add-annotation-type-option"
+                            >{this.annotationDisplayTypes[annotation]}</option>
+                        ))}
+                    </select>
+                </div>
+                <div id="add-annotation-buttons-container">
+                    <div
+                        id="cancel-annotation-button"
+                        className="add-annotation-button"
+                        onClick={() => this.setState({isCreatingAnnotation: false})}
+                    >
+                        Cancel
+                    </div>
+                    <div
+                        id="submit-annotation-button"
+                        className="add-annotation-button"
+                        onClick={() => window.confirm("hello")}
+                    >
+                        Submit
+                    </div>
+                </div>
             </div>
         );
     }
@@ -252,6 +428,14 @@ class Popup extends Component {
                 </div>
 
                 <div className="popup-divider"></div>
+
+                {this.hasMissingAnnotations() ? (
+                    <div>
+                        {this.state.isCreatingAnnotation ?
+                            this.renderCreatingAnnotation() : this.renderPromptCreateAnnotation()}
+                        <div className="popup-divider"></div>
+                    </div>
+                ) : null}
 
                 <div id="popup-footer">
                     <img
