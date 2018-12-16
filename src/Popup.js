@@ -184,47 +184,71 @@ class Popup extends Component {
     }
 
     checkAnnotationValidity(annotation) {
-        if ((this.state.currentTime > 0) && (this.state.currentTime < this.state.duration)) {
+        // console.log(annotation);
+        // console.log(this.state);
+        // console.log((this.state.currentTime >= 0) && (this.state.currentTime <= this.state.duration));
+        if ((this.state.currentTime >= 0) && (this.state.currentTime <= this.state.duration)) {
+            // console.log(annotation.indexOf("Start") !== -1);
+            // console.log(annotation.indexOf("End") !== -1);
             if (annotation.indexOf("Start") !== -1) {
                 let correspondingTimestamp = annotation.slice(0, -5) + "End";
+                // console.log(annotation, this.state[annotation], correspondingTimestamp, this.state[correspondingTimestamp]);
                 if (
                     (this.state[correspondingTimestamp] === undefined) ||
-                    (this.state[annotation] < this.state[correspondingTimestamp])
+                    (this.state.currentTime < this.state[correspondingTimestamp])
                 ) {
                     this.setState({annotationValid: true, annotationType: annotation});
+                    return true;
                 }
             } else if (annotation.indexOf("End") !== -1) {
                 let correspondingTimestamp = annotation.slice(0, -3) + "Start";
+                // console.log(annotation, this.state[annotation], correspondingTimestamp, this.state[correspondingTimestamp]);
                 if (
                     (this.state[correspondingTimestamp] === undefined) ||
-                    (this.state[annotation] > this.state[correspondingTimestamp])
+                    (this.state.currentTime > this.state[correspondingTimestamp])
                 ) {
                     this.setState({annotationValid: true, annotationType: annotation});
+                    return true;
                 }
             }
         }
+
+        this.setState({annotationValid: false});
+        return false;
     }
 
     nudgeTimeUp() {
         let ceil = Math.ceil(this.state.currentTime);
+        let add1 = this.state.currentTime + 1;
+
         if (ceil === this.state.currentTime) {
-            this.setState({currentTime: this.state.currentTime + 1});
+            if (add1 <= this.state.duration) {
+                this.setState({currentTime: this.state.currentTime + 1});
+            }
         } else {
-            this.setState({currentTime: ceil});
+            if (ceil <= this.state.duration) {
+                this.setState({currentTime: ceil});
+            }
         }
     }
 
     nudgeTimeDown() {
         let floor = Math.floor(this.state.currentTime);
+        let minus1 = this.state.currentTime - 1;
+
         if (floor === this.state.currentTime) {
-            this.setState({currentTime: this.state.currentTime - 1});
+            if (minus1 >= 0) {
+                this.setState({currentTime: this.state.currentTime - 1});
+            }
         } else {
-            this.setState({currentTime: floor});
+            if (floor >= 0) {
+                this.setState({currentTime: floor});
+            }
         }
     }
 
     submitAnnotation() {
-        if (this.state.annotationValid) {
+        if (this.checkAnnotationValidity(this.state.annotationType)) {
             let correspondingHas = "has" + this.state.annotationType.charAt(0).toUpperCase();
             if (this.state.annotationType.indexOf("End") !== -1) {
                 correspondingHas += this.state.annotationType.slice(1, -3);
@@ -378,10 +402,9 @@ class Popup extends Component {
                 <div id="add-annotation-information-container">
                     <select
                         id="add-annotation-type-dropdown"
-                        onChange={(e) => this.checkAnnotationValidity(e.target.value)}
+                        onChange={(e) => this.setState({annotationType: e.target.value})}
                     >
-                        {this.missingTimeAnnotations.length > 1 ?
-                            (<option value="" disabled selected hidden>What happens?</option>) : null}
+                        <option value="" disabled selected hidden>What happens?</option>
                         {this.missingTimeAnnotations.map(annotation => (
                             <option
                                 value={annotation}
