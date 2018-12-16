@@ -205,6 +205,24 @@ class Popup extends Component {
         }
     }
 
+    nudgeTimeUp() {
+        let ceil = Math.ceil(this.state.currentTime);
+        if (ceil === this.state.currentTime) {
+            this.setState({currentTime: this.state.currentTime + 1});
+        } else {
+            this.setState({currentTime: ceil});
+        }
+    }
+
+    nudgeTimeDown() {
+        let floor = Math.floor(this.state.currentTime);
+        if (floor === this.state.currentTime) {
+            this.setState({currentTime: this.state.currentTime - 1});
+        } else {
+            this.setState({currentTime: floor});
+        }
+    }
+
     submitAnnotation() {
         if (this.state.annotationValid) {
             let correspondingHas = "has" + this.state.annotationType.charAt(0).toUpperCase();
@@ -367,13 +385,17 @@ class Popup extends Component {
                         {this.missingTimeAnnotations.map(annotation => (
                             <option
                                 value={annotation}
-                                class="add-annotation-type-option"
+                                className="add-annotation-type-option"
                             >{this.annotationDisplayTypes[annotation]}</option>
                         ))}
                     </select>
                     <div id="add-annotation-time-display">
                         <div id="add-annotation-time-at">
                             @
+                        </div>
+                        <div id="annotation-time-nudge-buttons">
+                            <div className="annotation-nudge-button" onClick={() => this.nudgeTimeUp()}>+</div>
+                            <div className="annotation-nudge-button" onClick={() => this.nudgeTimeDown()}>-</div>
                         </div>
                         <div id="add-annotation-time">
                             {this.formatSecondsForDisplay(this.state.currentTime)}

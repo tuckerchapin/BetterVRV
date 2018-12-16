@@ -108,29 +108,62 @@
             margin-bottom: 10px;
         }
 
-            #add-annotation-time-display div {
+            #add-annotation-time-at {
                 display: flex;
                 justify-content: center;
                 height: 30px;
-            }
-
-            #add-annotation-time-at {
                 flex-direction: column;
                 color: #b0aebb;
                 margin-right: 10px;
             }
 
+            #annotation-time-nudge-buttons {
+                display: flex;
+                justify-content: center;
+                /* height: 30px; */
+                flex-direction: column;
+            }
+
+                .annotation-nudge-button {
+                    color: #b0aebb;
+                    padding: 0 5px;
+                    border: 2px solid #b0aebb;
+                    line-height: 14px;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .annotation-nudge-button:hover, .annotation-nudge-button:active {
+                    color: #f9f9fa;
+                    border-color: #f9f9fa;
+                }
+
+                .annotation-nudge-button:first-child {
+                    border-top-left-radius: 5px;
+                    border-bottom-width: 1px;
+                }
+
+                .annotation-nudge-button:last-child {
+                    border-bottom-left-radius: 5px;
+                    border-top-width: 1px;
+                }
 
             #add-annotation-time {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 30px;
                 flex-direction: column;
-                border: solid 2px #b0aebb;
+                border: 2px solid #b0aebb;
                 border-right: none;
-                border-top-left-radius: 5px;
-                border-bottom-left-radius: 5px;
-                padding: 0px 10px;
+                border-left: none;
+                min-width: 95px;
             }
 
             #add-annotation-time-reload {
+                display: flex;
+                justify-content: center;
+                height: 30px;
                 color: #b0aebb;
                 writing-mode: vertical-rl;
                 text-orientation: mixed;
