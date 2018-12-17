@@ -1,0 +1,92 @@
+.annotation-plus-flag {
+    display: flex;
+    flex-direction: row;
+}
+
+.annotation-row-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-height: 34px;
+    flex: 1;
+}
+
+    .annotation-row-container:not(:first-child) {
+        margin-top: 5px;
+    }
+
+.annotation-dne-label-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+    .annotation-dne-prompt {
+        color: #b0aebb;
+        font-size: 1em;
+        font-weight: 300;
+    }
+
+    .annotation-dne-label {
+        font-size: 1.25em;
+        font-weight: 200;
+        text-transform: capitalize;
+    }
+
+.annotation-label {
+    text-transform: capitalize;
+    font-size: 1.5em;
+    margin-right: 20px;
+}
+
+.annotation-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.annotation-time-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 60px;
+}
+
+    .annotation-time-container:first-child {
+        margin-right: 10px;
+    }
+
+.annotation-time-detail {
+    color: #b0aebb;
+    font-size: 1em;
+    font-weight: 300;
+    text-align: right;
+}
+
+.annotation-time {
+    font-size: 1.25em;
+    font-weight: 200;
+    text-align: right;
+}
+
+.annotation-none {
+    font-size: 1.25em;
+    font-weight: 200;
+    color: #b0aebb;
+}
+
+.flag-annotation {
+    width: 20px;
+    height: 20px;
+    margin: 7px 0px 7px 10px;
+    filter: saturate(0);
+}
+
+    .flag-annotation:hover {
+        filter: none;
+    }
+
+    .flag-annotation:active {
+        filter: brightness(.8);
+    }

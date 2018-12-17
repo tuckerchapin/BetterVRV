@@ -1,0 +1,37 @@
+.pill-container {
+    display: flex;
+    flex-direction: row;
+    width: 130px;
+    align-self: center;
+}
+
+.pill-option {
+    flex-grow: 1;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 5px 0;
+    border: solid 2px #b0aebb;
+    color: #b0aebb;
+}
+
+    .pill-option:first-child {
+        border-right-width: 1px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    .pill-option:last-child {
+        border-left-width: 1px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .pill-option:hover {
+        border-color: #00b4ff;
+        color: #00b4ff;
+    }
+
+    .pill-option:active {
+        border-color: #006b99;
+        color: #006b99;
+    }

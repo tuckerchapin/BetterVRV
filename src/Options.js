@@ -52,6 +52,8 @@ class Options extends Component {
     constructor(props) {
         super(props);
 
+        document.title = "BetterVRV Settings";
+
         this.state = DEFAULT_OPTIONS;
 
         this.load();
@@ -84,7 +86,7 @@ class Options extends Component {
 
     render() {
         return (
-            <div>
+            <div id="options-page">
 
                 <div id="header">
                     <img
@@ -92,6 +94,7 @@ class Options extends Component {
                         className="header-img"
                         src="images/logotype.png"
                         alt="logo"
+                        draggable="false"
                     />
                     <a id="vrv-logo-link" href="https://vrv.co">
                         <img
@@ -99,6 +102,7 @@ class Options extends Component {
                             className="header-img"
                             src="images/vrv_logo.svg"
                             alt="vrv-logo"
+                            draggable="false"
                         />
                     </a>
                 </div>

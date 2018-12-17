@@ -1,6 +1,4 @@
-body {
-    margin: 0;
-    padding: 0;
+#options-page {
     background-color: #2f2d42;
     background-image: url('/images/vrv_bg_pattern.svg');
     background-repeat: no-repeat;
