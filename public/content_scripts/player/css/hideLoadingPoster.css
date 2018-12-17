@@ -1,6 +1,6 @@
 div.vjs-poster {
     display: none !important;
+    background: none !important;
     background-image: none !important;
     opacity: 0 !important;
-    filter: brightness(0) !important;
 }

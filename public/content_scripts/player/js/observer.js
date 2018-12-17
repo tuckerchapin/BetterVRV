@@ -16,9 +16,12 @@ window.addEventListener(
 
 function observerCallback(mutationsList, observer) {
     for(let mutation of mutationsList) {
+        // console.log(document.querySelector("div.vjs-poster"));
         if (mutation.type == 'attributes') {
+
             if (mutation.attributeName === "src") {
                 let player = videojs("player_html5_api");
+                player.poster("");
 
                 observer.disconnect();
                 createObserver(document.getElementById("player_html5_api"), observerCallback);

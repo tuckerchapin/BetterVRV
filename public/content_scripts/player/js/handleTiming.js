@@ -1,6 +1,6 @@
 function handleTiming(player, timestamp) {
     console.log(timestamp.get("episodeTitle"));
-    
+
     let introPlaying = false;
     let outroPlaying = false;
     let previewPlaying = false;
@@ -10,7 +10,6 @@ function handleTiming(player, timestamp) {
         "timeupdate",
         (e) => {
             let currentTime = player.currentTime();
-            console.log(currentTime, introPlaying, outroPlaying, previewPlaying, postScenePlaying);
 
             if (introPlaying) {
                 // check if the time is outside the intro

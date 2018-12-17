@@ -10,6 +10,7 @@ function setDefaults(player) {
     player.playbackRate(options.defaultSpeed);
     player.volume(parseFloat(options.defaultVolume / 100));
     player.muted(options.muteByDefault);
+
 }
 
 
@@ -20,8 +21,7 @@ function getParseTimestamp(player) {
       'Ke0lTaWiPPvLmpDOLLrukkbdAq34GTxVIEh4wcAU' // js key
     );
 
-    let topUrl = (window.location != window.parent.location) ? document.referrer : document.location.href;
-
+    let topUrl = document.referrer;
     let episodeId = topUrl.split("/")[4];
     const Timestamps = Parse.Object.extend('Timestamps');
     const query = new Parse.Query(Timestamps);
