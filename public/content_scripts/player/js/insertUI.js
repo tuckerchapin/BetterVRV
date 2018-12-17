@@ -2,6 +2,7 @@ function insertUI(player) {
     insertSpeedDisplay(player);
     insertStatusIcon(player);
     insertSkipIntroButton(player);
+    insertSkipOutroButton(player);
     insertNextEpisodeButton(player);
 }
 
