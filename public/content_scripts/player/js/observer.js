@@ -1,7 +1,7 @@
 let options = DEFAULT_OPTIONS;
 let statusIcons = {};
-let reverseKeyMap = {};
-let episodeId;
+let reverseKeyMap = getReverseKeyMap(options);
+let episodeId = document.referrer.split("/")[4];
 
 window.addEventListener(
     'message',

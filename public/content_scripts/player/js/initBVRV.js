@@ -18,10 +18,6 @@ function getParseTimestamp(player) {
       'Ke0lTaWiPPvLmpDOLLrukkbdAq34GTxVIEh4wcAU' // js key
     );
 
-    if (episodeId === undefined) {
-        episodeId = document.referrer.split("/")[4];
-    }
-
     const Timestamps = Parse.Object.extend('Timestamps');
     const query = new Parse.Query(Timestamps);
     query.equalTo("episodeId", episodeId);
