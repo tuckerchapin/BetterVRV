@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "BetterVRV",
     "short_name": "BetterVRV",
-    "version": "0.3.5",
+    "version": "0.3.6",
     "description": "A suite of improvements to the VRV player and experience.",
     "homepage_url": "https://chrome.google.com/webstore/detail/bettervrv/dhghipbelapdpgpdfmkebjnnokhpeock",
     "permissions": ["activeTab", "tabs", "storage", "declarativeContent"],
