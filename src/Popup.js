@@ -409,6 +409,15 @@ class Popup extends Component {
         return (
             <div className="annotations-notice">
                 It seems we're missing some annotations for this episode. BetterVRV has to rely on our community for intro/outro/etc. annotations. Please help by annotating this episode.
+                <br />
+                <br />
+                <a
+                    id="annotations-notice-link"
+                    target="_blank" 
+                    href="https://github.com/tuckerchapin/BetterVRV/wiki/Annotation-Guidelines"
+                >
+                    BetterVRV Annotation Guidelines
+                </a>
             </div>
         );
     }

@@ -365,15 +365,12 @@ class Options extends Component {
                     <div className="footer-entry">
                         BetterVRV v{chrome.runtime.getManifest().version}
                     </div>
-                    {/* <div className="footer-entry">
-                        Issues? Suggestions? Complaints? <a href="mailto:tuckerchapin@gmail.com">Let me know.</a>
-                    </div> */}
                     <div className="footer-entry">
-                        <a href="https://github.com/tuckerchapin/BetterVRV/">Github.</a>
+                        Issues? Suggestions? Complaints? <a target="_blank" href="mailto:bettervrv@gmail.com">Let me know.</a>
                     </div>
-                    {/* <div className="footer-entry">
-                        Consider <a href="https://venmo.com/tuckerchapin">donating.</a>
-                    </div> */}
+                    <div className="footer-entry">
+                        <a target="_blank" href="https://github.com/tuckerchapin/BetterVRV/">Github.</a>
+                    </div>
                     <div id="disclaimer">
                         VRV, CrunchyRoll, and all other trademarks, service marks, trade names, product names and logos appearing here are the property of their respective owners.
                     </div>

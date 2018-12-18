@@ -79,6 +79,21 @@
     font-weight: 300;
 }
 
+    #annotations-notice-link {
+        color: #f9f9fa;
+        font-size: 1.2em;
+    }
+
+        #annotations-notice-link:hover {
+            color: #00b4ff;
+            text-decoration: underline;
+        }
+
+        #annotations-notice-link:active {
+            filter: brightness(.8);
+            text-decoration: underline;
+        }
+
 #annotations-container {
     display: flex;
     flex-direction: column;
