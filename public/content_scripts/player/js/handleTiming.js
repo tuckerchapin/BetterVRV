@@ -1,6 +1,4 @@
 function handleTiming(player, timestamp) {
-    console.log(timestamp.get("episodeTitle"));
-
     let introPlaying = false;
     let outroPlaying = false;
     let previewPlaying = false;

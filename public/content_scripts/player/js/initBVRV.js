@@ -13,7 +13,6 @@ function setDefaults(player) {
 
 }
 
-
 function getParseTimestamp(player) {
     Parse.serverURL = 'https://parseapi.back4app.com'; // server
     Parse.initialize(
@@ -21,8 +20,10 @@ function getParseTimestamp(player) {
       'Ke0lTaWiPPvLmpDOLLrukkbdAq34GTxVIEh4wcAU' // js key
     );
 
-    let topUrl = document.referrer;
-    let episodeId = topUrl.split("/")[4];
+    if (episodeId === undefined) {
+        episodeId = document.referrer.split("/")[4];
+    }
+
     const Timestamps = Parse.Object.extend('Timestamps');
     const query = new Parse.Query(Timestamps);
     query.equalTo("episodeId", episodeId);

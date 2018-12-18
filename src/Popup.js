@@ -88,7 +88,13 @@ class Popup extends Component {
                         target: "top-site",
                         get: "info",
                     },
-                    (response) => this.setState(response, () => this.loadParseData())
+                    (response) => {
+                        if (response !== undefined) {
+                            this.setState(response, () => this.loadParseData());
+                        } else {
+                            this.getTabInfo();
+                        }
+                    }
                 );
             }
         );
@@ -184,15 +190,9 @@ class Popup extends Component {
     }
 
     checkAnnotationValidity(annotation) {
-        // console.log(annotation);
-        // console.log(this.state);
-        // console.log((this.state.currentTime >= 0) && (this.state.currentTime <= this.state.duration));
         if ((this.state.currentTime >= 0) && (this.state.currentTime <= this.state.duration)) {
-            // console.log(annotation.indexOf("Start") !== -1);
-            // console.log(annotation.indexOf("End") !== -1);
             if (annotation.indexOf("Start") !== -1) {
                 let correspondingTimestamp = annotation.slice(0, -5) + "End";
-                // console.log(annotation, this.state[annotation], correspondingTimestamp, this.state[correspondingTimestamp]);
                 if (
                     (this.state[correspondingTimestamp] === undefined) ||
                     (this.state.currentTime < this.state[correspondingTimestamp])
@@ -202,7 +202,6 @@ class Popup extends Component {
                 }
             } else if (annotation.indexOf("End") !== -1) {
                 let correspondingTimestamp = annotation.slice(0, -3) + "Start";
-                // console.log(annotation, this.state[annotation], correspondingTimestamp, this.state[correspondingTimestamp]);
                 if (
                     (this.state[correspondingTimestamp] === undefined) ||
                     (this.state.currentTime > this.state[correspondingTimestamp])

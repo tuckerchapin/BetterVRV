@@ -1,14 +1,19 @@
 let options = DEFAULT_OPTIONS;
 let statusIcons = {};
 let reverseKeyMap = {};
+let episodeId;
 
 window.addEventListener(
     'message',
     (event) => {
         if (event.data.sender && event.data.sender === "bvrv") {
-            options = event.data.options;
-            statusIcons = event.data.statusIcons;
-            reverseKeyMap = getReverseKeyMap(options);
+            if (event.data.content === "chromeOptions") {
+                options = event.data.options;
+                statusIcons = event.data.statusIcons;
+                reverseKeyMap = getReverseKeyMap(options);
+            } else if (event.data.content === "episodeId") {
+                episodeId = event.data.episodeId;
+            }
         }
     },
     false
@@ -16,10 +21,17 @@ window.addEventListener(
 
 function observerCallback(mutationsList, observer) {
     for(let mutation of mutationsList) {
-        // console.log(document.querySelector("div.vjs-poster"));
         if (mutation.type == 'attributes') {
             if (mutation.attributeName === "src") {
-                let player = videojs("player_html5_api");
+                window.postMessage(
+                    {
+                        sender: "bvrv",
+                        content: "requestEpisodeId"
+                    },
+                    "*"
+                );
+
+                let player = videojs("player_html5_api", {"poster": ""});
                 player.poster("");
 
                 observer.disconnect();
