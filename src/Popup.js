@@ -43,6 +43,10 @@ class Popup extends Component {
             previewEnd: "Preview ends",
             postSceneStart: "Post-outro starts",
             postSceneEnd: "Post-outro ends",
+            intro: "Intro",
+            outro: "Outro",
+            preview: "Preview",
+            postScene: "Post-outro",
         }
 
         this.state = {
@@ -185,8 +189,10 @@ class Popup extends Component {
 
         flag.set("episode", this.timestamp);
         flag.set("attribute", value);
-
-        flag.save();
+        
+        if (window.confirm(`Would you like to flag that there is something wrong with this episode's ${this.annotationDisplayTypes[value].toLowerCase()} annotation?`)) {
+            flag.save();
+        }
     }
 
     checkAnnotationValidity(annotation) {
