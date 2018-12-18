@@ -170,6 +170,34 @@ class Popup extends Component {
                     this.timestamp.save().then(
                         (result) => {
                             this.setState({loading: false});
+
+                            const Series = Parse.Object.extend('Series');
+                            const query = new Parse.Query(Series);
+                            query.equalTo("seriesId", this.state.seriesId);
+                            query.first().then(
+                                (result) => {
+                                    if (result) {
+                                        this.timestamp.set("series", result);
+                                        this.timestamp.save();
+                                    } else {
+                                        let newSeries = new Series();
+                                        newSeries.set("seriesId", this.state.seriesId)
+                                        newSeries.set("seriesTitle", this.state.seriesTitle);
+                                        newSeries.save().then(
+                                            (result) => {
+                                                this.timestamp.set("series", newSeries);
+                                                this.timestamp.save();
+                                            },
+                                            (error) => {
+                                                console.error(error);
+                                            }
+                                        );
+                                    }
+                                },
+                                (error) => {
+                                    console.error(error);
+                                }
+                            );
                         },
                         (error) => {
                             console.error(error);
@@ -189,7 +217,7 @@ class Popup extends Component {
 
         flag.set("episode", this.timestamp);
         flag.set("attribute", value);
-        
+
         if (window.confirm(`Would you like to flag that there is something wrong with this episode's ${this.annotationDisplayTypes[value].toLowerCase()} annotation?`)) {
             flag.save();
         }
