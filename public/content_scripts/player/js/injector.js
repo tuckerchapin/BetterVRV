@@ -43,19 +43,6 @@ window.addEventListener(
     false
 );
 
-chrome.storage.sync.get(
-    DEFAULT_OPTIONS,
-    (options) => window.postMessage(
-        {
-            sender: "bvrv",
-            content: "chromeOptions",
-            options,
-            statusIcons,
-        },
-        "*"
-    )
-);
-
 insertJS("content_scripts/defaultOptions.js");
 insertJS("content_scripts/player/js/getReverseKeyMap.js");
 insertJS("content_scripts/player/js/formattedValues.js");
@@ -65,3 +52,18 @@ insertJS("content_scripts/player/js/handleTiming.js");
 
 insertJS("content_scripts/player/js/observer.js");
 insertJS("content_scripts/player/js/initBVRV.js");
+
+chrome.storage.sync.get(
+    DEFAULT_OPTIONS,
+    (options) => {
+        window.postMessage(
+            {
+                sender: "bvrv",
+                content: "chromeOptions",
+                options,
+                statusIcons,
+            },
+            "*"
+        )
+    }
+);

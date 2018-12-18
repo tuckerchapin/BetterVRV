@@ -32,7 +32,7 @@ function observerCallback(mutationsList, observer) {
                 );
 
                 cleanUpPreviousUI();
-                
+
                 let player = videojs("player_html5_api", {"poster": ""});
                 player.poster("");
 
