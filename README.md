@@ -32,8 +32,9 @@ Roadmap
 - [ ] Subtitle settings
 - [ ] Force HD
 - [ ] Mark episodes as recap episodes with no new content and skip them
-- [ ] Prevent the loading status from blocking the ui
-- [ ] Option to include or exclude the title card (if any) from the skip-op settings
+- [ ] Prevent the loading status from blocking the UI
+- [ ] Option to include or exclude the title card (if any) from the skip intro settings
+- [ ] Add section indicators to the progress bar for intros/outros/etc.
 - [ ] Option to play openings and endings all the way through when they are new/different for the series or the first time they appear
 - [ ] Per-show settings
 - [ ] Ask users if they are willing to have their skipping/pausing habits shared anonymously to try to glean skip sections without manual annotations
