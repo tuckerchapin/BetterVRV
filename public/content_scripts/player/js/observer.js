@@ -31,6 +31,7 @@ function observerCallback(mutationsList, observer) {
                     "*"
                 );
 
+                cleanUpPreviousUI();
                 let player = videojs("player_html5_api", {"poster": ""});
                 player.poster("");
 
@@ -56,3 +57,20 @@ function createObserver(element, callback) {
 }
 
 createObserver(document.getElementById("player_html5_api"), observerCallback);
+
+function cleanUpPreviousUI() {
+    let skipIntroButton = document.getElementById("bvrv-skip-intro-button");
+    if (skipIntroButton) {
+        skipIntroButton.classList.add("bvrv-display-none");
+    }
+
+    let skipOutroButton = document.getElementById("bvrv-skip-outro-button");
+    if (skipOutroButton) {
+        skipOutroButton.classList.add("bvrv-display-none");
+    }
+
+    let nextEpisodeButton = document.getElementById("bvrv-next-episode-button");
+    if (nextEpisodeButton) {
+        nextEpisodeButton.classList.add("bvrv-display-none");
+    }
+}
