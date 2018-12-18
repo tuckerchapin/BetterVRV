@@ -3,6 +3,12 @@ let statusIcons = {};
 let reverseKeyMap = getReverseKeyMap(options);
 let episodeId = document.referrer.split("/")[4];
 
+let playerDefaults = {
+    playbackRate: options.defaultSpeed,
+    volume: parseFloat(options.defaultVolume / 100),
+    muted: options.muteByDefault,
+}
+
 window.addEventListener(
     'message',
     (event) => {
@@ -11,6 +17,11 @@ window.addEventListener(
                 options = event.data.options;
                 statusIcons = event.data.statusIcons;
                 reverseKeyMap = getReverseKeyMap(options);
+                playerDefaults = {
+                    playbackRate: options.defaultSpeed,
+                    volume: parseFloat(options.defaultVolume / 100),
+                    muted: options.muteByDefault,
+                }
             } else if (event.data.content === "episodeId") {
                 episodeId = event.data.episodeId;
             }

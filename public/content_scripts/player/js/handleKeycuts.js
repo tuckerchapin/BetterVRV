@@ -84,6 +84,8 @@ const actions = {
             afterAction(player, "unmuted");
         }
 
+        playerDefaults.muted = player.muted();
+
         if (callback && typeof(callback) === "function") {
             callback();
         }
@@ -99,6 +101,8 @@ const actions = {
             player.volume(newVolume);
             afterAction(player, "volumeUp");
         }
+
+        playerDefaults.volume = player.volume();
 
         if (callback && typeof(callback) === "function") {
             callback();
@@ -117,6 +121,8 @@ const actions = {
             afterAction(player, "volumeDown");
         }
 
+        playerDefaults.volume = player.volume();
+
         if (callback && typeof(callback) === "function") {
             callback();
         }
@@ -130,6 +136,8 @@ const actions = {
             player.playbackRate(newSpeed);
             afterAction(player, "speedUp");
         }
+
+        playerDefaults.playbackRate = player.playbackRate();
 
         if (callback && typeof(callback) === "function") {
             callback();
@@ -145,6 +153,8 @@ const actions = {
             afterAction(player, "slowDown");
         }
 
+        playerDefaults.playbackRate = player.playbackRate();
+
         if (callback && typeof(callback) === "function") {
             callback();
         }
@@ -153,6 +163,8 @@ const actions = {
         player.playbackRate(parseFloat(options.defaultSpeed));
 
         afterAction(player, "resetSpeed");
+
+        playerDefaults.playbackRate = player.playbackRate();
 
         if (callback && typeof(callback) === "function") {
             callback();

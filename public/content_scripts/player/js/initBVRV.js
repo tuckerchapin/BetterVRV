@@ -6,9 +6,9 @@ function initBVRV(player) {
 }
 
 function setDefaults(player) {
-    player.playbackRate(options.defaultSpeed);
-    player.volume(parseFloat(options.defaultVolume / 100));
-    player.muted(options.muteByDefault);
+    player.playbackRate(playerDefaults.playbackRate);
+    player.volume(playerDefaults.volume);
+    player.muted(playerDefaults.muted);
 }
 
 function getParseTimestamp(player) {
