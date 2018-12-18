@@ -1,7 +1,7 @@
-<img alt="logo" src="https://raw.githubusercontent.com/tuckerchapin/BetterVRV/master/public/images/logotype_dark.png">
+<img alt="logo" src="./public/images/logotype_dark.png">
 
 <a href="https://chrome.google.com/webstore/detail/bettervrv/dhghipbelapdpgpdfmkebjnnokhpeock" target="_blank">
-<img align="right" alt="Install BetterVRV" src="https://raw.githubusercontent.com/tuckerchapin/BetterVRV/master/dev/ChromeWebstoreBadge2x.png">
+<img align="right" alt="Install BetterVRV" src="./dev/ChromeWebstoreBadge2x.png">
 </a>
 
 Features
@@ -19,7 +19,7 @@ Features
 
 Timestamps and Auto-skipping
 ---
-This extension relies on our users submitting timestamps for when intros/outros/etc. start and end so that other users can skip around these. Please consider reading the annotation guidelines and helping out by clicking on the BetterVRV icon in your Chrome taskbar to add annotations when you're watching an episode. It only takes a moment and makes everyone else's experience that much better.
+This extension relies on our users submitting timestamps for when intros/outros/etc. start and end so that other users can skip around these. Please consider reading the [annotation guidelines](https://github.com/tuckerchapin/BetterVRV/wiki/Annotation-Guidelines) and helping out by clicking on the BetterVRV icon in your Chrome taskbar to add annotations when you're watching an episode. It only takes a moment and makes everyone else's experience that much better.
 
 Known Issues
 ---
