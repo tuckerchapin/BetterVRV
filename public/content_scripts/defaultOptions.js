@@ -3,7 +3,8 @@ const DEFAULT_OPTIONS = {
 
     "reorderFrontPage": true,
 
-    "autoSkipIntro": true,
+    "autoSkipIntro": false,
+    "autoPlayNextEpisode": false,
 
     "hideDescriptions": true,
     "hideThumbnails": true,

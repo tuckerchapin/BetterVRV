@@ -2,10 +2,10 @@
     "manifest_version": 2,
     "name": "BetterVRV",
     "short_name": "BetterVRV",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "description": "A suite of improvements to the VRV player and experience.",
     "homepage_url": "https://chrome.google.com/webstore/detail/bettervrv/dhghipbelapdpgpdfmkebjnnokhpeock",
-    "permissions": ["activeTab", "storage", "declarativeContent"],
+    "permissions": ["activeTab", "tabs", "storage", "declarativeContent"],
     "icons": {
         "16": "images/icon16.png",
         "19": "images/icon19.png",
@@ -16,7 +16,8 @@
     },
     "background": {
         "scripts": [
-            "background/onInstall.js"
+            "background/onInstall.js",
+            "background/vrvTabManager.js"
         ],
         "persistent": false
     },
@@ -41,7 +42,7 @@
                 "content_scripts/top-site/css/vrvStyling.css"
             ],
             "js": [
-                "content_scripts/top-site/js/popupMessenger.js",
+                "content_scripts/top-site/js/topMessenger.js",
                 "content_scripts/insertScript.js",
                 "content_scripts/defaultOptions.js",
                 "content_scripts/top-site/js/vrvStyling.js"
@@ -60,7 +61,7 @@
                 "content_scripts/player/css/skipButtons.css"
             ],
             "js": [
-                "content_scripts/player/js/popupMessenger.js",
+                "content_scripts/player/js/playerMessenger.js",
                 "content_scripts/insertScript.js",
                 "content_scripts/defaultOptions.js",
                 "content_scripts/player/js/injector.js"

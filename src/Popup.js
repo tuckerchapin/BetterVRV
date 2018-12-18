@@ -43,6 +43,10 @@ class Popup extends Component {
             previewEnd: "Preview ends",
             postSceneStart: "Post-outro starts",
             postSceneEnd: "Post-outro ends",
+            intro: "Intro",
+            outro: "Outro",
+            preview: "Preview",
+            postScene: "Post-outro",
         }
 
         this.state = {
@@ -88,7 +92,13 @@ class Popup extends Component {
                         target: "top-site",
                         get: "info",
                     },
-                    (response) => this.setState(response, () => this.loadParseData())
+                    (response) => {
+                        if (response !== undefined) {
+                            this.setState(response, () => this.loadParseData());
+                        } else {
+                            this.getTabInfo();
+                        }
+                    }
                 );
             }
         );
@@ -160,6 +170,34 @@ class Popup extends Component {
                     this.timestamp.save().then(
                         (result) => {
                             this.setState({loading: false});
+
+                            const Series = Parse.Object.extend('Series');
+                            const query = new Parse.Query(Series);
+                            query.equalTo("seriesId", this.state.seriesId);
+                            query.first().then(
+                                (result) => {
+                                    if (result) {
+                                        this.timestamp.set("series", result);
+                                        this.timestamp.save();
+                                    } else {
+                                        let newSeries = new Series();
+                                        newSeries.set("seriesId", this.state.seriesId)
+                                        newSeries.set("seriesTitle", this.state.seriesTitle);
+                                        newSeries.save().then(
+                                            (result) => {
+                                                this.timestamp.set("series", newSeries);
+                                                this.timestamp.save();
+                                            },
+                                            (error) => {
+                                                console.error(error);
+                                            }
+                                        );
+                                    }
+                                },
+                                (error) => {
+                                    console.error(error);
+                                }
+                            );
                         },
                         (error) => {
                             console.error(error);
@@ -180,19 +218,15 @@ class Popup extends Component {
         flag.set("episode", this.timestamp);
         flag.set("attribute", value);
 
-        flag.save();
+        if (window.confirm(`Would you like to flag that there is something wrong with this episode's ${this.annotationDisplayTypes[value].toLowerCase()} annotation?`)) {
+            flag.save();
+        }
     }
 
     checkAnnotationValidity(annotation) {
-        // console.log(annotation);
-        // console.log(this.state);
-        // console.log((this.state.currentTime >= 0) && (this.state.currentTime <= this.state.duration));
         if ((this.state.currentTime >= 0) && (this.state.currentTime <= this.state.duration)) {
-            // console.log(annotation.indexOf("Start") !== -1);
-            // console.log(annotation.indexOf("End") !== -1);
             if (annotation.indexOf("Start") !== -1) {
                 let correspondingTimestamp = annotation.slice(0, -5) + "End";
-                // console.log(annotation, this.state[annotation], correspondingTimestamp, this.state[correspondingTimestamp]);
                 if (
                     (this.state[correspondingTimestamp] === undefined) ||
                     (this.state.currentTime < this.state[correspondingTimestamp])
@@ -202,7 +236,6 @@ class Popup extends Component {
                 }
             } else if (annotation.indexOf("End") !== -1) {
                 let correspondingTimestamp = annotation.slice(0, -3) + "Start";
-                // console.log(annotation, this.state[annotation], correspondingTimestamp, this.state[correspondingTimestamp]);
                 if (
                     (this.state[correspondingTimestamp] === undefined) ||
                     (this.state.currentTime > this.state[correspondingTimestamp])

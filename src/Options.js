@@ -13,7 +13,8 @@ const DEFAULT_OPTIONS = {
 
     "reorderFrontPage": true,
 
-    "autoSkipIntro": true,
+    "autoSkipIntro": false,
+    "autoPlayNextEpisode": false,
 
     "hideDescriptions": true,
     "hideThumbnails": true,
@@ -147,6 +148,21 @@ class Options extends Component {
                             disabled={true}
                             value={this.state.hideLoadingPoster}
                             onChange={(newValue) => this.save({hideLoadingPoster: newValue})}
+                        />
+                    </ControlPanel>
+
+                    <ControlPanel title="Auto-Skipping">
+                        <ControlRow title="Skip Intros"
+                            description="For intros, openings, or theme sequences that are in our database, they will automatically be skipped. If turned off, the “Skip Intro” option will be displayed when possible."
+                            controlType="toggle"
+                            value={this.state.autoSkipIntro}
+                            onChange={(newValue) => this.save({autoSkipIntro: newValue})}
+                        />
+                        <ControlRow title="Play Next Episode"
+                            description="For outros, credits, or theme sequences that are in our database, they will automatically be skipped. This will also skip end-of-episode previews and directly play the next episode. However, in the case that an episode has an after-credits/post-outro scene, the outro will be skipped and play will resume at the start of the scene. If turned off, the “Skip Outro” or “Next Episode” option will be displayed when possible."
+                            controlType="toggle"
+                            value={this.state.autoPlayNextEpisode}
+                            onChange={(newValue) => this.save({autoPlayNextEpisode: newValue})}
                         />
                     </ControlPanel>
 

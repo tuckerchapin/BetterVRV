@@ -2,7 +2,6 @@ chrome.runtime.onMessage.addListener(
     (request, sender, sendResponse) => {
         if (request.target === "top-site") {
             if (request.get === "info") {
-
                 let seriesInfo = document.querySelector("a.episode-info");
                 let seriesId = seriesInfo.getAttribute("href").split("/")[2];
                 let seriesTitle = seriesInfo.querySelector("span.series").textContent;
