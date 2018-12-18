@@ -1,29 +1,39 @@
 <img alt="logo" src="https://raw.githubusercontent.com/tuckerchapin/BetterVRV/master/public/images/logotype_dark.png">
 
 <a href="https://chrome.google.com/webstore/detail/bettervrv/dhghipbelapdpgpdfmkebjnnokhpeock" target="_blank">
-<img align="right" alt="Install BetterVRV" src="https://raw.githubusercontent.com/tuckerchapin/BetterVRV/master/dev/ChromeWebstoreBadge.png">
+<img align="right" alt="Install BetterVRV" src="https://raw.githubusercontent.com/tuckerchapin/BetterVRV/master/dev/ChromeWebstoreBadge2x.png">
 </a>
 
 Features
 ---
-- [x] no-spoilers: Hide potential spoilers in the thumbnails and descriptions.
-- [x] seek-controls: Better seeking control from the keyboard; JKL, arrow, and adjustable increments.
-- [x] volume-controls: Adjust the volume and mute/unmute.
-- [x] speed-controls: Adjust the playback speed.
-- [x] skip-op: Skip the opening sequence.
-- [x] skip-ed: Skip the end sequence and bring up the "next episode" prompt sooner.
-- [x] skip-preview: similar to no-spoilers, skip or do not show the prievew at the end of episode
+- Hide potential spoilers in the thumbnails and descriptions
+- Control the playback speed
+- Better control from the keyboard:
+    - Seek with the keyboard
+    - Adjust the volume and mute/unmute
+    - Adjust the playback speed
+    - Custom keybindings and increments for total control
+- Skip intros and auto-play the next episode when the outro/ending starts
+- Reorganize the home page of VRV to be more relevant to you; bringing the "Continue Watching" section right to the top
+- ...and many other minor changes to make the VRV experience better
+
+Timestamps and Auto-skipping
+---
+This extension relies on our users submitting timestamps for when intros/outros/etc. start and end so that other users can skip around these. Please consider reading the annotation guidelines and helping out by clicking on the BetterVRV icon in your Chrome taskbar to add annotations when you're watching an episode. It only takes a moment and makes everyone else's experience that much better.
+
+Known Issues
+---
+- Content blockers like uBlock Origin and AdBlock can cause issues with some of this extensions scripts from running properly. This is being investigated, but for the time being consider disabling these on `https://vrv.co/*`
+- The pre-loading posters for episodes are not properly blocked.
 
 Roadmap
 ---
-* quick-watchlist: add "add to/remove from watchlist" buttons or at least icons to series and movie headers on the front page and watchlist pages
-* subtitle-settings
-* force-HD
-* skip-recap: if there is a recap that contains no new content, skip it
-* user-markup: allow users to submit timestamps/flags for skip parameters (and obviously report them as well)
-* unblock-loading: prevent the loading status from blocking the ui
-* skip-title: option to include or exclude the title card (if any) from the skip-op settings
-* new-op-only: option to play openings and endings all the way through when they are new/different from the series/the first time they appear or have changed
-* fp-improvements: move "continue watching" to the top of the front page, don't show shows you are up to date with in continue watching
-* show-by-show: per-show settings?
-* learn-skips: ask users if they are willing to have their skipping/pausing habits shared anonymously to try to glean skip sections without manually marking
+- [ ] Add "add to/remove from watchlist" icons to series and movie cards on the front page and watchlist pages
+- [ ] Subtitle settings
+- [ ] Force HD
+- [ ] Mark episodes as recap episodes with no new content and skip them
+- [ ] Prevent the loading status from blocking the ui
+- [ ] Option to include or exclude the title card (if any) from the skip-op settings
+- [ ] Option to play openings and endings all the way through when they are new/different for the series or the first time they appear
+- [ ] Per-show settings
+- [ ] Ask users if they are willing to have their skipping/pausing habits shared anonymously to try to glean skip sections without manual annotations
