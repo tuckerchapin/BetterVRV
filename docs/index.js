@@ -19,7 +19,7 @@ getCompletedEpisodeCount(
 getRecentAnnotations(
     7,
     (results) => {
-        let recentAnnotationsEl = document.getElementById("recent-annotations-container");
+        let recentAnnotationsEl = document.getElementById("recent-annotations");
         for (let i = 0; i < results.length; i++) {
             let text = `<div class="recent-annotation">`;
             text += results[i].get("episodeTitle");
@@ -29,6 +29,10 @@ getRecentAnnotations(
             text += `</span>`;
             text += `</div>`;
             recentAnnotationsEl.innerHTML += text;
+
+            document.getElementById("vrv-loading-spinner").classList.add("hidden");
+            document.getElementById("recent-annotations-gradient-overlay").classList.remove("hidden");
+            recentAnnotationsEl.classList.remove("hidden");
         }
     }
 );

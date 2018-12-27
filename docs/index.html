@@ -3,9 +3,10 @@
         <title>BetterVRV</title>
         <link rel="shortcut icon" href="favicon.ico">
         <link rel="stylesheet" type="text/css" href="fonts.css">
+        <link rel="stylesheet" type="text/css" href="vrvloadingspinner.css">
         <link rel="stylesheet" type="text/css" href="index.css">
 
-        <script src="../public/lib/parse.min.js"></script>
+        <script src="parse.min.js"></script>
         <script src="parseFunctions.js"></script>
         <script src="index.js"></script>
     </head>
@@ -13,7 +14,7 @@
         <div id="container">
             <img
                 id="logo"
-                src="../public/images/logotype.png"
+                src="https://raw.githubusercontent.com/tuckerchapin/BetterVRV/master/public/images/logotype.png"
                 alt="logo"
                 draggable="false"
             />
@@ -22,14 +23,20 @@
                     Your community has added <span id="total-episode-count" class="bold-stat">??</span> episodes across <span id="total-series-count" class="bold-stat">??</span> series.
                     <br />
                     <br />
-                    <span id="complete-episode-count" class="bold-stat">??</span> fully annotated episodes
+                    <span id="complete-episode-count" class="bold-stat">??</span> fully annotated episodes.
             </div>
 
             <div id="recent-annotations-container" class="info-container">
                 <div id="recent-annotations-header">
                     Recent Annotations
                 </div>
-                <div id="recent-annotations-gradient-overlay">
+                <div id="vrv-loading-spinner">
+                    <svg id="vrvWebSpinner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50 10.39 84.3 30.2 84.3 30.2 93.3 25 50 0 50 10.39"></polygon><polygon points="84.3 30.2 84.3 69.8 84.3 69.8 93.3 75 93.3 25 84.3 30.2"></polygon><polygon points="50 89.61 50 100 93.3 75 84.3 69.8 50 89.61"></polygon><polygon points="15.7 69.8 6.7 75 50 100 50 89.61 15.7 69.8"></polygon><polygon points="15.7 69.8 15.7 30.2 6.7 25 6.7 75 15.7 69.8 15.7 69.8"></polygon><polygon points="15.7 30.2 50 10.39 50 0 6.7 25 15.7 30.2 15.7 30.2"></polygon></svg>
+                </div>
+                <div id="recent-annotations-gradient-overlay" class="hidden">
+
+                </div>
+                <div id="recent-annotations" class="hidden">
 
                 </div>
             </div>
@@ -41,7 +48,7 @@
             >
                 <img
                     id="chrome-webstore-img"
-                    src="../dev/ChromeWebstoreBadge2x.png"
+                    src="https://raw.githubusercontent.com/tuckerchapin/BetterVRV/master/dev/ChromeWebstoreBadge2x.png"
                     alt="logo"
                     draggable="false"
                 />
