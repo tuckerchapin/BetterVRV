@@ -98,3 +98,19 @@ body {
     border-radius: 5px;
     background-color: white;
 }
+
+#github-link {
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+}
+
+#github-img {
+    height: 40px;
+    fill: #1b1a26;
+    opacity: .5;
+}
+
+    #github-img:hover {
+        opacity: 1;
+    }
