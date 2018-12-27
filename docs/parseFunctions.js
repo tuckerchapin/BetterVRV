@@ -57,11 +57,11 @@ function getCompletedEpisodeCount(callback) {
         .then((count) => callback(count));
 }
 
-function getRecentAnnotations(callback) {
+function getRecentAnnotations(limit, callback) {
     let recentAnnotationsQuery = new Parse.Query(Timestamps);
     recentAnnotationsQuery.exists("episodeTitle");
     recentAnnotationsQuery.include("series");
     recentAnnotationsQuery.descending("updatedAt");
-    recentAnnotationsQuery.limit(5);
+    recentAnnotationsQuery.limit(limit);
     recentAnnotationsQuery.find().then((results) => callback(results));
 }
