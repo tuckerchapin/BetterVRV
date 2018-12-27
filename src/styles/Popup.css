@@ -210,6 +210,10 @@
                 border-color: #f9f9fa;
             }
 
+        #add-annotation-type-dropdown option {
+            color: #2f2d42;
+        }
+
     #add-annotation-buttons-container {
         display: flex;
         flex-direction: row;
