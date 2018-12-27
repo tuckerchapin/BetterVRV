@@ -2,9 +2,9 @@
     "manifest_version": 2,
     "name": "BetterVRV",
     "short_name": "BetterVRV",
-    "version": "0.3.9",
+    "version": "0.3.10",
     "description": "A suite of improvements to the VRV player and experience.",
-    "homepage_url": "https://chrome.google.com/webstore/detail/bettervrv/dhghipbelapdpgpdfmkebjnnokhpeock",
+    "homepage_url": "http://tuckerchap.in/BetterVRV/",
     "permissions": ["activeTab", "tabs", "storage", "declarativeContent"],
     "icons": {
         "16": "images/icon16.png",
