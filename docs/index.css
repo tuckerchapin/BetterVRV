@@ -5,6 +5,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
     overflow: hidden;
+    margin: 0;
 
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 300;
@@ -91,18 +92,16 @@ body {
     font-weight: 200;
 }
 
-#chrome-webstore-link {
+.corner-link {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
-    border-radius: 5px;
-    background-color: white;
+    bottom: 0;
+    margin: 40px;
 }
 
-#github-link {
-    position: absolute;
-    bottom: 20px;
-    left: 40px;
+#chrome-webstore-link {
+    border-radius: 5px;
+    background-color: white;
+    right: 0;
 }
 
 #github-img {
