@@ -1,0 +1,51 @@
+body {
+    background-color: #2f2d42;
+    background-image: url('../public/images/vrv_bg_pattern.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
+
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1rem;
+}
+
+#container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#container > * {
+    margin-bottom: 20px;
+}
+
+#logo {
+    height: 80px;
+}
+
+#stats-container, #recent-annotations {
+    color: #f9f9fa;
+    background-color: #1b1a26;
+    padding: 20px;
+    border-radius: 2px;
+}
+
+.bold-stat {
+    font-weight: 400;
+    font-size: 1.25rem;
+    color: #fd0;
+}
+
+#chrome-webstore-link {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 5px;
+    background-color: white;
+}

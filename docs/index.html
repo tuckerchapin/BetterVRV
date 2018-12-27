@@ -2,9 +2,46 @@
     <head>
         <title>BetterVRV</title>
         <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" type="text/css" href="fonts.css">
+        <link rel="stylesheet" type="text/css" href="index.css">
+
         <script src="../public/lib/parse.min.js"></script>
+        <script src="parseFunctions.js"></script>
         <script src="index.js"></script>
     </head>
     <body>
+        <div id="container">
+            <img
+                id="logo"
+                src="../public/images/logotype.png"
+                alt="logo"
+                draggable="false"
+            />
+
+            <div id="stats-container">
+                <div>
+                    Your community has added information about <span id="total-episode-count" class="bold-stat">??</span> episodes across <span id="total-series-count" class="bold-stat">??</span> series.
+                </div>
+                <div>
+                    <span id="complete-episode-count" class="bold-stat">??</span> fully annotated episodes
+                </div>
+            </div>
+
+            <div id="recent-annotations">
+            </div>
+
+            <a
+                id="chrome-webstore-link"
+                target="_blank"
+                href="https://chrome.google.com/webstore/detail/bettervrv/dhghipbelapdpgpdfmkebjnnokhpeock"
+            >
+                <img
+                    id="chrome-webstore-img"
+                    src="../dev/ChromeWebstoreBadge2x.png"
+                    alt="logo"
+                    draggable="false"
+                />
+            </a>
+        </div>
     </body>
 </html>
