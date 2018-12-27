@@ -1,6 +1,6 @@
 body {
     background-color: #2f2d42;
-    background-image: url('../public/images/vrv_bg_pattern.svg');
+    background-image: url('vrv_bg_pattern.svg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -25,6 +25,10 @@ body {
     margin-bottom: 20px;
 }
 
+.hidden {
+    display: none;
+}
+
 #logo {
     height: 80px;
 }
@@ -39,6 +43,13 @@ body {
 
 #stats-container {
     text-align: center;
+}
+
+#vrv-loading-spinner {
+    height: 50px;
+    width: 50px;
+    align-self: center;
+    margin: 20px;
 }
 
 .bold-stat {
