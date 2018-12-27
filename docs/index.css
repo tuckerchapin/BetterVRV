@@ -1,0 +1,89 @@
+body {
+    background-color: #2f2d42;
+    background-image: url('../public/images/vrv_bg_pattern.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
+
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1rem;
+}
+
+#container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#container > * {
+    margin-bottom: 20px;
+}
+
+#logo {
+    height: 80px;
+}
+
+.info-container {
+    color: #f9f9fa;
+    background-color: #1b1a26;
+    padding: 20px;
+    border-radius: 2px;
+    width: 500px;
+}
+
+#stats-container {
+    text-align: center;
+}
+
+.bold-stat {
+    font-weight: 400;
+    font-size: 1.25rem;
+    color: #fd0;
+}
+
+#recent-annotations-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#recent-annotations-gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, #1b1a26 90%);
+}
+
+#recent-annotations-header {
+    align-self: center;
+    margin-bottom: 15px;
+}
+
+.recent-annotation {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.series-info {
+    color: #b0aebb;
+    font-weight: 200;
+}
+
+#chrome-webstore-link {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 5px;
+    background-color: white;
+}
