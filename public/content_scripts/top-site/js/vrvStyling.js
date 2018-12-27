@@ -7,10 +7,10 @@ chrome.storage.sync.get(
 
         if (options.hideThumbnails) {
             insertCSS("content_scripts/top-site/css/hideThumbnails.css");
-        }
 
-        if (options.showWatchedThumbnails) {
-            insertCSS("content_scripts/top-site/css/showWatchedThumbnails.css");
+            if (options.showWatchedThumbnails) {
+                insertCSS("content_scripts/top-site/css/showWatchedThumbnails.css");
+            }
         }
 
         if (options.reorderFrontPage) {
