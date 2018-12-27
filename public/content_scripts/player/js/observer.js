@@ -30,45 +30,7 @@ window.addEventListener(
     false
 );
 
-function observerCallback(mutationsList, observer) {
-    for(let mutation of mutationsList) {
-        if (mutation.type == 'attributes') {
-            if (mutation.attributeName === "src") {
-                window.postMessage(
-                    {
-                        sender: "bvrv",
-                        content: "requestEpisodeId"
-                    },
-                    "*"
-                );
 
-                cleanUpPreviousUI();
-
-                let player = videojs("player_html5_api", {"poster": ""});
-                player.poster("");
-
-                observer.disconnect();
-                createObserver(document.getElementById("player_html5_api"), observerCallback);
-
-                if (player.src() !== "") {
-                    player.ready(() => initBVRV(player));
-                } else {
-                    console.log("no source");
-                }
-            }
-        }
-    }
-}
-
-function createObserver(element, callback) {
-    let observer = new MutationObserver(callback);
-    observer.observe(
-        element,
-        { attributes: true, childList: true, subtree: true }
-    );
-}
-
-createObserver(document.getElementById("player_html5_api"), observerCallback);
 
 function cleanUpPreviousUI() {
     let skipIntroButton = document.getElementById("bvrv-skip-intro-button");
@@ -86,3 +48,48 @@ function cleanUpPreviousUI() {
         nextEpisodeButton.classList.add("bvrv-display-none");
     }
 }
+
+function setUp() {
+    window.postMessage(
+        {
+            sender: "bvrv",
+            content: "requestEpisodeId"
+        },
+        "*"
+    );
+
+    cleanUpPreviousUI();
+
+    let player = videojs("player_html5_api", {"poster": ""});
+    player.poster("");
+
+    if (player.src() !== "") {
+        player.ready(() => initBVRV(player));
+    } else {
+        console.log("no source");
+    }
+}
+
+function observerCallback(mutationsList, observer) {
+    for(let mutation of mutationsList) {
+        if (mutation.type == 'attributes') {
+            if (mutation.attributeName === "src") {
+                setUp();
+
+                observer.disconnect();
+                createObserver(document.getElementById("player_html5_api"), observerCallback);
+            }
+        }
+    }
+}
+
+function createObserver(element, callback) {
+    let observer = new MutationObserver(callback);
+    observer.observe(
+        element,
+        { attributes: true, childList: true, subtree: true }
+    );
+}
+
+setUp();
+createObserver(document.getElementById("player_html5_api"), observerCallback);
