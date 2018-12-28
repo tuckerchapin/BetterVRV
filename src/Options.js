@@ -173,7 +173,7 @@ class Options extends Component {
                             displayUnit="s"
                             min={1}
                             max={360}
-                            increment={1}
+                            increment={10}
                             value={this.state.majorSeekIncrement}
                             onChange={(newValue) => this.save({majorSeekIncrement: newValue})}
                         />
@@ -183,7 +183,7 @@ class Options extends Component {
                             displayUnit="s"
                             min={1}
                             max={360}
-                            increment={1}
+                            increment={5}
                             value={this.state.minorSeekIncrement}
                             onChange={(newValue) => this.save({minorSeekIncrement: newValue})}
                         />
