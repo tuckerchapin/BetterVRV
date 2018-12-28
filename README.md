@@ -28,6 +28,7 @@ Known Issues
 
 Roadmap
 ---
+- [ ] Firefox/Safari support
 - [ ] Add "add to/remove from watchlist" icons to series and movie cards on the front page and watchlist pages
 - [ ] Subtitle settings
 - [ ] Force HD
