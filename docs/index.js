@@ -17,7 +17,7 @@ getCompletedEpisodeCount(
 );
 
 getRecentAnnotations(
-    10,
+    12,
     (results) => {
         let recentAnnotationsEl = document.getElementById("recent-annotations");
         for (let i = 0; i < results.length; i++) {
