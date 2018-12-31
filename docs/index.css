@@ -27,7 +27,7 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 #logo {
@@ -94,7 +94,6 @@ body {
 
 .corner-link {
     position: absolute;
-    bottom: 0;
     margin: 40px;
 }
 
@@ -102,6 +101,12 @@ body {
     border-radius: 5px;
     background-color: white;
     right: 0;
+    bottom: 0;
+}
+
+#github-link {
+    bottom: 0;
+    left: 0;
 }
 
 #github-img {
@@ -112,4 +117,22 @@ body {
 
     #github-img:hover {
         opacity: 1;
+    }
+
+#chart-toggle-anchor {
+    top: 0;
+    right: 0;
+}
+
+#chart-toggle {
+    height: 40px;
+    filter: saturate(0) brightness(.5);
+}
+
+    #chart-toggle.shown {
+        filter: brightness(.8);
+    }
+
+    #chart-toggle:hover {
+        filter: none;
     }

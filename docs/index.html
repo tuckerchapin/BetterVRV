@@ -7,6 +7,8 @@
         <link rel="stylesheet" type="text/css" href="index.css">
 
         <script src="parse.min.js"></script>
+        <script src="moment.min.js"></script>
+        <script src="Chart.min.js"></script>
         <script src="parseFunctions.js"></script>
         <script src="index.js"></script>
     </head>
@@ -40,7 +42,24 @@
 
                 </div>
             </div>
+
+            <div id="chart-container" class="info-container hidden">
+                <canvas id="chart" width="400" height="400"></canvas>
+            </div>
         </div>
+
+        <a
+            id="chart-toggle-anchor"
+            class="corner-link"
+            onclick="toggleShowChart()"
+        >
+            <img
+                id="chart-toggle"
+                src="chart_toggle.svg"
+                alt="Show stats"
+                draggable="false"
+            />
+        </a>
 
         <a
             id="chrome-webstore-link"
@@ -70,5 +89,8 @@
                 draggable="false"
             />
         </a>
+
+
+        <script src="graphs.js"></script>
     </body>
 </html>

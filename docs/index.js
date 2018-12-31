@@ -1,3 +1,12 @@
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+        if (location.hash === "#stats") {
+            showChart();
+        }
+    }
+);
+
 getTotalEpisodeCount(
     (count) => {
         document.getElementById("total-episode-count").textContent = count;
@@ -36,3 +45,23 @@ getRecentAnnotations(
         }
     }
 );
+
+function showChart() {
+    document.getElementById("stats-container").classList.add("hidden");
+    document.getElementById("recent-annotations-container").classList.add("hidden");
+    document.getElementById("chart-container").classList.remove("hidden");
+    document.getElementById("chart-toggle").classList.toggle("shown");
+}
+
+function toggleShowChart() {
+    document.getElementById("stats-container").classList.toggle("hidden");
+    document.getElementById("recent-annotations-container").classList.toggle("hidden");
+    document.getElementById("chart-container").classList.toggle("hidden");
+    document.getElementById("chart-toggle").classList.toggle("shown");
+
+    if (location.hash === "#stats") {
+        location.hash = "";
+    } else {
+        location.hash = "#stats";
+    }
+}

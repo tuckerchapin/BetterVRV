@@ -8,7 +8,7 @@ const Timestamps = Parse.Object.extend('Timestamps');
 const Series = Parse.Object.extend('Series');
 const Flags = Parse.Object.extend('Flags');
 
-const dateIncrement = 1
+const dateIncrement = 7;
 
 function getTotalEpisodeCount(callback) {
     let totalTimestampsQuery = new Parse.Query(Timestamps);
@@ -74,10 +74,10 @@ function getRecentAnnotations(limit, callback) {
     recentAnnotationsQuery.find().then((results) => callback(results));
 }
 
-function getTotalEpisodeCountByWeek(numWeeks, callback) {
-    let data = new Array(numWeeks);
+function getTotalEpisodeCountByTime(numIncrements, callback) {
+    let data = new Array(numIncrements);
     let beforeDate = new Date();
-    for (let i = numWeeks - 1; i >= 0; i--) {
+    for (let i = numIncrements - 1; i >= 0; i--) {
         let totalTimestampsQuery = new Parse.Query(Timestamps);
         totalTimestampsQuery.exists("episodeId");
         totalTimestampsQuery.lessThanOrEqualTo("createdAt", beforeDate);
@@ -94,10 +94,10 @@ function getTotalEpisodeCountByWeek(numWeeks, callback) {
     }
 }
 
-function getTotalSeriesCountByWeek(numWeeks, callback) {
-    let data = new Array(numWeeks);
+function getTotalSeriesCountByTime(numIncrements, callback) {
+    let data = new Array(numIncrements);
     let beforeDate = new Date();
-    for (let i = numWeeks - 1; i >= 0; i--) {
+    for (let i = numIncrements - 1; i >= 0; i--) {
         let totalSeriesQuery = new Parse.Query(Series);
         totalSeriesQuery.exists("seriesId");
         totalSeriesQuery.lessThanOrEqualTo("createdAt", beforeDate);
@@ -114,10 +114,10 @@ function getTotalSeriesCountByWeek(numWeeks, callback) {
     }
 }
 
-function getCompletedEpisodeCountByWeek(numWeeks, callback) {
-    let data = new Array(numWeeks);
+function getCompletedEpisodeCountByTime(numIncrements, callback) {
+    let data = new Array(numIncrements);
     let beforeDate = new Date();
-    for (let i = numWeeks - 1; i >= 0; i--) {
+    for (let i = numIncrements - 1; i >= 0; i--) {
         let beforeTimeQuery = new Parse.Query(Timestamps);
             beforeTimeQuery.lessThanOrEqualTo("createdAt", beforeDate);
 
