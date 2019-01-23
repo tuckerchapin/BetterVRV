@@ -5,7 +5,8 @@ chrome.runtime.onMessage.addListener(
                 let seriesInfo = document.querySelector("a.episode-info");
                 let seriesId = seriesInfo.getAttribute("href").split("/")[2];
                 let seriesTitle = seriesInfo.querySelector("span.series").textContent;
-                let seasonNumber = parseInt(seriesInfo.querySelector("span.season").innerText.split(" ")[1]);
+                let seasonInfo = seriesInfo.querySelector("span.season");
+                let seasonNumber = seasonInfo ? parseInt(seasonInfo.innerText.split(" ")[1]); : 1;
 
                 let episodeInfo = document.querySelector("h2.title").innerText;
                     let dashDivider = " - ";
