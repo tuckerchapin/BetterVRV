@@ -30,6 +30,7 @@ Roadmap
 ---
 - [ ] Firefox/Safari support
 - [ ] Add "add to/remove from watchlist" icons to series and movie cards on the front page and watchlist pages
+- [ ] Next episode release date or day of the week for weekly and ongoing releases on the show page
 - [ ] Subtitle settings
 - [ ] Force HD
 - [ ] Mark episodes as recap episodes with no new content and skip them
